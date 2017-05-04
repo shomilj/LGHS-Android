@@ -23,4 +23,5 @@
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
     <string name="title_activity_submit_joke_of_the_day">SubmitJokeOfTheDayActivity</string>
+    <string name="title_activity_calendar">CalendarActivity</string>
 </resources>
