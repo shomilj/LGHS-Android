@@ -58,6 +58,7 @@ public class LoadingActivity extends AppCompatActivity {
             }
         });
 
+        finish();
     }
 
     @Override

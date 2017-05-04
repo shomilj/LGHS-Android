@@ -24,4 +24,9 @@
     <string name="title_notifications">Notifications</string>
     <string name="title_activity_submit_joke_of_the_day">SubmitJokeOfTheDayActivity</string>
     <string name="title_activity_calendar">CalendarActivity</string>
+    <string name="title_activity_canvas">CanvasActivity</string>
+    <string name="title_activity_lghstwitter_feed">LGHSTwitterFeedActivity</string>
+    <string name="title_activity_colleges_list">CollegesListActivity</string>
+    <string name="title_activity_hotlines">HotlinesActivity</string>
+    <string name="title_activity_announcements">AnnouncementsActivity</string>
 </resources>

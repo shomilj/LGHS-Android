@@ -17,7 +17,8 @@
         <activity
             android:name=".LoadingActivity"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme.NoActionBar"
+            android:noHistory="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -30,7 +31,8 @@
         <activity
             android:name=".MainActivity"
             android:label="@string/title_activity_main"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar"
+            />
         <activity
             android:name=".BellScheduleActivity"
             android:label="@string/title_activity_bell_schedule"
@@ -51,6 +53,46 @@
         <activity
             android:name=".CalendarActivity"
             android:label="@string/title_activity_calendar"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.sjf.lgcats.MainActivity" />
+        </activity>
+        <activity
+            android:name=".CanvasActivity"
+            android:label="@string/title_activity_canvas"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".LGHSTwitterFeedActivity"
+            android:label="@string/title_activity_lghstwitter_feed"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.sjf.lgcats.MainActivity" />
+        </activity>
+        <activity
+            android:name=".CollegesListActivity"
+            android:label="@string/title_activity_colleges_list"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.sjf.lgcats.MainActivity" />
+        </activity>
+        <activity
+            android:name=".HotlinesActivity"
+            android:label="@string/title_activity_hotlines"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.sjf.lgcats.MainActivity" />
+        </activity>
+        <activity
+            android:name=".AnnouncementsActivity"
+            android:label="@string/title_activity_announcements"
             android:parentActivityName=".MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
