@@ -15,7 +15,6 @@ import android.widget.TextView;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 
 public class LoadingActivity extends AppCompatActivity {
@@ -58,7 +57,9 @@ public class LoadingActivity extends AppCompatActivity {
             }
         });
 
-        finish();
+        //finish();
+        // don't do this until the activity fully works
+        // and autoloads the main activity
     }
 
     @Override
