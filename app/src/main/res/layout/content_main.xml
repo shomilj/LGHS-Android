@@ -17,7 +17,8 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
-        app:layout_constraintHorizontal_bias="0.0">
+        app:layout_constraintHorizontal_bias="0.0"
+        android:background="@color/colorPrimaryDark">
 
         <LinearLayout
             android:id="@+id/main_linear_layout"
@@ -25,25 +26,26 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:layout_width="match_parent"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:background="@color/darkOrange">
+            android:background="@color/colorPrimaryDark"
+            android:weightSum="1">
 
             <TextView
-                android:id="@+id/day_text_view"
+                android:id="@+id/main_day"
                 android:layout_width="match_parent"
                 android:layout_height="@android:dimen/app_icon_size"
                 android:layout_marginBottom="1dp"
                 android:layout_marginTop="2dp"
-                android:background="@color/colorPrimary"
+                android:background="@color/colorAccent"
+                android:fontFamily="sans-serif"
                 android:gravity="center"
-                android:text="@string/black_day"
-                android:textAlignment="center"
-                android:textAppearance="@android:style/TextAppearance.Material.Widget.Button.Colored" />
+                android:text="@string/display_day_color"
+                android:textAppearance="@android:style/TextAppearance" />
 
             <Button
-                android:id="@+id/announcement_button"
+                android:id="@+id/main_announcement_button"
                 style="@style/Widget.AppCompat.Button.Colored"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -53,7 +55,7 @@
                 android:text="@string/announcements" />
 
             <Button
-                android:id="@+id/announcement_button_2"
+                android:id="@+id/main_canvas_button"
                 style="@style/Widget.AppCompat.Button.Colored"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -63,7 +65,7 @@
                 android:text="@string/canvas" />
 
             <Button
-                android:id="@+id/announcement_button_3"
+                android:id="@+id/main_studentID_button"
                 style="@style/Widget.AppCompat.Button.Colored"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -72,6 +74,67 @@
                 android:background="@color/colorPrimary"
                 android:text="@string/student_id" />
 
+            <TextView
+                android:id="@+id/main_black_border_1"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/activity_vertical_margin"
+                android:background="@color/black" />
+
+            <Button
+                android:id="@+id/main_bellSchedule_button"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="2dp"
+                android:layout_marginTop="1dp"
+                android:background="@color/colorPrimary"
+                android:text="@string/bell_schedule" />
+
+            <Button
+                android:id="@+id/main_clubsList_button"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="2dp"
+                android:layout_marginTop="1dp"
+                android:background="@color/colorPrimary"
+                android:text="@string/clubs" />
+
+            <Button
+                android:id="@+id/main_collegesList_button"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="2dp"
+                android:layout_marginTop="1dp"
+                android:background="@color/colorPrimary"
+                android:text="@string/colleges" />
+
+            <TextView
+                android:id="@+id/main_black_border_2"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/activity_vertical_margin"
+                android:background="@color/black" />
+
+            <Button
+                android:id="@+id/main_hotlines_button"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="2dp"
+                android:layout_marginTop="1dp"
+                android:background="@color/colorPrimary"
+                android:text="@string/hotlines" />
+
+            <TextView
+                android:id="@+id/main_black_border_3"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/activity_vertical_margin"
+                android:background="@color/black" />
+
         </LinearLayout>
     </ScrollView>
+
+
+
 </android.support.constraint.ConstraintLayout>
