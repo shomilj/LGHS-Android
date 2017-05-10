@@ -29,4 +29,11 @@
     <string name="title_activity_colleges_list">CollegesListActivity</string>
     <string name="title_activity_hotlines">HotlinesActivity</string>
     <string name="title_activity_announcements">AnnouncementsActivity</string>
+    <string name="announcements">Announcements</string>
+    <string name="canvas">Canvas</string>
+    <string name="student_id">Student ID</string>
+    <string name="bell_schedule">Bell Schedule</string>
+    <string name="clubs">Clubs</string>
+    <string name="colleges">Colleges</string>
+    <string name="hotlines">Hotlines</string>
 </resources>

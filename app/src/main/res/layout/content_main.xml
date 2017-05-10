@@ -28,7 +28,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:background="@color/black">
+            android:background="@color/darkOrange">
 
             <TextView
                 android:id="@+id/day_text_view"
@@ -38,7 +38,7 @@
                 android:layout_marginTop="2dp"
                 android:background="@color/colorPrimary"
                 android:gravity="center"
-                android:text="@string/action_sign_in_short"
+                android:text="@string/black_day"
                 android:textAlignment="center"
                 android:textAppearance="@android:style/TextAppearance.Material.Widget.Button.Colored" />
 
@@ -47,30 +47,30 @@
                 style="@style/Widget.AppCompat.Button.Colored"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/colorPrimary"
-                android:layout_marginTop="1dp"
                 android:layout_marginBottom="1dp"
-                android:text="@string/action_sign_in_short" />
+                android:layout_marginTop="1dp"
+                android:background="@color/colorPrimary"
+                android:text="@string/announcements" />
 
             <Button
                 android:id="@+id/announcement_button_2"
                 style="@style/Widget.AppCompat.Button.Colored"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/colorPrimary"
-                android:layout_marginTop="1dp"
                 android:layout_marginBottom="1dp"
-                android:text="@string/action_sign_in_short" />
+                android:layout_marginTop="1dp"
+                android:background="@color/colorPrimary"
+                android:text="@string/canvas" />
 
             <Button
                 android:id="@+id/announcement_button_3"
                 style="@style/Widget.AppCompat.Button.Colored"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/colorPrimary"
-                android:layout_marginTop="1dp"
                 android:layout_marginBottom="2dp"
-                android:text="@string/action_sign_in_short" />
+                android:layout_marginTop="1dp"
+                android:background="@color/colorPrimary"
+                android:text="@string/student_id" />
 
         </LinearLayout>
     </ScrollView>
