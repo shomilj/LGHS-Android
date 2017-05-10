@@ -122,6 +122,15 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.sjf.lgcats.MainActivity" />
         </activity>
+        <activity
+            android:name=".testactivitytwo"
+            android:label="@string/title_activity_testactivitytwo"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.sjf.lgcats.MainActivity" />
+        </activity>
     </application>
 
 </manifest>

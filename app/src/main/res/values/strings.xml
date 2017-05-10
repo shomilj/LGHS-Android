@@ -129,4 +129,11 @@
     </string>
     <string name="today">Today</string>
     <string name="display_day_color">DisplayDayColor</string>
+    <string name="twitter">#golgcats</string>
+    <string name="LGCATSlinks">https://docs.google.com/spreadsheets/d/1SLgWueqyOlvqEvW5ZVi4-nrUzpJAYlikSDlnssoXKGc/export?format=tsv</string>
+    <string name="title_activity_testactivitytwo">testactivitytwo</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
 </resources>

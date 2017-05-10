@@ -12,16 +12,16 @@ public class LGHSTwitterFeedActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lghstwitter_feed);
         Intent intent = null;
-        /*try {
+        try {
             // get the Twitter app if possible
             this.getPackageManager().getPackageInfo("com.twitter.android", 0);
-            intent = new Intent(Intent.ACTION_VIEW, Uri.parse("twitter://user?user_id=USERID"));
+            intent = new Intent(Intent.ACTION_VIEW, Uri.parse("twitter://hashtag/golgcats?src=hash"));
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         } catch (Exception e) {
             // no Twitter app, revert to browser
-            intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://twitter.com/PROFILENAME"));
+            intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://twitter.com/hashtag/golgcats?src=hash"));
         }
-        this.startActivity(intent);*/
+        this.startActivity(intent);
     }
 
 }
