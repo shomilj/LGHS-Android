@@ -135,5 +135,8 @@
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="LGcalendar">http://www.lghs.net/parents__community/school_calendar</string>
+    <string name="canvas_grades_link">https://lgsuhsd.instructure.com/grades</string>
+    <string name="calendar">Calendar</string>
 
 </resources>

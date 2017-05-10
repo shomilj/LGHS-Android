@@ -23,7 +23,7 @@ public class LGHSTwitterFeedActivity extends AppCompatActivity {
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         } catch (Exception e) {
             // no Twitter app, revert to browser
-            intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://twitter.com/hashtag/golgcats?src=hash"));
+            intent = new Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.twitter)));
         }
         this.startActivity(intent);
     }

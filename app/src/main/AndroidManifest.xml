@@ -59,7 +59,8 @@
             android:name=".CalendarActivity"
             android:label="@string/title_activity_calendar"
             android:parentActivityName=".MainActivity"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme.NoActionBar"
+            android:noHistory="true">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.sjf.lgcats.MainActivity" />
@@ -67,12 +68,14 @@
         <activity
             android:name=".CanvasActivity"
             android:label="@string/title_activity_canvas"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"
+            android:noHistory="true"/>
         <activity
             android:name=".LGHSTwitterFeedActivity"
             android:label="@string/title_activity_lghstwitter_feed"
             android:parentActivityName=".MainActivity"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme.NoActionBar"
+            android:noHistory="true">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.sjf.lgcats.MainActivity" />

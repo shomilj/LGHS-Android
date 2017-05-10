@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
     // private TextView mainDay
     private Button mainAnnouncementButton;
     private Button mainCanvasButton;
+    private Button mainCalendarButton;
     private Button mainStudentIDButton;
     private Button mainBellScheduleButton;
     private Button mainClubsListButton;
@@ -48,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
         //mainDay = (TextView) findViewById(R.id.main_day);
         mainAnnouncementButton = (Button) findViewById(R.id.main_announcement_button);
         mainCanvasButton = (Button) findViewById(R.id.main_canvas_button);
+        mainCalendarButton = (Button) findViewById(R.id.main_calendar_button);
         mainStudentIDButton = (Button) findViewById(R.id.main_studentID_button);
         mainBellScheduleButton = (Button) findViewById(R.id.main_bellSchedule_button);
         mainClubsListButton = (Button) findViewById(R.id.main_clubsList_button);
@@ -80,6 +82,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, CanvasActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        mainCalendarButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, CalendarActivity.class);
                 startActivity(intent);
             }
         });
