@@ -65,6 +65,16 @@
                 android:text="@string/canvas" />
 
             <Button
+                android:id="@+id/main_calendar_button"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="1dp"
+                android:layout_marginTop="1dp"
+                android:background="@color/colorPrimary"
+                android:text="@string/calendar" />
+
+            <Button
                 android:id="@+id/main_studentID_button"
                 style="@style/Widget.AppCompat.Button.Colored"
                 android:layout_width="match_parent"
@@ -151,7 +161,5 @@
 
         </LinearLayout>
     </ScrollView>
-
-
 
 </android.support.constraint.ConstraintLayout>

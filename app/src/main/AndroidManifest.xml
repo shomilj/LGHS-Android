@@ -35,16 +35,12 @@
             android:name=".LoginActivity"
             android:label="@string/title_activity_login" />
         <activity
-            android:name=".MainActivity"
-            android:label="@string/title_activity_main"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
             android:name=".BellScheduleActivity"
             android:label="@string/title_activity_bell_schedule"
             android:parentActivityName=".MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="MainActivity" />
+                android:value=".MainActivity" />
         </activity>
         <activity
             android:name=".SubmitJokeOfTheDayActivity"
@@ -53,11 +49,12 @@
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="MainActivity" />
+                android:value=".MainActivity" />
         </activity>
         <activity
             android:name=".CalendarActivity"
             android:label="@string/title_activity_calendar"
+            android:noHistory="true"
             android:parentActivityName=".MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
@@ -67,10 +64,12 @@
         <activity
             android:name=".CanvasActivity"
             android:label="@string/title_activity_canvas"
+            android:noHistory="true"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".LGHSTwitterFeedActivity"
             android:label="@string/title_activity_lghstwitter_feed"
+            android:noHistory="true"
             android:parentActivityName=".MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
@@ -123,14 +122,9 @@
                 android:value="com.sjf.lgcats.MainActivity" />
         </activity>
         <activity
-            android:name=".testactivitytwo"
-            android:label="@string/title_activity_testactivitytwo"
-            android:parentActivityName=".MainActivity"
-            android:theme="@style/AppTheme.NoActionBar">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.sjf.lgcats.MainActivity" />
-        </activity>
+            android:name=".MainActivity"
+            android:label="@string/title_activity_main"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

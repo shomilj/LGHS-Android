@@ -7,6 +7,20 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
+/**
+ * add the following:
+ * attendance
+ * saferides
+ * ???
+ *
+ * @author  Shomil Jain
+ * @author  Quentin Leary
+ * @author  Cassandra Melax
+ * @author  Harry Wang
+ * @version 1.0
+ * @since   1.0
+ */
+
 public class HotlinesActivity extends AppCompatActivity {
 
     @Override

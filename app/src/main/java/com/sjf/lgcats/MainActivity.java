@@ -2,10 +2,8 @@ package com.sjf.lgcats;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.design.widget.BottomNavigationView;
+import android.view.View;
 import android.support.design.widget.NavigationView;
-import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -13,22 +11,26 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.TextView;
 
-// Method header
 /**
+ * The ultimate nexus of the LG CATS app. Provides access to other activities.
  *
+ * @author  Shomil Jain
+ * @author  Quentin Leary
+ * @author  Cassandra Melax
+ * @author  Harry Wang
+ * @version 1.0
+ * @since   1.0
  */
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity
+        implements NavigationView.OnNavigationItemSelectedListener {
 
     // private TextView mainDay
     private Button mainAnnouncementButton;
     private Button mainCanvasButton;
+    private Button mainCalendarButton;
     private Button mainStudentIDButton;
     private Button mainBellScheduleButton;
     private Button mainClubsListButton;
@@ -40,7 +42,6 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -48,19 +49,28 @@ public class MainActivity extends AppCompatActivity {
         //mainDay = (TextView) findViewById(R.id.main_day);
         mainAnnouncementButton = (Button) findViewById(R.id.main_announcement_button);
         mainCanvasButton = (Button) findViewById(R.id.main_canvas_button);
+        mainCalendarButton = (Button) findViewById(R.id.main_calendar_button);
         mainStudentIDButton = (Button) findViewById(R.id.main_studentID_button);
         mainBellScheduleButton = (Button) findViewById(R.id.main_bellSchedule_button);
         mainClubsListButton = (Button) findViewById(R.id.main_clubsList_button);
         mainCollegesListButton = (Button) findViewById(R.id.main_collegesList_button);
         mainHotlinesButton = (Button) findViewById(R.id.main_hotlines_button);
         mainLGHSTwitterFeedButton = (Button) findViewById(R.id.main_LGHSTwitterFeed_button);
+        drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        navigationView = (NavigationView) findViewById(R.id.nav_view);
 
         setSupportActionBar(toolbar);
+        navigationView.setNavigationItemSelectedListener(this);
+
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.setDrawerListener(toggle);
+        toggle.syncState();
 
         // display whether it is a black or an orange day
         // currently not working
         String dayColor = getString(R.string.today) + " " + getString(R.string.black_day) + ".";
-        getSupportActionBar().setTitle(getString(R.string.app_name) + ": " + dayColor);
+        getSupportActionBar().setTitle(dayColor);
 
         // change action bar to black
         //Window window = this.getWindow();
@@ -80,6 +90,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, CanvasActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        mainCalendarButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, CalendarActivity.class);
                 startActivity(intent);
             }
         });
@@ -134,4 +152,60 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onBackPressed() {
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    @SuppressWarnings("StatementWithEmptyBody")
+    @Override
+    public boolean onNavigationItemSelected(MenuItem item) {
+        // Handle navigation view item clicks here.
+        int id = item.getItemId();
+
+        if (id == R.id.nav_camera) {
+            // Handle the camera action
+        } else if (id == R.id.nav_gallery) {
+
+        } else if (id == R.id.nav_slideshow) {
+
+        } else if (id == R.id.nav_manage) {
+
+        } else if (id == R.id.nav_share) {
+
+        } else if (id == R.id.nav_send) {
+
+        }
+
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawer.closeDrawer(GravityCompat.START);
+        return true;
+    }
 }

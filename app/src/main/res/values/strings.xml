@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">LG CATS</string>
+    <string name="app_name" translatable="false">LG CATS</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_login">Sign in</string>
 
@@ -20,8 +20,6 @@
     <string name="black_day">is a Black Day</string>
     <string name="title_activity_bell_schedule">BellScheduleActivity</string>
     <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
     <string name="title_activity_submit_joke_of_the_day">SubmitJokeOfTheDayActivity</string>
     <string name="title_activity_calendar">CalendarActivity</string>
     <string name="title_activity_canvas">CanvasActivity</string>
@@ -128,12 +126,17 @@
         "when a user tries to pick up one of cards.\n\n"
     </string>
     <string name="today">Today</string>
-    <string name="display_day_color">DisplayDayColor</string>
-    <string name="twitter">#golgcats</string>
-    <string name="LGCATSlinks">https://docs.google.com/spreadsheets/d/1SLgWueqyOlvqEvW5ZVi4-nrUzpJAYlikSDlnssoXKGc/export?format=tsv</string>
-    <string name="title_activity_testactivitytwo">testactivitytwo</string>
+    <string name="twitter" translatable="false">#golgcats</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="LGcalendar" translatable="false">http://www.lghs.net/parents__community/school_calendar</string>
+    <string name="canvas_grades_link">https://lgsuhsd.instructure.com/grades</string>
+    <string name="calendar">Calendar</string>
+    <string name="minimum_day">Minimum Day</string>
+    <string name="standard_day">Standard Day</string>
+    <string name="finals_schedule">Finals Schedule</string>
+    <string name="twitter_web_link" translatable="false">https://twitter.com/hashtag/golgcats?src=hash</string>
+    <string name="twitter_app_link" translatable="false">twitter://hashtag/golgcats?src=hash</string>
 
 </resources>
