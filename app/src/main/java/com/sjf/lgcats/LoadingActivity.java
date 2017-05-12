@@ -1,27 +1,17 @@
 package com.sjf.lgcats;
 
-import android.app.DownloadManager;
-import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
-import android.os.Environment;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
 
-import java.io.File;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 
 public class LoadingActivity extends AppCompatActivity {
@@ -29,6 +19,7 @@ public class LoadingActivity extends AppCompatActivity {
     private TextView todaysDate;
     private TextView orangeBlackDayDisplay;
     private Button temporaryButton;
+    private Button temporaryButton2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +30,7 @@ public class LoadingActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         // get the date
-        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        DateFormat dateFormat = new SimpleDateFormat("HH:mm\nyyyy/MM/dd");
         Date date = new Date();
         //Calendar cal = Calendar.getInstance();
 
@@ -60,6 +51,15 @@ public class LoadingActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(LoadingActivity.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        temporaryButton2 = (Button) findViewById(R.id.temporary_button_2);
+        temporaryButton2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(LoadingActivity.this, testactivitytwo.class);
                 startActivity(intent);
             }
         });

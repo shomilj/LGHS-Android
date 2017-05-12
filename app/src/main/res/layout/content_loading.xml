@@ -13,7 +13,7 @@
         android:layout_width="197dp"
         android:layout_height="40dp"
         android:text="OrangeBlackDayDisplay"
-        android:textAlignment="center"
+        android:gravity="center"
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/initial_loading_spinner"
         app:layout_constraintHorizontal_bias="0.502"
@@ -26,11 +26,11 @@
         android:layout_width="82dp"
         android:layout_height="wrap_content"
         android:text="TodaysDate"
+        android:gravity="center"
+        app:layout_constraintBottom_toTopOf="@+id/orange_black_day_display"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/orange_black_day_display"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="32dp" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ProgressBar
         android:id="@+id/initial_loading_spinner"
@@ -47,9 +47,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/action_sign_in_short"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/initial_loading_spinner"
+        app:layout_constraintBottom_toTopOf="@+id/temporary_button_2" />
+
+    <Button
+        android:id="@+id/temporary_button_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/error_field_required"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/initial_loading_spinner" />
+        app:layout_constraintTop_toBottomOf="@+id/temporary_button" />
 
 </android.support.constraint.ConstraintLayout>
