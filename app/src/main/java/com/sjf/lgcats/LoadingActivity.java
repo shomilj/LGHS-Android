@@ -19,8 +19,6 @@ public class LoadingActivity extends AppCompatActivity {
     private TextView todaysDate;
     private TextView orangeBlackDayDisplay;
     private Button temporaryButton;
-    private Button temporaryButton2;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -51,15 +49,6 @@ public class LoadingActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(LoadingActivity.this, MainActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        temporaryButton2 = (Button) findViewById(R.id.temporary_button_2);
-        temporaryButton2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(LoadingActivity.this, testactivitytwo.class);
                 startActivity(intent);
             }
         });
