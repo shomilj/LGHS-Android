@@ -1,13 +1,21 @@
-//
-//
-//
-
 package com.sjf.lgcats;
 
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+
+/**
+ * Immediately opens the tweets tagged with #golgcats
+ * Opens in the Twitter app if available, else it uses the default browser
+ *
+ * @author  Shomil Jain
+ * @author  Quentin Leary
+ * @author  Cassandra Melax
+ * @author  Harry Wang
+ * @version 1.0
+ * @since   1.0
+ */
 
 public class LGHSTwitterFeedActivity extends AppCompatActivity {
 

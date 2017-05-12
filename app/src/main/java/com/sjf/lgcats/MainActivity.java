@@ -13,6 +13,17 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 
+/**
+ * The ultimate nexus of the LG CATS app. Provides access to other activities.
+ *
+ * @author  Shomil Jain
+ * @author  Quentin Leary
+ * @author  Cassandra Melax
+ * @author  Harry Wang
+ * @version 1.0
+ * @since   1.0
+ */
+
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 

@@ -14,6 +14,18 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+/**
+ * Gives the app time to load essential information.
+ * Informs the user of the date and day color.
+ *
+ * @author  Shomil Jain
+ * @author  Quentin Leary
+ * @author  Cassandra Melax
+ * @author  Harry Wang
+ * @version 1.0
+ * @since   1.0
+ */
+
 public class LoadingActivity extends AppCompatActivity {
 
     private TextView todaysDate;

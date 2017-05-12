@@ -7,6 +7,17 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+/**
+ * Gives the various bell schedules of a possible day at Los Gatos High School.
+ *
+ * @author  Shomil Jain
+ * @author  Quentin Leary
+ * @author  Cassandra Melax
+ * @author  Harry Wang
+ * @version 1.0
+ * @since   1.0
+ */
+
 public class BellScheduleActivity extends AppCompatActivity {
 
     private TextView mTextMessage;

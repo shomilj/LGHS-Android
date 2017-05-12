@@ -12,6 +12,13 @@ import android.view.View;
  * attendance
  * saferides
  * ???
+ *
+ * @author  Shomil Jain
+ * @author  Quentin Leary
+ * @author  Cassandra Melax
+ * @author  Harry Wang
+ * @version 1.0
+ * @since   1.0
  */
 
 public class HotlinesActivity extends AppCompatActivity {

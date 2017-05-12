@@ -4,12 +4,15 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 /**
- * Created by HarryWang on 5/2/17.
+ * @author  Shomil Jain
+ * @author  Quentin Leary
+ * @author  Cassandra Melax
+ * @author  Harry Wang
+ * @version 1.0
+ * @since   1.0
  */
 
 public class StringUtil {
-
-
 
     public static ArrayList<ArrayList<String>> parseTSV (String s) {
         ArrayList<ArrayList<String>> answer = new ArrayList<>();
