@@ -17,6 +17,7 @@ import java.util.Date;
 /**
  * Gives the app time to load essential information.
  * Informs the user of the date and day color.
+ * Downloads initial data.
  *
  * @author  Shomil Jain
  * @author  Quintin Leary
