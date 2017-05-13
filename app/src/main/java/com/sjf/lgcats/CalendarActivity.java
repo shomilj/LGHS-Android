@@ -9,7 +9,7 @@ import android.support.v7.app.AppCompatActivity;
  * Immediately loads up the calendar on the LGHS website.
  *
  * @author  Shomil Jain
- * @author  Quentin Leary
+ * @author  Quintin Leary
  * @author  Cassandra Melax
  * @author  Harry Wang
  * @version 1.0

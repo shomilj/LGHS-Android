@@ -10,7 +10,7 @@ import android.support.v7.app.AppCompatActivity;
  * Opens in the Twitter app if available, else it uses the default browser
  *
  * @author  Shomil Jain
- * @author  Quentin Leary
+ * @author  Quintin Leary
  * @author  Cassandra Melax
  * @author  Harry Wang
  * @version 1.0

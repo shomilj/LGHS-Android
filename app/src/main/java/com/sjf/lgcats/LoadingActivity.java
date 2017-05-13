@@ -19,7 +19,7 @@ import java.util.Date;
  * Informs the user of the date and day color.
  *
  * @author  Shomil Jain
- * @author  Quentin Leary
+ * @author  Quintin Leary
  * @author  Cassandra Melax
  * @author  Harry Wang
  * @version 1.0

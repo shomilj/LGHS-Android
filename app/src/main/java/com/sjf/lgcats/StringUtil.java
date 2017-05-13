@@ -5,7 +5,7 @@ import java.util.Arrays;
 
 /**
  * @author  Shomil Jain
- * @author  Quentin Leary
+ * @author  Quintin Leary
  * @author  Cassandra Melax
  * @author  Harry Wang
  * @version 1.0

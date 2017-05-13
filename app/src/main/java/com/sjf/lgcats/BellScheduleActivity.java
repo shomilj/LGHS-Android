@@ -11,7 +11,7 @@ import android.widget.TextView;
  * Gives the various bell schedules of a possible day at Los Gatos High School.
  *
  * @author  Shomil Jain
- * @author  Quentin Leary
+ * @author  Quintin Leary
  * @author  Cassandra Melax
  * @author  Harry Wang
  * @version 1.0

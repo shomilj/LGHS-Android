@@ -17,7 +17,7 @@ import android.widget.Button;
  * The ultimate nexus of the LG CATS app. Provides access to other activities.
  *
  * @author  Shomil Jain
- * @author  Quentin Leary
+ * @author  Quintin Leary
  * @author  Cassandra Melax
  * @author  Harry Wang
  * @version 1.0
