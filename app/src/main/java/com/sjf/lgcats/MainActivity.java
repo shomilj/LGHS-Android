@@ -89,7 +89,9 @@ public class MainActivity extends AppCompatActivity
         mainCanvasButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, CanvasActivity.class);
+                Intent intent = new Intent(MainActivity.this, WebViewActivity.class);
+                intent.putExtra("app", 0);
+                intent.putExtra("url", getString(R.string.canvas_grades_link));
                 startActivity(intent);
             }
         });
@@ -97,7 +99,9 @@ public class MainActivity extends AppCompatActivity
         mainCalendarButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, CalendarActivity.class);
+                Intent intent = new Intent(MainActivity.this, WebViewActivity.class);
+                intent.putExtra("app", 0);
+                intent.putExtra("url", getString(R.string.LGcalendar));
                 startActivity(intent);
             }
         });
@@ -145,7 +149,9 @@ public class MainActivity extends AppCompatActivity
         mainLGHSTwitterFeedButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, LGHSTwitterFeedActivity.class);
+                Intent intent = new Intent(MainActivity.this, WebViewActivity.class);
+                intent.putExtra("app", R.string.twitter);
+                intent.putExtra("url", getString(R.string.twitter_web_link));
                 startActivity(intent);
             }
         });

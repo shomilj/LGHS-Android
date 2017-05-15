@@ -126,7 +126,7 @@
         "when a user tries to pick up one of cards.\n\n"
     </string>
     <string name="today">Today</string>
-    <string name="twitter" translatable="false">#golgcats</string>
+    <string name="twitter" translatable="false">Twitter</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -138,5 +138,7 @@
     <string name="finals_schedule">Finals Schedule</string>
     <string name="twitter_web_link" translatable="false">https://twitter.com/hashtag/golgcats?src=hash</string>
     <string name="twitter_app_link" translatable="false">twitter://hashtag/golgcats?src=hash</string>
+    <string name="golgcats">#golgcats</string>
+    <string name="title_activity_web_view">WebViewActivity</string>
 
 </resources>
