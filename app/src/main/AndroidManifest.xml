@@ -100,11 +100,12 @@
             android:name=".WebViewActivity"
             android:label="@string/title_activity_web_view"
             android:noHistory="true"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".MainActivity"
             android:label="@string/title_activity_main"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".HotlinesDetailActivity"></activity>
     </application>
 
 </manifest>
