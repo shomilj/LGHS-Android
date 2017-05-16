@@ -6,6 +6,7 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 /**
  * @author  Shomil Jain
@@ -17,6 +18,14 @@ import java.util.Arrays;
  */
 
 public class StringUtil {
+
+    public static ArrayList<ArrayList<String>> parseTSV (List<String> s) {
+        ArrayList<ArrayList<String>> answer = new ArrayList<>();
+        for (String line : s) {
+            answer.add((ArrayList<String>) Arrays.asList(line.split("\t")));
+        }
+        return answer;
+    }
 
     public static ArrayList<ArrayList<String>> parseTSV (String s) {
         ArrayList<ArrayList<String>> answer = new ArrayList<>();
