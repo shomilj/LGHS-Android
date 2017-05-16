@@ -30,7 +30,7 @@ public class StringUtil {
     // Returns null if no content is found from the URL
     public static String getText(String url) {
         try {
-            String content = FileParser.downloadString(url);
+            String content = StringUtil.downloadString(url);
             return content;
         } catch (Exception e) {
             return null;
