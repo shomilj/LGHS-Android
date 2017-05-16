@@ -166,6 +166,7 @@ public class LoadingActivity extends AppCompatActivity {
     }
 
     public void downloadLinks() {
+        System.out.println("Start download!!");
         String link = "https://docs.google.com/spreadsheets/d/1SLgWueqyOlvqEvW5ZVi4-nrUzpJAYlikSDlnssoXKGc/export?format=tsv";
         String text = StringUtil.getText(link);
         if (text != null) {
