@@ -1,6 +1,7 @@
 package com.sjf.lgcats;
 
 import android.content.Intent;
+import android.icu.text.StringSearch;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -96,6 +97,10 @@ public class LoadingActivity extends AppCompatActivity {
 
     public void parse() {
 
+        downloadLinks();
+
+
+
         /*File dir = new File(Environment.getExternalStorageDirectory() + "/Download/your folder/");
         dir.mkdirs();
 
@@ -114,6 +119,14 @@ public class LoadingActivity extends AppCompatActivity {
         ArrayList<ArrayList<String>> s = StringUtil.parseTSV();
         parseSchoolCalendar();
         parseClubs();*/
+    }
+
+    public void downloadLinks() {
+        String link = "https://docs.google.com/spreadsheets/d/1SLgWueqyOlvqEvW5ZVi4-nrUzpJAYlikSDlnssoXKGc/export?format=tsv";
+        String text = StringUtil.getText(link);
+        if (text != null) {
+            System.out.println(text);
+        }
     }
 
     public void parseSchoolCalendar() {
