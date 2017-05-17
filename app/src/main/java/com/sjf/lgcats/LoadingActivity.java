@@ -156,5 +156,26 @@ public class LoadingActivity extends AppCompatActivity {
 
         ArrayList<ArrayList<String>> a = StringUtil.parseTSV(s);
         todaysDate.setText(a.get(0).get(0));*/
+        parseSchoolCalendar();
+        parseClubs();
+    }
+
+    public void downloadLinks() {
+        System.out.println("Start download!!");
+        String link = "https://docs.google.com/spreadsheets/d/1SLgWueqyOlvqEvW5ZVi4-nrUzpJAYlikSDlnssoXKGc/export?format=tsv";
+        String text = StringUtil.getText(link);
+        if (text != null) {
+            System.out.println(text);
+        }
+    }
+
+    public void parseSchoolCalendar() {
+
+
+    }
+
+    public void parseClubs() {
+
+
     }
 }
