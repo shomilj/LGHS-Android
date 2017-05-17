@@ -1,5 +1,7 @@
 package com.sjf.lgcats;
 
+import android.content.res.Resources;
+
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.URL;
@@ -9,6 +11,9 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
+ *
+ * Provides a compilation of string helper methods
+ *
  * @author  Shomil Jain
  * @author  Quintin Leary
  * @author  Cassandra Melax
@@ -39,9 +44,10 @@ public class StringUtil {
     // Returns null if no content is found from the URL
     public static String getText(String url) {
         try {
-            String content = FileParser.downloadString(url);
+            String content = downloadString(url);
             return content;
         } catch (Exception e) {
+            System.out.println(e);
             return null;
         }
     }
@@ -56,6 +62,20 @@ public class StringUtil {
             response.append(inputLine + "\n");
         in.close();
         return response.toString();
+    }
+
+    public static void parse () {
+        new DownloadFiles().execute();
+    }
+
+    public static void downloadLinks() {
+        System.out.println("Running download");
+        String text = StringUtil.getText(Resources.getSystem().getString(R.string.LGCATSlinks));
+        if (text != null) {
+            System.out.println(text);
+        } else {
+            System.out.println("Null");
+        }
     }
 
 }

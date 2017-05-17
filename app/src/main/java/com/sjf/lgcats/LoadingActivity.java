@@ -3,11 +3,6 @@ package com.sjf.lgcats;
 import android.app.DownloadManager;
 import android.content.Context;
 import android.content.Intent;
-<<<<<<< Updated upstream
-import android.icu.text.StringSearch;
-=======
-import android.net.Uri;
->>>>>>> Stashed changes
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
@@ -73,7 +68,7 @@ public class LoadingActivity extends AppCompatActivity {
         orangeBlackDayDisplay.setText(orangeBlackDayDisplayText);
 
         // parse necessary info upon loading
-        parse();
+        StringUtil.parse();
 
         temporaryButton = (Button) findViewById(R.id.temporary_button);
         temporaryButton.setOnClickListener(new View.OnClickListener() {
@@ -111,7 +106,7 @@ public class LoadingActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void parse() {
+    public static void failedparse() {
         /*
         //File dir = new File(Environment.getExternalStorageDirectory() + "/Download/LGCATSlinksDownloads/");
         //Boolean b = dir.mkdirs();
@@ -161,24 +156,5 @@ public class LoadingActivity extends AppCompatActivity {
 
         ArrayList<ArrayList<String>> a = StringUtil.parseTSV(s);
         todaysDate.setText(a.get(0).get(0));*/
-        parseSchoolCalendar();
-        parseClubs();
-    }
-
-    public void downloadLinks() {
-        String link = "https://docs.google.com/spreadsheets/d/1SLgWueqyOlvqEvW5ZVi4-nrUzpJAYlikSDlnssoXKGc/export?format=tsv";
-        String text = StringUtil.getText(link);
-        if (text != null) {
-            System.out.println(text);
-        }
-    }
-
-    public void parseSchoolCalendar() {
-
-
-    }
-
-    public void parseClubs() {
-
     }
 }
