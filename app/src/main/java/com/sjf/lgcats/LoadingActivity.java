@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -47,6 +48,8 @@ public class LoadingActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Log.d("stuff","Application started");
+        System.out.println("printininirgniwn");
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_loading);
@@ -68,7 +71,7 @@ public class LoadingActivity extends AppCompatActivity {
         orangeBlackDayDisplay.setText(orangeBlackDayDisplayText);
 
         // parse necessary info upon loading
-        StringUtil.parse();
+        StringUtil.parse(getString(R.string.LGCATSlinks));
 
         temporaryButton = (Button) findViewById(R.id.temporary_button);
         temporaryButton.setOnClickListener(new View.OnClickListener() {
@@ -106,7 +109,7 @@ public class LoadingActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public static void failedparse() {
+    public void failedparse() {
         /*
         //File dir = new File(Environment.getExternalStorageDirectory() + "/Download/LGCATSlinksDownloads/");
         //Boolean b = dir.mkdirs();
@@ -158,15 +161,6 @@ public class LoadingActivity extends AppCompatActivity {
         todaysDate.setText(a.get(0).get(0));*/
         parseSchoolCalendar();
         parseClubs();
-    }
-
-    public void downloadLinks() {
-        System.out.println("Start download!!");
-        String link = "https://docs.google.com/spreadsheets/d/1SLgWueqyOlvqEvW5ZVi4-nrUzpJAYlikSDlnssoXKGc/export?format=tsv";
-        String text = StringUtil.getText(link);
-        if (text != null) {
-            System.out.println(text);
-        }
     }
 
     public void parseSchoolCalendar() {

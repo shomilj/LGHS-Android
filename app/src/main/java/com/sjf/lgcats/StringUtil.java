@@ -1,6 +1,7 @@
 package com.sjf.lgcats;
 
 import android.content.res.Resources;
+import android.widget.TextView;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -44,8 +45,7 @@ public class StringUtil {
     // Returns null if no content is found from the URL
     public static String getText(String url) {
         try {
-            String content = downloadString(url);
-            return content;
+            return downloadString(url);
         } catch (Exception e) {
             System.out.println(e);
             return null;
@@ -64,17 +64,24 @@ public class StringUtil {
         return response.toString();
     }
 
-    public static void parse () {
-        new DownloadFiles().execute();
+    public static void parse (String url) {
+        DownloadFiles task = (DownloadFiles) new DownloadFiles(url, new DownloadAsyncTaskInterface() {
+            @Override
+            public void saveDownload(String result) {
+                System.out.println(result.substring(0, 30));
+            }
+        }).execute();
     }
 
-    public static void downloadLinks() {
+    public static String downloadLinks(String url) {
         System.out.println("Running download");
-        String text = StringUtil.getText(Resources.getSystem().getString(R.string.LGCATSlinks));
+        // String text = Resources.getSystem().getString(urlID);
+        // apparently one of the above methods completely breaks the AsyncTask
+        String text = StringUtil.getText(url);
         if (text != null) {
-            System.out.println(text);
+            return text;
         } else {
-            System.out.println("Null");
+            return "error: string is null";
         }
     }
 

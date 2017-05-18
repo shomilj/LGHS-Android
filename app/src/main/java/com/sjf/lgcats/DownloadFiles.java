@@ -15,7 +15,20 @@ import java.net.URL;
  * @since   1.0
  */
 
-public class DownloadFiles extends AsyncTask<Void, Void, Void> {
+interface DownloadAsyncTaskInterface {
+    void saveDownload(String result);
+}
+
+public class DownloadFiles extends AsyncTask<Void, Void, String> {
+
+    private DownloadAsyncTaskInterface downloadAsyncTaskInterface;
+
+    private String url;
+
+    public DownloadFiles (String u, DownloadAsyncTaskInterface d) {
+        url = u;
+        downloadAsyncTaskInterface = d;
+    }
 
     @Override
     protected void onPreExecute() {
@@ -31,21 +44,20 @@ public class DownloadFiles extends AsyncTask<Void, Void, Void> {
          *    updating data
          *    such a Dialog or ProgressBar
         */
-
     }
 
     @Override
-    protected Void doInBackground(Void ... v) {
-        StringUtil.downloadLinks();
-        return null;
+    protected String doInBackground(Void ... v) {
+        return StringUtil.downloadLinks(url);
     }
 
     @Override
-    protected void onPostExecute(Void result) {
+    protected void onPostExecute(String result) {
         /*
          *    do something with data here
          *    display it or send to mainactivity
          *    close any dialogs/ProgressBars/etc...
         */
+        downloadAsyncTaskInterface.saveDownload(result);
     }
 }
