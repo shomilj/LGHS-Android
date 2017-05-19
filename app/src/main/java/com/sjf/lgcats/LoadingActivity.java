@@ -174,6 +174,7 @@ public class LoadingActivity extends AppCompatActivity {
         return null;
     }
 
+
     private static String getUrlContents(String theUrl) {
         StringBuilder content = new StringBuilder();
 
