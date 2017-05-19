@@ -3,8 +3,10 @@ package com.sjf.lgcats;
 import android.app.DownloadManager;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Path;
 import android.os.Bundle;
 import android.os.Environment;
+import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -14,14 +16,26 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import org.apache.commons.io.FileUtils;
+
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLConnection;
+import java.nio.channels.Channels;
+import java.nio.channels.ReadableByteChannel;
+import java.nio.charset.Charset;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
@@ -46,10 +60,10 @@ public class LoadingActivity extends AppCompatActivity {
     private TextView orangeBlackDayDisplay;
     private Button temporaryButton;
 
+    final String FILE_LINKS = "Links.txt";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Log.d("stuff","Application started");
-        System.out.println("printininirgniwn");
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_loading);
@@ -59,6 +73,7 @@ public class LoadingActivity extends AppCompatActivity {
         // get the date
         DateFormat dateFormat = new SimpleDateFormat("HH:mm\nyyyy/MM/dd");
         Date date = new Date();
+
         //Calendar cal = Calendar.getInstance();
 
         // display today's date
@@ -71,7 +86,10 @@ public class LoadingActivity extends AppCompatActivity {
         orangeBlackDayDisplay.setText(orangeBlackDayDisplayText);
 
         // parse necessary info upon loading
-        StringUtil.parse(getString(R.string.LGCATSlinks));
+        //StringUtil.parse(getString(R.string.LGCATSlinks));
+
+        downloadFiles();
+
 
         temporaryButton = (Button) findViewById(R.id.temporary_button);
         temporaryButton.setOnClickListener(new View.OnClickListener() {
@@ -109,67 +127,79 @@ public class LoadingActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void failedparse() {
-        /*
-        //File dir = new File(Environment.getExternalStorageDirectory() + "/Download/LGCATSlinksDownloads/");
-        //Boolean b = dir.mkdirs();
-        Boolean b = true;
-
-<<<<<<< Updated upstream
+    public void downloadFiles() {
         downloadLinks();
+        // reference iOS code in FirstViewController class for iOS & implement similarly
+    }
 
+    private void downloadLinks() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                String link = getString(R.string.LGCATSlinks);
+                String content = getUrlContents(link);
+                writeToFile(FILE_LINKS, content);
+            }
+        }).start();
+    }
 
-
-        /*File dir = new File(Environment.getExternalStorageDirectory() + "/Download/your folder/");
-        dir.mkdirs();
-
-        String url = "bit.ly/LGCATSlinks";
-=======
-        String url = getString(R.string.LGCATSlinks);
->>>>>>> Stashed changes
-        DownloadManager.Request request = new DownloadManager.Request(Uri.parse(url));
-        request.setDescription("Some description");
-        request.setTitle("Some title");
-        request.allowScanningByMediaScanner();
-        request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
-        request.setDestinationInExternalFilesDir(LoadingActivity.this, Environment.DIRECTORY_DOWNLOADS, "LGCATSlinksDownloads.txt");
-
-        // get download service and enqueue file
-        DownloadManager manager = (DownloadManager) getSystemService(Context.DOWNLOAD_SERVICE);
-        Long downloadReference = manager.enqueue(request);
-
-        File path = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
-        File file = new File(path, "LGCATSlinksDownloads.txt");
-
-        Scanner sc = null;
+    // HOW TO WRITE TO A FILE IN INTERNAL STORAGE
+    private void writeToFile(String fileName, String content) {
+        FileOutputStream outputStream;
         try {
-            sc = new Scanner(file);
-        } catch (FileNotFoundException e) {
-            if (b)
-                orangeBlackDayDisplay.setText("oh for crying out loud");
-            else
-                orangeBlackDayDisplay.setText("i could use some ice cream rn");
+            outputStream = openFileOutput(fileName, Context.MODE_PRIVATE);
+            outputStream.write(content.getBytes());
+            outputStream.close();
+        } catch (Exception e) {
             e.printStackTrace();
-            return;
         }
-        String s = "";
-        while (sc.hasNext()) {
-            s += sc.nextLine();
+    }
+
+    // HOW TO READ FROM A FILE IN INTERNAL STORAGE
+    private String readFromFile(String fileName) {
+        FileInputStream fis = null;
+        try {
+            fis = openFileInput("Links");
+            InputStreamReader isr = new InputStreamReader(fis);
+            BufferedReader bufferedReader = new BufferedReader(isr);
+            StringBuilder sb = new StringBuilder();
+            String line;
+            while ((line = bufferedReader.readLine()) != null) {
+                sb.append(line);
+            }
+            return String.valueOf(sb);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
         }
-
-        ArrayList<ArrayList<String>> a = StringUtil.parseTSV(s);
-        todaysDate.setText(a.get(0).get(0));*/
-        parseSchoolCalendar();
-        parseClubs();
+        return null;
     }
 
-    public void parseSchoolCalendar() {
+    private static String getUrlContents(String theUrl) {
+        StringBuilder content = new StringBuilder();
 
+        // many of these calls can throw exceptions, so i've just
+        // wrapped them all in one try/catch statement.
+        try {
+            // create a url object
+            URL url = new URL(theUrl);
 
+            // create a urlconnection object
+            URLConnection urlConnection = url.openConnection();
+
+            // wrap the urlconnection in a bufferedreader
+            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
+
+            String line;
+
+            // read from the urlconnection via the bufferedreader
+            while ((line = bufferedReader.readLine()) != null) {
+                content.append(line + "\n");
+            }
+            bufferedReader.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return content.toString();
     }
 
-    public void parseClubs() {
-
-
-    }
 }
