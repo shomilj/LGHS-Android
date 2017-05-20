@@ -32,7 +32,8 @@ public class StringUtil {
             answer.add((ArrayList<String>) Arrays.asList(line.split("\t")));
         }
         return answer;
-    }
+    }*/
+
 
     public static ArrayList<ArrayList<String>> parseTSV (String s) {
         ArrayList<ArrayList<String>> answer = new ArrayList<>();
@@ -42,7 +43,7 @@ public class StringUtil {
         }
         return answer;
     }
-
+/*
     // Returns null if no content is found from the URL
     public static String getText(String url) {
         try {

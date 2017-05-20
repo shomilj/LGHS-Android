@@ -85,9 +85,6 @@ public class LoadingActivity extends AppCompatActivity {
         String orangeBlackDayDisplayText = "Today " + getString(R.string.orange_day);
         orangeBlackDayDisplay.setText(orangeBlackDayDisplayText);
 
-        // parse necessary info upon loading
-        //StringUtil.parse(getString(R.string.LGCATSlinks));
-
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -99,21 +96,15 @@ public class LoadingActivity extends AppCompatActivity {
         temporaryButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(LoadingActivity.this, MainActivity.class);
-                startActivity(intent);
+                nextScreen();
             }
         });
 
-        //finish();
-        // don't do this until the activity fully works
-        // and autoloads the main activity
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        //getMenuInflater().inflate(R.menu.menu_loading, menu);
-        return true;
+    public void nextScreen() {
+        Intent intent = new Intent(LoadingActivity.this, MainActivity.class);
+        startActivity(intent);
     }
 
     @Override
@@ -132,30 +123,20 @@ public class LoadingActivity extends AppCompatActivity {
     }
 
     public void downloadFiles() {
-        writeToFile(LinkUtils.FILE_LINKS, getUrlContents(LinkUtils.LINK_LINKS));
-        writeToFile(LinkUtils.FILE_HOTLINES, getUrlContents(LinkUtils.LINK_HOTLINES));
-        writeToFile(LinkUtils.FILE_LOGINS, getUrlContents(LinkUtils.LINK_LOGINS));
-        writeToFile(LinkUtils.FILE_CALENDAR, getUrlContents(LinkUtils.LINK_CALENDAR));
-        writeToFile(LinkUtils.FILE_COUNTDOWN, getUrlContents(LinkUtils.LINK_COUNTDOWN));
+        LinkUtils.writeToFile(LinkUtils.FILE_LINKS, getUrlContents(LinkUtils.LINK_LINKS), getApplicationContext());
+        LinkUtils.writeToFile(LinkUtils.FILE_HOTLINES, getUrlContents(LinkUtils.LINK_HOTLINES), getApplicationContext());
+        LinkUtils.writeToFile(LinkUtils.FILE_LOGINS, getUrlContents(LinkUtils.LINK_LOGINS), getApplicationContext());
+        LinkUtils.writeToFile(LinkUtils.FILE_CALENDAR, getUrlContents(LinkUtils.LINK_CALENDAR), getApplicationContext());
+        LinkUtils.writeToFile(LinkUtils.FILE_COUNTDOWN, getUrlContents(LinkUtils.LINK_COUNTDOWN), getApplicationContext());
         System.out.println("FINISHED DOWNLOADING FILES");
-    }
-
-    // HOW TO WRITE TO A FILE IN INTERNAL STORAGE
-    private void writeToFile(String fileName, String content) {
-        FileOutputStream outputStream;
-        try {
-            outputStream = openFileOutput(fileName, Context.MODE_PRIVATE);
-            outputStream.write(content.getBytes());
-            outputStream.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        nextScreen();
     }
 
     // HOW TO READ FROM A FILE IN INTERNAL STORAGE
     private String readFromFile(String fileName) {
         FileInputStream fis = null;
         try {
+
             fis = openFileInput("Links");
             InputStreamReader isr = new InputStreamReader(fis);
             BufferedReader bufferedReader = new BufferedReader(isr);
@@ -170,7 +151,6 @@ public class LoadingActivity extends AppCompatActivity {
         }
         return null;
     }
-
 
     private static String getUrlContents(String theUrl) {
         StringBuilder content = new StringBuilder();
