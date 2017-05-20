@@ -43,4 +43,8 @@ public class Hotline
     {
         return this.description;
     }
+
+    public String toString() {
+        return title + " - " + description;
+    }
 }

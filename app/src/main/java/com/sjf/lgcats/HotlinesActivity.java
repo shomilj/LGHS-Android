@@ -25,6 +25,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 /**
@@ -44,10 +48,15 @@ public class HotlinesActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        hotlines = new ArrayList<>();
         setContentView(R.layout.activity_hotlines);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        if (readFromFile(LinkUtils.FILE_HOTLINES) != null) {
+            parseTSV(readFromFile(LinkUtils.FILE_HOTLINES));
+        }
+        System.out.println(hotlines);
     }
 
     /**
@@ -60,9 +69,30 @@ public class HotlinesActivity extends AppCompatActivity {
         for (String line : lines)
         {
             String[] parts = tsv.split("\t");
-            Hotline next = new Hotline(parts[0], parts[1]);
-            hotlines.add(next);
+            if (parts.length > 1) {
+                Hotline next = new Hotline(parts[0], parts[1]);
+                hotlines.add(next);
+            }
         }
+    }
+
+    // HOW TO READ FROM A FILE IN INTERNAL STORAGE
+    private String readFromFile(String fileName) {
+        FileInputStream fis = null;
+        try {
+            fis = openFileInput(LinkUtils.FILE_HOTLINES);
+            InputStreamReader isr = new InputStreamReader(fis);
+            BufferedReader bufferedReader = new BufferedReader(isr);
+            StringBuilder sb = new StringBuilder();
+            String line;
+            while ((line = bufferedReader.readLine()) != null) {
+                sb.append(line);
+            }
+            return String.valueOf(sb);
+        } catch (java.io.IOException e) {
+            e.printStackTrace();
+        }
+        return "";
     }
 
 }

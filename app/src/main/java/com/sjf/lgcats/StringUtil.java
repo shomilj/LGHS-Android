@@ -25,6 +25,7 @@ import java.util.List;
 
 public class StringUtil {
 
+    /*
     public static ArrayList<ArrayList<String>> parseTSV (List<String> s) {
         ArrayList<ArrayList<String>> answer = new ArrayList<>();
         for (String line : s) {
@@ -64,6 +65,7 @@ public class StringUtil {
         return response.toString();
     }
 
+
     public static void parse (String url) {
         DownloadFiles task = (DownloadFiles) new DownloadFiles(url, new DownloadAsyncTaskInterface() {
             @Override
@@ -84,5 +86,5 @@ public class StringUtil {
             return "error: string is null";
         }
     }
-
+*/
 }

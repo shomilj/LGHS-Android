@@ -40,6 +40,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 
+import static com.sjf.lgcats.LinkUtils.FILE_LINKS;
+
 /**
  * Gives the app time to load essential information.
  * Informs the user of the date and day color.
@@ -59,8 +61,6 @@ public class LoadingActivity extends AppCompatActivity {
     private TextView todaysDate;
     private TextView orangeBlackDayDisplay;
     private Button temporaryButton;
-
-    final String FILE_LINKS = "Links.txt";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,8 +88,12 @@ public class LoadingActivity extends AppCompatActivity {
         // parse necessary info upon loading
         //StringUtil.parse(getString(R.string.LGCATSlinks));
 
-        downloadFiles();
-
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                downloadFiles();
+            }
+        }).start();
 
         temporaryButton = (Button) findViewById(R.id.temporary_button);
         temporaryButton.setOnClickListener(new View.OnClickListener() {
@@ -128,19 +132,12 @@ public class LoadingActivity extends AppCompatActivity {
     }
 
     public void downloadFiles() {
-        downloadLinks();
-        // reference iOS code in FirstViewController class for iOS & implement similarly
-    }
-
-    private void downloadLinks() {
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                String link = getString(R.string.LGCATSlinks);
-                String content = getUrlContents(link);
-                writeToFile(FILE_LINKS, content);
-            }
-        }).start();
+        writeToFile(LinkUtils.FILE_LINKS, getUrlContents(LinkUtils.LINK_LINKS));
+        writeToFile(LinkUtils.FILE_HOTLINES, getUrlContents(LinkUtils.LINK_HOTLINES));
+        writeToFile(LinkUtils.FILE_LOGINS, getUrlContents(LinkUtils.LINK_LOGINS));
+        writeToFile(LinkUtils.FILE_CALENDAR, getUrlContents(LinkUtils.LINK_CALENDAR));
+        writeToFile(LinkUtils.FILE_COUNTDOWN, getUrlContents(LinkUtils.LINK_COUNTDOWN));
+        System.out.println("FINISHED DOWNLOADING FILES");
     }
 
     // HOW TO WRITE TO A FILE IN INTERNAL STORAGE
@@ -168,7 +165,7 @@ public class LoadingActivity extends AppCompatActivity {
                 sb.append(line);
             }
             return String.valueOf(sb);
-        } catch (FileNotFoundException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
         return null;
