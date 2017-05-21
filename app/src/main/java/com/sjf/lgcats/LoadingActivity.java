@@ -40,8 +40,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 
-import static com.sjf.lgcats.LinkUtils.FILE_LINKS;
-
 /**
  * Gives the app time to load essential information.
  * Informs the user of the date and day color.
@@ -85,6 +83,8 @@ public class LoadingActivity extends AppCompatActivity {
         String orangeBlackDayDisplayText = "Today " + getString(R.string.orange_day);
         orangeBlackDayDisplay.setText(orangeBlackDayDisplayText);
 
+        DayCalendar cal = new DayCalendar(getApplicationContext());
+
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -123,33 +123,13 @@ public class LoadingActivity extends AppCompatActivity {
     }
 
     public void downloadFiles() {
-        LinkUtils.writeToFile(LinkUtils.FILE_LINKS, getUrlContents(LinkUtils.LINK_LINKS), getApplicationContext());
-        LinkUtils.writeToFile(LinkUtils.FILE_HOTLINES, getUrlContents(LinkUtils.LINK_HOTLINES), getApplicationContext());
-        LinkUtils.writeToFile(LinkUtils.FILE_LOGINS, getUrlContents(LinkUtils.LINK_LOGINS), getApplicationContext());
-        LinkUtils.writeToFile(LinkUtils.FILE_CALENDAR, getUrlContents(LinkUtils.LINK_CALENDAR), getApplicationContext());
-        LinkUtils.writeToFile(LinkUtils.FILE_COUNTDOWN, getUrlContents(LinkUtils.LINK_COUNTDOWN), getApplicationContext());
+        FileUtil.writeToFile(FileUtil.FILE_LINKS, getUrlContents(LinkUtils.LINK_LINKS), getApplicationContext());
+        FileUtil.writeToFile(FileUtil.FILE_HOTLINES, getUrlContents(LinkUtils.LINK_HOTLINES), getApplicationContext());
+        FileUtil.writeToFile(FileUtil.FILE_LOGINS, getUrlContents(LinkUtils.LINK_LOGINS), getApplicationContext());
+        FileUtil.writeToFile(FileUtil.FILE_CALENDAR, getUrlContents(LinkUtils.LINK_CALENDAR), getApplicationContext());
+        FileUtil.writeToFile(FileUtil.FILE_COUNTDOWN, getUrlContents(LinkUtils.LINK_COUNTDOWN), getApplicationContext());
         System.out.println("FINISHED DOWNLOADING FILES");
         nextScreen();
-    }
-
-    // HOW TO READ FROM A FILE IN INTERNAL STORAGE
-    private String readFromFile(String fileName) {
-        FileInputStream fis = null;
-        try {
-
-            fis = openFileInput("Links");
-            InputStreamReader isr = new InputStreamReader(fis);
-            BufferedReader bufferedReader = new BufferedReader(isr);
-            StringBuilder sb = new StringBuilder();
-            String line;
-            while ((line = bufferedReader.readLine()) != null) {
-                sb.append(line);
-            }
-            return String.valueOf(sb);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return null;
     }
 
     private static String getUrlContents(String theUrl) {

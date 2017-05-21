@@ -53,8 +53,8 @@ public class HotlinesActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        if (readFromFile(LinkUtils.FILE_HOTLINES) != null) {
-            parseTSV(readFromFile(LinkUtils.FILE_HOTLINES));
+        if (readFromFile(FileUtil.FILE_HOTLINES) != null) {
+            parseTSV(readFromFile(FileUtil.FILE_HOTLINES));
         }
         System.out.println(hotlines);
     }
@@ -80,7 +80,7 @@ public class HotlinesActivity extends AppCompatActivity {
     private String readFromFile(String fileName) {
         FileInputStream fis = null;
         try {
-            fis = openFileInput(LinkUtils.FILE_HOTLINES);
+            fis = openFileInput(FileUtil.FILE_HOTLINES);
             InputStreamReader isr = new InputStreamReader(fis);
             BufferedReader bufferedReader = new BufferedReader(isr);
             StringBuilder sb = new StringBuilder();
