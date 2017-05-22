@@ -35,5 +35,4 @@ dependencies {
     compile 'com.google.firebase:firebase-messaging:10.2.4'
     compile 'commons-io:commons-io:2.0.1'
     testCompile 'junit:junit:4.12'
-    compile files('libs/OnBarcode.AndroidBarcode.jar')
 }
