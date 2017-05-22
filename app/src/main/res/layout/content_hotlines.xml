@@ -8,4 +8,9 @@
     tools:context="com.sjf.lgcats.HotlinesActivity"
     tools:showIn="@layout/activity_hotlines">
 
+    <ListView
+        android:id="@+id/hotlines_list_view"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"></ListView>
+
 </android.support.constraint.ConstraintLayout>

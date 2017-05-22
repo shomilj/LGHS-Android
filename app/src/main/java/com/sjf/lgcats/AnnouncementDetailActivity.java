@@ -26,6 +26,7 @@ public class AnnouncementDetailActivity extends AppCompatActivity {
 
         mTextView = (TextView) findViewById(R.id.ANNOUNCEMENT_TEXT_VIEW);
         mTextView.setText(content);
+        mTextView.setTextSize(14);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }

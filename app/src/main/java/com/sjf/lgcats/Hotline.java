@@ -26,7 +26,7 @@ public class Hotline {
 
     public Hotline(String title, String description) {
         this.title = title;
-        this.description = description;
+        this.description = description.replaceAll("<line>", "\r\n");
     }
 
     public String getTitle() {
