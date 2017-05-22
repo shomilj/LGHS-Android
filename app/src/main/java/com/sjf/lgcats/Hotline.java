@@ -24,7 +24,7 @@ public class Hotline
     private String title;
     private String description;
 
-    public Hotline(String title, String Description)
+    public Hotline(String title, String description)
     {
         this.title = title;
         this.description = description;
