@@ -106,7 +106,16 @@
             android:name=".MainActivity"
             android:label="@string/title_activity_main"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".HotlinesDetailActivity"></activity>
+        <activity android:name=".HotlinesDetailActivity" />
+        <activity
+            android:name=".AnnouncementDetailActivity"
+            android:label="@string/title_activity_announcement_detail"
+            android:parentActivityName=".AnnouncementsActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.sjf.lgcats.AnnouncementsActivity" />
+        </activity>
     </application>
 
 </manifest>
