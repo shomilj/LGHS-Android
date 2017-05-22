@@ -24,12 +24,12 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <EditText
+            <TextView
                 android:id="@+id/StudentIDname"
                 android:layout_height="wrap_content"
                 android:layout_width="0dp"
-                android:hint="@string/your_name_here"
                 android:textAlignment="center"
+                android:text="@string/your_name_here"
                 android:gravity="center"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
@@ -38,34 +38,36 @@
 
             <TextView
                 android:id="@+id/StudentIDbarcode"
-                android:layout_height="wrap_content"
                 android:layout_width="0dp"
-                android:textAlignment="center"
-                android:gravity="center"
+                android:layout_height="@android:dimen/notification_large_icon_height"
                 android:background="@color/white"
-                app:layout_constraintTop_toBottomOf="@+id/StudentIDname"
+                android:gravity="center"
+                android:textAlignment="center"
+                android:textSize="72sp"
+                android:textStyle="bold"
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"/>
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/StudentIDname" />
 
-            <EditText
+            <TextView
                 android:id="@+id/StudentIDnumber"
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
-                android:hint="@string/your_ID_here"
                 android:textAlignment="center"
+                android:text="@string/your_ID_here"
                 android:gravity="center"
                 android:inputType="number"
                 app:layout_constraintTop_toBottomOf="@+id/StudentIDbarcode"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toLeftOf="@+id/StudentIDgrade"/>
 
-            <EditText
+            <TextView
                 android:id="@+id/StudentIDgrade"
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
-                android:hint="@string/your_grade_here"
                 android:textAlignment="center"
                 android:gravity="center"
+                android:text="@string/your_grade_here"
                 android:inputType="number"
                 app:layout_constraintTop_toBottomOf="@+id/StudentIDbarcode"
                 app:layout_constraintLeft_toRightOf="@+id/StudentIDnumber"

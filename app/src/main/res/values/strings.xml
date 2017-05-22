@@ -144,5 +144,7 @@
     <string name="your_name_here">Your name here</string>
     <string name="your_ID_here">Your ID here</string>
     <string name="your_grade_here">Your grade here</string>
+    <string name="barcode_start">"*P "</string>
+    <string name="barcode_end">"*"</string>
 
 </resources>
