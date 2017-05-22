@@ -43,7 +43,6 @@ public class StringUtil {
     }
 
 
-    /*
     public static ArrayList<ArrayList<String>> parseTSV (String s) {
         ArrayList<ArrayList<String>> answer = new ArrayList<>();
         String[] lines = s.split("\r");
@@ -51,50 +50,6 @@ public class StringUtil {
             answer.add((ArrayList<String>) Arrays.asList(line.split("\t")));
         }
         return answer;
-    }*/
-/*
-    // Returns null if no content is found from the URL
-    public static String getText(String url) {
-        try {
-            return downloadString(url);
-        } catch (Exception e) {
-            System.out.println(e);
-            return null;
-        }
     }
 
-    public static String downloadString(String url) throws Exception {
-        URL website = new URL(url);
-        URLConnection connection = website.openConnection();
-        BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-        StringBuilder response = new StringBuilder();
-        String inputLine;
-        while ((inputLine = in.readLine()) != null)
-            response.append(inputLine + "\n");
-        in.close();
-        return response.toString();
-    }
-
-
-    public static void parse (String url) {
-        DownloadFiles task = (DownloadFiles) new DownloadFiles(url, new DownloadAsyncTaskInterface() {
-            @Override
-            public void saveDownload(String result) {
-                System.out.println(result.substring(0, 30));
-            }
-        }).execute();
-    }
-
-    public static String downloadLinks(String url) {
-        System.out.println("Running download");
-        // String text = Resources.getSystem().getString(urlID);
-        // apparently one of the above methods completely breaks the AsyncTask
-        String text = StringUtil.getText(url);
-        if (text != null) {
-            return text;
-        } else {
-            return "error: string is null";
-        }
-    }
-*/
 }

@@ -83,7 +83,8 @@
             android:name=".StudentIDActivity"
             android:label="@string/title_activity_student_id"
             android:parentActivityName=".MainActivity"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="sensorLandscape">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.sjf.lgcats.MainActivity" />

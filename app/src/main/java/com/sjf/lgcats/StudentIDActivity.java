@@ -1,13 +1,17 @@
 package com.sjf.lgcats;
 
+import android.graphics.Typeface;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
+import android.widget.TextView;
 
 /**
+ *
+ * Displays a barcode for the student's student ID.
+ * barcode software font came from here:
+ * https://www.barcodesinc.com/free-barcode-font/
+ *
  * @author  Shomil Jain
  * @author  Quintin Leary
  * @author  Cassandra Melax
@@ -18,22 +22,24 @@ import android.view.View;
 
 public class StudentIDActivity extends AppCompatActivity {
 
+    private TextView studentIDbarcode;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student_id);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        studentIDbarcode = (TextView) findViewById(R.id.StudentIDbarcode);
+
+        Typeface custom_font = Typeface.createFromAsset(getAssets(), "fonts/fre3of9x.ttf");
+
+        studentIDbarcode.setTypeface(custom_font);
+        studentIDbarcode.setTextColor(getResources().getColor(R.color.black));
+        studentIDbarcode.setText(getString(R.string.barcode_start) + "109236" + getString(R.string.barcode_end));
+
     }
 
 }
