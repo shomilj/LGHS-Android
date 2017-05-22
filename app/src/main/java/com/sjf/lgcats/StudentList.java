@@ -3,6 +3,7 @@ package com.sjf.lgcats;
 import android.content.Context;
 
 import java.util.ArrayList;
+import java.util.prefs.Preferences;
 
 /**
  * Created by shomil on 5/21/17.
@@ -10,11 +11,14 @@ import java.util.ArrayList;
 
 public class StudentList {
 
+    public static String KEY_STUDENT_ID;
+
     private ArrayList<Student> list;
 
     public StudentList(Context context) {
         list = new ArrayList<>();
         String file = FileUtil.readFromFile(FileUtil.FILE_LOGINS, context);
+
         if (file == null) {
             System.out.println("Empty file");
             return;

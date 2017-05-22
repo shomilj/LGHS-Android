@@ -48,51 +48,50 @@ public class HotlinesActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        hotlines = new ArrayList<>();
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                // read/parse college list
+                parseHotline();
+            }
+        }).start();
+
         setContentView(R.layout.activity_hotlines);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        if (readFromFile(FileUtil.FILE_HOTLINES) != null) {
-            parseTSV(readFromFile(FileUtil.FILE_HOTLINES));
-        }
-        System.out.println(hotlines);
     }
+
 
     /**
-     * parses the string parameter by making hotline elements
-     * @param tsv parsed from google docs tab seperated file
+     * parses the hotlines file parameter by making hotline element
      */
-    public void parseTSV (String tsv)
+
+    public void parseHotline()
     {
-        String[] lines = tsv.split("\n");
-        for (String line : lines)
-        {
-            String[] parts = tsv.split("\t");
-            if (parts.length > 1) {
-                Hotline next = new Hotline(parts[0], parts[1]);
-                hotlines.add(next);
-            }
-        }
-    }
+        hotlines = new ArrayList<>();
+        String file = FileUtil.readFromFile(FileUtil.FILE_HOTLINES, getApplicationContext());
 
-    // HOW TO READ FROM A FILE IN INTERNAL STORAGE
-    private String readFromFile(String fileName) {
-        FileInputStream fis = null;
+        if (file == null) {
+            System.out.println("Empty file");
+            return;
+        }
+
         try {
-            fis = openFileInput(FileUtil.FILE_HOTLINES);
-            InputStreamReader isr = new InputStreamReader(fis);
-            BufferedReader bufferedReader = new BufferedReader(isr);
-            StringBuilder sb = new StringBuilder();
-            String line;
-            while ((line = bufferedReader.readLine()) != null) {
-                sb.append(line);
+            String[] rows = file.split("\r");
+            for (String row : rows) {
+                String[] cells = row.split("\t");
+                if (cells.length > 1) {
+                    hotlines.add(new Hotline(cells[0], cells[1]));
+                }
             }
-            return String.valueOf(sb);
-        } catch (java.io.IOException e) {
-            e.printStackTrace();
+        } catch (IndexOutOfBoundsException e) {
+            System.out.println("ERROR HOTLINES");
+            System.out.println(e);
         }
-        return "";
+        for (Hotline a : hotlines) {
+            System.out.println(a);
+        }
     }
-
 }

@@ -50,11 +50,6 @@ public class LoadingActivity extends AppCompatActivity {
             }
         }).start();
 
-        StudentList list = new StudentList(getApplicationContext());
-        System.out.println(list.checkLogin("Jain", "109431"));
-        System.out.println(list.checkLogin("jain", "109431"));
-        System.out.println(list.checkLogin("jain", "104431"));
-
 
         // get rid of this
         temporaryButton = (Button) findViewById(R.id.temporary_button);
