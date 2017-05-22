@@ -139,5 +139,6 @@
     <string name="your_grade_here">Your grade here</string>
     <string name="barcode_start">"*P "</string>
     <string name="barcode_end">"*"</string>
+    <string name="title_activity_announcement_detail">""</string>
 
 </resources>
