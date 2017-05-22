@@ -5,6 +5,7 @@ package com.sjf.lgcats;
  */
 
 public class Announcement {
+
     private String date;
     private String content;
 
@@ -13,16 +14,19 @@ public class Announcement {
         this.content = content;
     }
 
-    public Announcement() {
-        this.date = "";
-        this.content = "";
-    }
-
     public String getDate() {
-        return this.date;
+        return date;
     }
 
     public String getContent() {
-        return this.content;
+        return content;
+    }
+
+    @Override
+    public String toString() {
+        return "Announcement{" +
+                "date='" + date + '\'' +
+                ", content='" + content + '\'' +
+                '}';
     }
 }

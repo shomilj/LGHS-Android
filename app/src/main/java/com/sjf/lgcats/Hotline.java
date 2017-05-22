@@ -19,32 +19,29 @@ getter methods for title/description
 
 package com.sjf.lgcats;
 
-public class Hotline
-{
+public class Hotline {
+
     private String title;
     private String description;
 
-    public Hotline(String title, String description)
-    {
+    public Hotline(String title, String description) {
         this.title = title;
         this.description = description;
     }
 
-    //pre: none
-    //post: returns title as String
-    public String getTitle()
-    {
-        return this.title;
+    public String getTitle() {
+        return title;
     }
 
-    //pre: none
-    //post: returns description as String
-    public String getDescription()
-    {
-        return this.description;
+    public String getDescription() {
+        return description;
     }
 
+    @Override
     public String toString() {
-        return title + " - " + description;
+        return "Hotline{" +
+                "title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                '}';
     }
 }
