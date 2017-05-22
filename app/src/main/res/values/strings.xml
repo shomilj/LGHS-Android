@@ -16,14 +16,9 @@
         completions."
     </string>
     <string name="title_activity_main">MainActivity</string>
-    <string name="orange_day">is an Orange Day</string>
-    <string name="black_day">is a Black Day</string>
     <string name="title_activity_bell_schedule">BellScheduleActivity</string>
     <string name="title_home">Home</string>
     <string name="title_activity_submit_joke_of_the_day">SubmitJokeOfTheDayActivity</string>
-    <string name="title_activity_calendar">CalendarActivity</string>
-    <string name="title_activity_canvas">CanvasActivity</string>
-    <string name="title_activity_lghstwitter_feed">LGHSTwitterFeedActivity</string>
     <string name="title_activity_colleges_list">CollegesListActivity</string>
     <string name="title_activity_hotlines">HotlinesActivity</string>
     <string name="title_activity_announcements">AnnouncementsActivity</string>
@@ -125,7 +120,6 @@
         "For example, position the FAB to one side of stream of a cards so the FAB won’t interfere "
         "when a user tries to pick up one of cards.\n\n"
     </string>
-    <string name="today">Today</string>
     <string name="twitter" translatable="false">Twitter</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
@@ -140,7 +134,6 @@
     <string name="twitter_app_link" translatable="false">twitter://hashtag/golgcats?src=hash</string>
     <string name="golgcats">#golgcats</string>
     <string name="title_activity_web_view">WebViewActivity</string>
-    <string name="LGCATSlinks">https://docs.google.com/spreadsheets/d/1SLgWueqyOlvqEvW5ZVi4-nrUzpJAYlikSDlnssoXKGc/export?format=tsv</string>
     <string name="your_name_here">Your name here</string>
     <string name="your_ID_here">Your ID here</string>
     <string name="your_grade_here">Your grade here</string>
