@@ -32,7 +32,6 @@ public class MainActivity extends AppCompatActivity
     private Button mainCanvasButton;
     private Button mainCalendarButton;
     private Button mainStudentIDButton;
-    private Button mainBellScheduleButton;
     private Button mainClubsListButton;
     private Button mainCollegesListButton;
     private Button mainHotlinesButton;
@@ -46,12 +45,10 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        //mainDay = (TextView) findViewById(R.id.main_day);
         mainAnnouncementButton = (Button) findViewById(R.id.main_announcement_button);
         mainCanvasButton = (Button) findViewById(R.id.main_canvas_button);
         mainCalendarButton = (Button) findViewById(R.id.main_calendar_button);
         mainStudentIDButton = (Button) findViewById(R.id.main_studentID_button);
-        mainBellScheduleButton = (Button) findViewById(R.id.main_bellSchedule_button);
         mainClubsListButton = (Button) findViewById(R.id.main_clubsList_button);
         mainCollegesListButton = (Button) findViewById(R.id.main_collegesList_button);
         mainHotlinesButton = (Button) findViewById(R.id.main_hotlines_button);
@@ -68,7 +65,6 @@ public class MainActivity extends AppCompatActivity
         toggle.syncState();
 
         // display whether it is a black or an orange day
-        // display whether today is a black day or an orange day
         DayCalendar cal = new DayCalendar(getApplicationContext());
         getSupportActionBar().setTitle(cal.getDescription());
 
@@ -99,9 +95,7 @@ public class MainActivity extends AppCompatActivity
         mainCalendarButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, WebViewActivity.class);
-                intent.putExtra("app", 0);
-                intent.putExtra("url", getString(R.string.LGcalendar));
+                Intent intent = new Intent(MainActivity.this, CalendarActivity.class);
                 startActivity(intent);
             }
         });
@@ -110,14 +104,6 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, StudentIDActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        mainBellScheduleButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, BellScheduleActivity.class);
                 startActivity(intent);
             }
         });
@@ -193,7 +179,7 @@ public class MainActivity extends AppCompatActivity
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
+        // Handle calendar_navigation view item clicks here.
         int id = item.getItemId();
 
         if (id == R.id.nav_camera) {

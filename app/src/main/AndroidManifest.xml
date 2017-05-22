@@ -36,14 +36,6 @@
             android:name=".LoginActivity"
             android:label="@string/title_activity_login" />
         <activity
-            android:name=".BellScheduleActivity"
-            android:label="@string/title_activity_bell_schedule"
-            android:parentActivityName=".MainActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity" />
-        </activity>
-        <activity
             android:name=".SubmitJokeOfTheDayActivity"
             android:label="@string/title_activity_submit_joke_of_the_day"
             android:parentActivityName=".MainActivity"
@@ -83,8 +75,8 @@
             android:name=".StudentIDActivity"
             android:label="@string/title_activity_student_id"
             android:parentActivityName=".MainActivity"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:screenOrientation="sensorLandscape">
+            android:screenOrientation="sensorLandscape"
+            android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.sjf.lgcats.MainActivity" />
@@ -107,7 +99,16 @@
             android:name=".MainActivity"
             android:label="@string/title_activity_main"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".HotlinesDetailActivity"></activity>
+        <activity android:name=".HotlinesDetailActivity" />
+        <activity
+            android:name=".CalendarActivity"
+            android:label="@string/title_activity_calendar"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.sjf.lgcats.MainActivity" />
+        </activity>
     </application>
 
 </manifest>

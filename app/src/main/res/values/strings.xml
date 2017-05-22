@@ -16,8 +16,6 @@
         completions."
     </string>
     <string name="title_activity_main">MainActivity</string>
-    <string name="title_activity_bell_schedule">BellScheduleActivity</string>
-    <string name="title_home">Home</string>
     <string name="title_activity_submit_joke_of_the_day">SubmitJokeOfTheDayActivity</string>
     <string name="title_activity_colleges_list">CollegesListActivity</string>
     <string name="title_activity_hotlines">HotlinesActivity</string>
@@ -25,7 +23,6 @@
     <string name="announcements">Announcements</string>
     <string name="canvas">Canvas</string>
     <string name="student_id">Student ID</string>
-    <string name="bell_schedule">Bell Schedule</string>
     <string name="clubs">Clubs</string>
     <string name="colleges">Colleges</string>
     <string name="hotlines">Hotlines</string>
@@ -124,12 +121,8 @@
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="LGcalendar" translatable="false">http://www.lghs.net/parents__community/school_calendar</string>
     <string name="canvas_grades_link">https://lgsuhsd.instructure.com/grades</string>
     <string name="calendar">Calendar</string>
-    <string name="minimum_day">Minimum Day</string>
-    <string name="standard_day">Standard Day</string>
-    <string name="finals_schedule">Finals Schedule</string>
     <string name="twitter_web_link" translatable="false">https://twitter.com/hashtag/golgcats?src=hash</string>
     <string name="twitter_app_link" translatable="false">twitter://hashtag/golgcats?src=hash</string>
     <string name="golgcats">#golgcats</string>
@@ -139,5 +132,14 @@
     <string name="your_grade_here">Your grade here</string>
     <string name="barcode_start">"*P "</string>
     <string name="barcode_end">"*"</string>
+    <string name="title_activity_calendar">CalendarActivity</string>
+    <string name="block_1">1, 2</string>
+    <string name="block_2">3, 4</string>
+    <string name="block_3">5, 6</string>
+    <string name="block_4">7</string>
+    <string name="tutorial">Tutorial</string>
+    <string name="lunch">Lunch</string>
+    <string name="bell_schedule_header">Standard Bell Schedule</string>
+    <string name="school_calendar">School Calendar</string>
 
 </resources>
