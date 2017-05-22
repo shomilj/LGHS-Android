@@ -120,30 +120,13 @@ public class LoadingActivity extends AppCompatActivity {
     }
 
     public void downloadFiles() {
-        FileUtil.writeToFile(FileUtil.FILE_LINKS, getUrlContents(LinkUtils.LINK_LINKS), getApplicationContext());
-        FileUtil.writeToFile(FileUtil.FILE_HOTLINES, getUrlContents(LinkUtils.LINK_HOTLINES), getApplicationContext());
-        FileUtil.writeToFile(FileUtil.FILE_LOGINS, getUrlContents(LinkUtils.LINK_LOGINS), getApplicationContext());
-        FileUtil.writeToFile(FileUtil.FILE_CALENDAR, getUrlContents(LinkUtils.LINK_CALENDAR), getApplicationContext());
-        FileUtil.writeToFile(FileUtil.FILE_COUNTDOWN, getUrlContents(LinkUtils.LINK_COUNTDOWN), getApplicationContext());
+        FileUtil.writeToFile(FileUtil.FILE_LINKS, StringUtil.getUrlContents(LinkUtils.LINK_LINKS), getApplicationContext());
+        FileUtil.writeToFile(FileUtil.FILE_HOTLINES, StringUtil.getUrlContents(LinkUtils.LINK_HOTLINES), getApplicationContext());
+        FileUtil.writeToFile(FileUtil.FILE_LOGINS, StringUtil.getUrlContents(LinkUtils.LINK_LOGINS), getApplicationContext());
+        FileUtil.writeToFile(FileUtil.FILE_CALENDAR, StringUtil.getUrlContents(LinkUtils.LINK_CALENDAR), getApplicationContext());
+        FileUtil.writeToFile(FileUtil.FILE_COUNTDOWN, StringUtil.getUrlContents(LinkUtils.LINK_COUNTDOWN), getApplicationContext());
         System.out.println("FINISHED DOWNLOADING FILES");
         nextScreen();
-    }
-
-    private static String getUrlContents(String theUrl) {
-        StringBuilder content = new StringBuilder();
-        try {
-            URL url = new URL(theUrl);
-            URLConnection urlConnection = url.openConnection();
-            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
-            String line;
-            while ((line = bufferedReader.readLine()) != null) {
-                content.append(line + "\r");
-            }
-            bufferedReader.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return content.toString();
     }
 
 }

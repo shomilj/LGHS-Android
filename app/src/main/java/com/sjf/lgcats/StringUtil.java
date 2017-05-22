@@ -25,19 +25,27 @@ import java.util.List;
 
 public class StringUtil {
 
-    /*
-    public static ArrayList<ArrayList<String>> parseTSV (List<String> s) {
-        ArrayList<ArrayList<String>> answer = new ArrayList<>();
-        for (String line : s) {
-            answer.add((ArrayList<String>) Arrays.asList(line.split("\t")));
+    public static String getUrlContents(String theUrl) {
+        StringBuilder content = new StringBuilder();
+        try {
+            URL url = new URL(theUrl);
+            URLConnection urlConnection = url.openConnection();
+            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
+            String line;
+            while ((line = bufferedReader.readLine()) != null) {
+                content.append(line + "\r");
+            }
+            bufferedReader.close();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        return answer;
-    }*/
+        return content.toString();
+    }
 
 
     public static ArrayList<ArrayList<String>> parseTSV (String s) {
         ArrayList<ArrayList<String>> answer = new ArrayList<>();
-        String[] lines = s.split("\n");
+        String[] lines = s.split("\r");
         for (String line : lines) {
             answer.add((ArrayList<String>) Arrays.asList(line.split("\t")));
         }
