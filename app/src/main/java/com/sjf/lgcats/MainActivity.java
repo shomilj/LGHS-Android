@@ -68,9 +68,9 @@ public class MainActivity extends AppCompatActivity
         toggle.syncState();
 
         // display whether it is a black or an orange day
-        // currently not working
-        String dayColor = getString(R.string.today) + " " + getString(R.string.black_day) + ".";
-        getSupportActionBar().setTitle(dayColor);
+        // display whether today is a black day or an orange day
+        DayCalendar cal = new DayCalendar(getApplicationContext());
+        getSupportActionBar().setTitle(cal.getDescription());
 
         // change action bar to black
         //Window window = this.getWindow();

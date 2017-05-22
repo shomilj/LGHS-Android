@@ -68,23 +68,12 @@ public class LoadingActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        // get the date
-        DateFormat dateFormat = new SimpleDateFormat("HH:mm\nyyyy/MM/dd");
-        Date date = new Date();
-
-        //Calendar cal = Calendar.getInstance();
-
-        // display today's date
-        todaysDate = (TextView) findViewById(R.id.todays_date);
-        todaysDate.setText(dateFormat.format(date));
-
         // display whether today is a black day or an orange day
-        orangeBlackDayDisplay = (TextView) findViewById(R.id.orange_black_day_display);
-        String orangeBlackDayDisplayText = "Today " + getString(R.string.orange_day);
-        orangeBlackDayDisplay.setText(orangeBlackDayDisplayText);
-
         DayCalendar cal = new DayCalendar(getApplicationContext());
+        orangeBlackDayDisplay = (TextView) findViewById(R.id.orange_black_day_display);
+        orangeBlackDayDisplay.setText(cal.getDescription());
 
+        // download files in background
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -92,6 +81,7 @@ public class LoadingActivity extends AppCompatActivity {
             }
         }).start();
 
+        // get rid of this
         temporaryButton = (Button) findViewById(R.id.temporary_button);
         temporaryButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -117,6 +107,7 @@ public class LoadingActivity extends AppCompatActivity {
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
+
         }
 
         return super.onOptionsItemSelected(item);
@@ -134,24 +125,13 @@ public class LoadingActivity extends AppCompatActivity {
 
     private static String getUrlContents(String theUrl) {
         StringBuilder content = new StringBuilder();
-
-        // many of these calls can throw exceptions, so i've just
-        // wrapped them all in one try/catch statement.
         try {
-            // create a url object
             URL url = new URL(theUrl);
-
-            // create a urlconnection object
             URLConnection urlConnection = url.openConnection();
-
-            // wrap the urlconnection in a bufferedreader
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
-
             String line;
-
-            // read from the urlconnection via the bufferedreader
             while ((line = bufferedReader.readLine()) != null) {
-                content.append(line + "\n");
+                content.append(line + "\r");
             }
             bufferedReader.close();
         } catch (Exception e) {
