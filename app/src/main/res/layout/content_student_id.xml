@@ -4,8 +4,75 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.sjf.lgcats.StudentIDActivity"
-    tools:showIn="@layout/activity_student_id">
+    tools:showIn="@layout/activity_student_id"
+    >
 
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/StudentIDname"
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:hint="@string/your_name_here"
+                android:textAlignment="center"
+                android:gravity="center"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/StudentIDbarcode"/>
+
+            <TextView
+                android:id="@+id/StudentIDbarcode"
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:textAlignment="center"
+                android:gravity="center"
+                android:background="@color/white"
+                app:layout_constraintTop_toBottomOf="@+id/StudentIDname"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"/>
+
+            <EditText
+                android:id="@+id/StudentIDnumber"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:hint="@string/your_ID_here"
+                android:textAlignment="center"
+                android:gravity="center"
+                android:inputType="number"
+                app:layout_constraintTop_toBottomOf="@+id/StudentIDbarcode"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@+id/StudentIDgrade"/>
+
+            <EditText
+                android:id="@+id/StudentIDgrade"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:hint="@string/your_grade_here"
+                android:textAlignment="center"
+                android:gravity="center"
+                android:inputType="number"
+                app:layout_constraintTop_toBottomOf="@+id/StudentIDbarcode"
+                app:layout_constraintLeft_toRightOf="@+id/StudentIDnumber"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintBaseline_toBaselineOf="@+id/StudentIDnumber"/>
+
+        </android.support.constraint.ConstraintLayout>
+
+    </ScrollView>
 </android.support.constraint.ConstraintLayout>
