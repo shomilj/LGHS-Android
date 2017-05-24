@@ -29,7 +29,7 @@ public class AnnouncementDetailActivity extends AppCompatActivity {
         String content = this.getIntent().getExtras().getString("content");
         mTextView = (TextView) findViewById(R.id.ANNOUNCEMENT_TEXT_VIEW);
         mTextView.setText(content);
-        mTextView.setTextSize(14);
+        mTextView.setTextSize(18);
     }
 
     private void setupView() {

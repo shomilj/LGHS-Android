@@ -33,14 +33,6 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".BellScheduleActivity"
-            android:label="@string/title_activity_bell_schedule"
-            android:parentActivityName=".MainActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity" />
-        </activity>
-        <activity
             android:name=".SubmitJokeOfTheDayActivity"
             android:label="@string/title_activity_submit_joke_of_the_day"
             android:parentActivityName=".MainActivity"
@@ -106,6 +98,15 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".HotlinesDetailActivity" />
         <activity
+            android:name=".CalendarActivity"
+            android:label="@string/title_activity_calendar"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.sjf.lgcats.MainActivity" />
+        </activity>
+        <activity
             android:name=".AnnouncementDetailActivity"
             android:label="@string/title_activity_announcement_detail"
             android:parentActivityName=".AnnouncementsActivity"
@@ -114,8 +115,22 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.sjf.lgcats.AnnouncementsActivity" />
         </activity>
-        <activity android:name=".CollegesDetailActivity" />
-        <activity android:name=".StudentLoginActivity" />
+        <activity
+          android:name=".CollegesDetailActivity"
+          android:label="@string/title_activity_colleges_detail"
+          android:parentActivityName=".CollegesDetailActivity">
+          <meta-data
+              android:name="android.support.PARENT_ACTIVITY"
+              android:value="com.sjf.lgcats.CollegesDetailActivity" />
+        </activity>
+        <activity
+          android:name=".StudentLoginActivity"
+          android:label="@string/title_activity_student_login"
+          android:parentActivityName=".MainActivity">
+          <meta-data
+              android:name="android.support.PARENT_ACTIVITY"
+              android:value="com.sjf.lgcats.MainActivity" />
+        </activity>
         <activity
             android:name=".SelectUserTypeActivity"
             android:label="@string/title_activity_select_user_type"

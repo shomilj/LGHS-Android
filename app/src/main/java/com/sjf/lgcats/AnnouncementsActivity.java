@@ -56,8 +56,8 @@ public class AnnouncementsActivity extends AppCompatActivity {
 
     private void setupView() {
         setContentView(R.layout.activity_announcements);
+        setTitle("Daily Announcements");
     }
-
 
     private void setupListListener() {
         final Context context = this;
@@ -75,7 +75,6 @@ public class AnnouncementsActivity extends AppCompatActivity {
     }
 
     private void fetchAnnouncements() {
-
 
         // get the link associated with the college spreadsheet
         String link = LinkUtils.getLink(LinkUtils.HOST_ANNOUNCEMENTS, getApplicationContext());
