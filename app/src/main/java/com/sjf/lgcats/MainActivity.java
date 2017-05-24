@@ -87,8 +87,8 @@ public class MainActivity extends AppCompatActivity
         mainCountdownButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // Intent intent = new Intent(MainActivity.this, AnnouncementsActivity.class);
-                // startActivity(intent);
+                Intent intent = new Intent(MainActivity.this, CountdownActivity.class);
+                startActivity(intent);
             }
         });
 
