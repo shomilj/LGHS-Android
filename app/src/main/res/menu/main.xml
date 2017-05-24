@@ -7,14 +7,8 @@
         android:title="@string/action_settings"
         app:showAsAction="never" />
     <item
-<<<<<<< Updated upstream
         android:id="@+id/action_logout"
         android:orderInCategory="100"
         android:title="@string/logout"
-=======
-        android:id="@+id/sdlkfjsldkfj"
-        android:orderInCategory="100"
-        android:title="random text here lol"
->>>>>>> Stashed changes
         app:showAsAction="never" />
 </menu>
