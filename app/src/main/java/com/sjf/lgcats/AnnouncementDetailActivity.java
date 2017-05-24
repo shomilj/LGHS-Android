@@ -15,19 +15,27 @@ public class AnnouncementDetailActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_announcement_detail);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        setupView();
+        setTitle();
+        setTextView();
+    }
 
+    private void setTitle() {
         String date = this.getIntent().getExtras().getString("date");
-        String content = this.getIntent().getExtras().getString("content");
-
         setTitle(date);
+    }
 
+    private void setTextView() {
+        String content = this.getIntent().getExtras().getString("content");
         mTextView = (TextView) findViewById(R.id.ANNOUNCEMENT_TEXT_VIEW);
         mTextView.setText(content);
         mTextView.setTextSize(14);
+    }
 
+    private void setupView() {
+        setContentView(R.layout.activity_announcement_detail);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 

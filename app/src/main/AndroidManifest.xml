@@ -33,9 +33,6 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".LoginActivity"
-            android:label="@string/title_activity_login" />
-        <activity
             android:name=".BellScheduleActivity"
             android:label="@string/title_activity_bell_schedule"
             android:parentActivityName=".MainActivity">
@@ -117,7 +114,12 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.sjf.lgcats.AnnouncementsActivity" />
         </activity>
-        <activity android:name=".CountdownActivity"></activity>
+        <activity android:name=".CollegesDetailActivity" />
+        <activity android:name=".StudentLoginActivity" />
+        <activity
+            android:name=".SelectUserTypeActivity"
+            android:label="@string/title_activity_select_user_type"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

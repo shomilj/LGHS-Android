@@ -12,15 +12,25 @@ public class HotlinesDetailActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_hotlines_detail);
+        setupView();
+        setTitle();
+        setTextView();
+    }
 
+    private void setTitle() {
         String title = this.getIntent().getExtras().getString("title");
-        String content = this.getIntent().getExtras().getString("content");
-
         setTitle(title);
 
+    }
+
+    private void setTextView() {
+        String content = this.getIntent().getExtras().getString("content");
         mTextView = (TextView) findViewById(R.id.HOTLINES_TEXT_VIEW);
         mTextView.setText(content);
         mTextView.setTextSize(14);
+    }
+
+    private void setupView() {
+        setContentView(R.layout.activity_hotlines_detail);
     }
 }
