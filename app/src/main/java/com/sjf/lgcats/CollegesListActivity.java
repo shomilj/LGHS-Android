@@ -40,20 +40,12 @@ public class CollegesListActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_colleges_list);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        setTitle("Colleges @ LGHS");
+        setupView();
+        assignVariables();
+        startDownload();
+    }
 
-        mListView = (ListView) findViewById(R.id.college_list_view);
-
-        // display some sort of a loading indicator
-        // remove loading indicator when files have been read/parsed
-
-        // initialize colleges arraylist
-        colleges = new ArrayList<>();
-
+    private void startDownload() {
         // download colleges in background
         // must be in background thread to work
         new Thread(new Runnable() {
@@ -63,8 +55,19 @@ public class CollegesListActivity extends AppCompatActivity {
                 fetchColleges();
             }
         }).start();
+    }
 
+    private void assignVariables() {
+        mListView = (ListView) findViewById(R.id.college_list_view);
+        colleges = new ArrayList<>();
+    }
 
+    private void setupView() {
+        setContentView(R.layout.activity_colleges_list);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        setTitle("Colleges @ LGHS");
     }
 
     public void fetchColleges() {
@@ -74,6 +77,12 @@ public class CollegesListActivity extends AppCompatActivity {
         // download the contents of the text file at the link
         String file = StringUtil.getUrlContents(link);
 
+        parseColleges(file);
+        sortCollegeList();
+        updateUI();
+    }
+
+    private void parseColleges(String file) {
         // split the spreadsheet into rows
         String[] rows = file.split("\r");
 
@@ -99,25 +108,24 @@ public class CollegesListActivity extends AppCompatActivity {
                 colleges.add(col);
             }
         }
-        // Sorting
-        Collections.sort(colleges, new Comparator<College>() {
-            @Override
-            public int compare(College c2, College c1) {
-                return c2.getDate().compareTo(c1.getDate());
-            }
-        });
+    }
 
+    private void updateUI() {
         runOnUiThread(new Runnable() {
             public void run() {
                 fillListView();
                 setupListListener();
             }
         });
+    }
 
-        // check that colleges have parsed correctly
-        for (College college : colleges) {
-            System.out.println(college);
-        }
+    private void sortCollegeList() {
+        Collections.sort(colleges, new Comparator<College>() {
+            @Override
+            public int compare(College c2, College c1) {
+                return c2.getDate().compareTo(c1.getDate());
+            }
+        });
     }
 
     private void setupListListener() {
@@ -125,12 +133,11 @@ public class CollegesListActivity extends AppCompatActivity {
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                College college = colleges.get(position);
                 Intent detailIntent = new Intent(context, CollegesDetailActivity.class);
+                College college = colleges.get(position);
                 detailIntent.putExtra("name", college.getName());
                 detailIntent.putExtra("dateString", college.getDateString());
                 detailIntent.putExtra("location", college.getLocation());
-
                 startActivity(detailIntent);
             }
         });
@@ -150,12 +157,10 @@ public class CollegesListActivity extends AppCompatActivity {
                 new String[]{"First Line", "Second Line"},
                 new int[]{android.R.id.text1, android.R.id.text2});
 
-        // ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, listItems);
         if (mListView == null) {
             System.out.println("null");
         } else {
             mListView.setAdapter(adapter);
-
         }
     }
 

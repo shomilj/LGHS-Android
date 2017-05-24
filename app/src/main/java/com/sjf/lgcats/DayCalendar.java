@@ -20,7 +20,10 @@ public class DayCalendar {
             System.out.println("Empty file");
             return;
         }
+        parseFile(file);
+    }
 
+    private void parseFile(String file) {
         try {
             String[] rows = file.split("\r");
             String[][] table = new String[rows.length][3];
@@ -42,7 +45,7 @@ public class DayCalendar {
                 types.add(day);
             }
         } catch (IndexOutOfBoundsException e) {
-            System.out.println("AN ERROR OCCURED!!");
+            System.out.println("AN ERROR OCCURED!! DAYCALENDAR");
             System.out.println(e);
         }
     }

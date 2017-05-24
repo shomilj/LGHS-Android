@@ -54,13 +54,14 @@ public class HotlinesActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_hotlines);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        setupView();
+        assignVariables();
+        startDownload();
 
-        mListView = (ListView) findViewById(R.id.hotlines_list_view);
 
+    }
+
+    private void startDownload() {
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -68,14 +69,18 @@ public class HotlinesActivity extends AppCompatActivity {
                 parseHotlines();
             }
         }).start();
-
-
     }
 
+    private void assignVariables() {
+        mListView = (ListView) findViewById(R.id.hotlines_list_view);
+    }
 
-    /**
-     * parses the hotlines file parameter by making hotline element
-     */
+    private void setupView() {
+        setContentView(R.layout.activity_hotlines);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    }
 
     public void parseHotlines()
     {
@@ -102,6 +107,10 @@ public class HotlinesActivity extends AppCompatActivity {
         for (Hotline a : hotlines) {
             System.out.println(a);
         }
+        updateUI();
+    }
+
+    private void updateUI() {
         runOnUiThread(new Runnable() {
             public void run() {
                 fillListView();
@@ -109,6 +118,7 @@ public class HotlinesActivity extends AppCompatActivity {
             }
         });
     }
+
 
     private void setupListListener() {
         final Context context = this;

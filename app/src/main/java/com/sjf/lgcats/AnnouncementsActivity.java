@@ -35,25 +35,27 @@ public class AnnouncementsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_announcements);
+        setupView();
+        assignVariables();
+        startDownload();
+    }
 
-        mListView = (ListView) findViewById(R.id.announcement_list_view);
-
-        // display some sort of a loading indicator
-        // remove loading indicator when files have been read/parsed
-
-        // initialize announcements arraylist
-        list = new ArrayList<>();
-
-        // download colleges in background
-        // must be in background thread to work
+    private void startDownload() {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                // read/parse announcement list
                 fetchAnnouncements();
             }
         }).start();
+    }
+
+    private void assignVariables() {
+        list = new ArrayList<>();
+        mListView = (ListView) findViewById(R.id.announcement_list_view);
+    }
+
+    private void setupView() {
+        setContentView(R.layout.activity_announcements);
     }
 
 

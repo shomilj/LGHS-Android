@@ -22,16 +22,25 @@ public class CollegesDetailActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_colleges_detail);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setupView();
+        assignVariables();
+        fetchExtras();
+        fillListView();
+    }
 
-        setTitle("Colleges @ LGHS");
-        mListView = (ListView) findViewById(R.id.college_detail_list_view);
+    private void fetchExtras() {
         name = this.getIntent().getExtras().getString("name");
         dateString = this.getIntent().getExtras().getString("dateString");
         location = this.getIntent().getExtras().getString("location");
-        System.out.println(name + dateString + location);
-        fillListView();
+    }
+
+    private void assignVariables() {
+        mListView = (ListView) findViewById(R.id.college_detail_list_view);
+    }
+
+    private void setupView() {
+        setContentView(R.layout.activity_colleges_detail);
+        setTitle("Colleges @ LGHS");
     }
 
     private void fillListView() {
@@ -51,8 +60,6 @@ public class CollegesDetailActivity extends AppCompatActivity {
         m3.put("First Item", "Location");
         m3.put("Second Item", location);
         data.add(m3);
-
-        System.out.println(data);
 
         SimpleAdapter adapter = new SimpleAdapter(this, data,
                 android.R.layout.simple_list_item_2,
