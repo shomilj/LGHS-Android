@@ -10,6 +10,7 @@ import java.util.concurrent.TimeUnit;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -30,31 +31,37 @@ public class CountdownActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedinstanceState)
     {
         super.onCreate(savedinstanceState);
+        setupView();
+        assignVariables();
+        startDownload();
+    }
 
-        //xml needs to be created still
-        //setContentView(R.layout.activity_countdown);
-
-        //listView must be added to xml
-        //mListView = (ListView) findViewById(R.id.announcement_list_view);
-
-        //initialize eventList
-        eventList = new ArrayList<>();
-
-        //Open background thread for fetching countdown data
+    private void startDownload() {
+        // download colleges in background
+        // must be in background thread to work
         new Thread(new Runnable() {
             @Override
             public void run() {
-                // read/parse announcement list
+                // read/parse college list
                 fetchEvents();
             }
         }).start();
     }
 
+    private void assignVariables() {
+        mListView = (ListView) findViewById(R.id.countdown_list_view);
+        eventList = new ArrayList<>();
+    }
+
+    private void setupView() {
+        setContentView(R.layout.activity_countdown);
+
+        setTitle("Countdown Calendar");
+    }
+
     private void fetchEvents()
     {
-        String link = LinkUtils.getLink(LinkUtils.LINK_COUNTDOWN, getApplicationContext());
-        String file = StringUtil.getUrlContents(link);
-
+        String file = FileUtil.readFromFile(FileUtil.FILE_COUNTDOWN, getApplicationContext());
         if(file == null)
         {
             System.out.print("There was a problem loading the file");
@@ -83,6 +90,11 @@ public class CountdownActivity extends AppCompatActivity {
             System.out.println(e);
             System.out.println("There was an issue parsing the countdown data");
         }
+        updateUI();
+
+    }
+
+    private void updateUI() {
         runOnUiThread(new Runnable() {
             public void run() {
                 fillListView();
@@ -116,20 +128,19 @@ public class CountdownActivity extends AppCompatActivity {
         for(int i = 0; i < this.eventList.size(); i++)
         {
             CountdownEvent event = this.eventList.get(i);
-            Date now = new Date();
-            Date eventDate = event.getEventDate();
-            long diff = eventDate.getTime() - now.getTime();
-            String day = "" + (int)TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS);
-
-            String description = this.eventList.get(i).getDescription();
-
-            HashMap<String, String> datum = new HashMap<String, String>(2);
-            datum.put("day", day);
-            datum.put("description", description);
-            data.add(datum);
+            int daysToEvent = event.getDaysFromToday();
+            if (daysToEvent > 0) {
+                String description = event.getDescription();
+                String date = event.getDateString();
+                String day = "" + daysToEvent + " days until " + description;
+                HashMap<String, String> datum = new HashMap<String, String>();
+                datum.put("day", day);
+                datum.put("date", date);
+                data.add(datum);
+            }
         }
 
-        SimpleAdapter adapter = new SimpleAdapter(this, data, android.R.layout.simple_list_item_2, new String[]{"day", "description"}, new int[]{android.R.id.text1, android.R.id.text2});
+        SimpleAdapter adapter = new SimpleAdapter(this, data, android.R.layout.simple_list_item_2, new String[]{"day", "date"}, new int[]{android.R.id.text1, android.R.id.text2});
 
         if (mListView == null) {
             System.out.println("null");

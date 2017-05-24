@@ -69,7 +69,9 @@ public class CalendarActivity extends AppCompatActivity {
         calendarCalendarButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(CalendarActivity.this, MainActivity.class);
+                Intent intent = new Intent(CalendarActivity.this, WebViewActivity.class);
+                intent.putExtra("app", 0);
+                intent.putExtra("url", LinkUtils.getLink(LinkUtils.GENERAL_CALENDAR, getApplicationContext()));
                 startActivity(intent);
             }
         });

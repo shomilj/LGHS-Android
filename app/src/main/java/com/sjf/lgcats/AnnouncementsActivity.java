@@ -56,6 +56,9 @@ public class AnnouncementsActivity extends AppCompatActivity {
 
     private void setupView() {
         setContentView(R.layout.activity_announcements);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setTitle("Daily Announcements");
     }
 
