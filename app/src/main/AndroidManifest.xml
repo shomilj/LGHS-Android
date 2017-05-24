@@ -117,16 +117,16 @@
         </activity>
         <activity
           android:name=".CollegesDetailActivity"
-          android:label="@string/title_activity_collegesdetail"
-          androidparentActivityName=".CollegeActivity">
+          android:label="@string/title_activity_colleges_detail"
+          android:parentActivityName=".CollegesDetailActivity">
           <meta-data
               android:name="android.support.PARENT_ACTIVITY"
-              android:value="com.sjf.lgcats.CollegeActivity" />
+              android:value="com.sjf.lgcats.CollegesDetailActivity" />
         </activity>
         <activity
           android:name=".StudentLoginActivity"
-          android:label="@string/title_activity_studentlogin"
-          androidparentActivityName=".MainActivity">
+          android:label="@string/title_activity_student_login"
+          android:parentActivityName=".MainActivity">
           <meta-data
               android:name="android.support.PARENT_ACTIVITY"
               android:value="com.sjf.lgcats.MainActivity" />
