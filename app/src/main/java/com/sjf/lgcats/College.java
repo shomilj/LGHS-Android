@@ -71,4 +71,11 @@ public class College {
                 ", isUpcoming='" + isUpcoming() + '\'' +
                 '}';
     }
+
+    public String getDateString() {
+        SimpleDateFormat fmt = new SimpleDateFormat("EEEE, MMM d");
+        String dateString = fmt.format(date);
+        return dateString + " @ " + time;
+    }
+
 }

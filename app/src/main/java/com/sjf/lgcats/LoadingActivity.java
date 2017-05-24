@@ -1,6 +1,7 @@
 package com.sjf.lgcats;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -26,8 +27,7 @@ import android.widget.TextView;
 public class LoadingActivity extends AppCompatActivity {
 
     private TextView todaysDate;
-    private TextView orangeBlackDayDisplay;
-    private Button temporaryButton;
+    private TextView mDayTypeLabel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,8 +39,8 @@ public class LoadingActivity extends AppCompatActivity {
 
         // display whether today is a black day or an orange day
         DayCalendar cal = new DayCalendar(getApplicationContext());
-        orangeBlackDayDisplay = (TextView) findViewById(R.id.orange_black_day_display);
-        orangeBlackDayDisplay.setText(cal.getDescription());
+        mDayTypeLabel = (TextView) findViewById(R.id.loading_screen_day_type_label);
+        mDayTypeLabel.setText(cal.getDescription());
 
         // download files in background
         new Thread(new Runnable() {
@@ -49,22 +49,18 @@ public class LoadingActivity extends AppCompatActivity {
                 downloadFiles();
             }
         }).start();
-
-
-        // get rid of this
-        temporaryButton = (Button) findViewById(R.id.temporary_button);
-        temporaryButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                nextScreen();
-            }
-        });
-
     }
 
     public void nextScreen() {
-        Intent intent = new Intent(LoadingActivity.this, MainActivity.class);
-        startActivity(intent);
+        SharedPreferences prefs = getSharedPreferences(getString(R.string.shared_prefs), MODE_PRIVATE);
+        String userType = prefs.getString("UserType", null);
+        if (userType == null) {
+            Intent intent = new Intent(LoadingActivity.this, SelectUserTypeActivity.class);
+            startActivity(intent);
+        } else {
+            Intent intent = new Intent(LoadingActivity.this, MainActivity.class);
+            startActivity(intent);
+        }
     }
 
     @Override

@@ -33,9 +33,6 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".LoginActivity"
-            android:label="@string/title_activity_login" />
-        <activity
             android:name=".SubmitJokeOfTheDayActivity"
             android:label="@string/title_activity_submit_joke_of_the_day"
             android:parentActivityName=".MainActivity"
@@ -109,6 +106,35 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.sjf.lgcats.MainActivity" />
         </activity>
+        <activity
+            android:name=".AnnouncementDetailActivity"
+            android:label="@string/title_activity_announcement_detail"
+            android:parentActivityName=".AnnouncementsActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.sjf.lgcats.AnnouncementsActivity" />
+        </activity>
+        <activity
+          android:name=".CollegesDetailActivity"
+          android:label="@string/title_activity_collegesdetail"
+          androidparentActivityName=".CollegeActivity">
+          <meta-data
+              android:name="android.support.PARENT_ACTIVITY"
+              android:value="com.sjf.lgcats.CollegeActivity" />
+        </activity>
+        <activity
+          android:name=".StudentLoginActivity"
+          android:label="@string/title_activity_studentlogin"
+          androidparentActivityName=".MainActivity">
+          <meta-data
+              android:name="android.support.PARENT_ACTIVITY"
+              android:value="com.sjf.lgcats.MainActivity" />
+        </activity>
+        <activity
+            android:name=".SelectUserTypeActivity"
+            android:label="@string/title_activity_select_user_type"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

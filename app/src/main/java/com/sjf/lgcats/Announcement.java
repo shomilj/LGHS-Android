@@ -11,7 +11,7 @@ public class Announcement {
 
     public Announcement(String date, String content) {
         this.date = date;
-        this.content = content;
+        this.content = content.replaceAll("<line>", "\r\n");
     }
 
     public String getDate() {
