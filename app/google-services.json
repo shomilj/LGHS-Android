@@ -1,0 +1,94 @@
+{
+  "project_info": {
+    "project_number": "169180857646",
+    "firebase_url": "https://project-6694277097819247379.firebaseio.com",
+    "project_id": "project-6694277097819247379",
+    "storage_bucket": "project-6694277097819247379.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:169180857646:android:e24d5955d8044edb",
+        "android_client_info": {
+          "package_name": "com.evxtn.lgcats"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "169180857646-0o09nre7r01qjvrac4jeljt3l2k81k0e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCPV4Yokhuw11cErocR3c8jHLbRBxmPJrE"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:169180857646:android:f1b58a794335a435",
+        "android_client_info": {
+          "package_name": "com.sjf.lgcats"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "169180857646-lmpidgpstulir98kq07lcsrlbmvro4kq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.sjf.lgcats",
+            "certificate_hash": "0cc7444d23d876005209dc15c06e1e4e112e576e"
+          }
+        },
+        {
+          "client_id": "169180857646-0o09nre7r01qjvrac4jeljt3l2k81k0e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCPV4Yokhuw11cErocR3c8jHLbRBxmPJrE"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "169180857646-f04btaj2m35naua6tm52jked812iniuk.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.SJF.Gr8Calc",
+                "app_store_id": "1004047426"
+              }
+            },
+            {
+              "client_id": "169180857646-0o09nre7r01qjvrac4jeljt3l2k81k0e.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
