@@ -146,10 +146,6 @@
     <string name="title_activity_announcement_detail">""</string>
     <string name="title_activity_student_login">Student Login</string>
     <string name="title_activity_select_user_type">SelectUserTypeActivity</string>
-<<<<<<< Updated upstream
     <string name="title_activity_colleges_detail">CollegesDetailActivity</string>
-=======
     <string name="countdown_calendar">Countdown Calendar</string>
->>>>>>> Stashed changes
-
 </resources>
