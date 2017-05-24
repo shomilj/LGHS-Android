@@ -135,6 +135,14 @@
             android:name=".SelectUserTypeActivity"
             android:label="@string/title_activity_select_user_type"
             android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".CountdownActivity"
+            android:label="@string/title_activity_countdown"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.sjf.lgcats.MainActivity" />
+        </activity>
     </application>
 
 </manifest>

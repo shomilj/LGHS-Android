@@ -148,4 +148,5 @@
     <string name="title_activity_select_user_type">SelectUserTypeActivity</string>
     <string name="title_activity_colleges_detail">CollegesDetailActivity</string>
     <string name="countdown_calendar">Countdown Calendar</string>
+    <string name="title_activity_countdown">CountdownActivity</string>
 </resources>
