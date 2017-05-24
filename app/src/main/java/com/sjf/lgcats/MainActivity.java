@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity
 
     // private TextView mainDay
     private Button mainAnnouncementButton;
+    private Button mainCountdownButton;
     private Button mainCanvasButton;
     private Button mainCalendarButton;
     private Button mainStudentIDButton;
@@ -46,6 +47,7 @@ public class MainActivity extends AppCompatActivity
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         mainAnnouncementButton = (Button) findViewById(R.id.main_announcement_button);
+        mainCountdownButton = (Button) findViewById(R.id.main_countdown_button);
         mainCanvasButton = (Button) findViewById(R.id.main_canvas_button);
         mainCalendarButton = (Button) findViewById(R.id.main_calendar_button);
         mainStudentIDButton = (Button) findViewById(R.id.main_studentID_button);
@@ -79,6 +81,14 @@ public class MainActivity extends AppCompatActivity
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, AnnouncementsActivity.class);
                 startActivity(intent);
+            }
+        });
+
+        mainCountdownButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Intent intent = new Intent(MainActivity.this, AnnouncementsActivity.class);
+                // startActivity(intent);
             }
         });
 

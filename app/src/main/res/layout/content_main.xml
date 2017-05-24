@@ -43,6 +43,16 @@
                 android:text="@string/announcements" />
 
             <Button
+                android:id="@+id/main_countdown_button"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="1dp"
+                android:layout_marginTop="1dp"
+                android:background="@color/colorPrimary"
+                android:text="@string/countdown_calendar" />
+
+            <Button
                 android:id="@+id/main_canvas_button"
                 style="@style/Widget.AppCompat.Button.Colored"
                 android:layout_width="match_parent"
