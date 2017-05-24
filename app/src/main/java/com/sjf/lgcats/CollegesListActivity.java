@@ -1,13 +1,25 @@
 package com.sjf.lgcats;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.SimpleAdapter;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Contains a list of College objects
@@ -23,10 +35,18 @@ import java.util.ArrayList;
 public class CollegesListActivity extends AppCompatActivity {
 
     private ArrayList<College> colleges;
+    private ListView mListView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_colleges_list);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        setTitle("Colleges @ LGHS");
+
+        mListView = (ListView) findViewById(R.id.college_list_view);
 
         // display some sort of a loading indicator
         // remove loading indicator when files have been read/parsed
@@ -44,19 +64,7 @@ public class CollegesListActivity extends AppCompatActivity {
             }
         }).start();
 
-        setContentView(R.layout.activity_colleges_list);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     public void fetchColleges() {
@@ -87,13 +95,67 @@ public class CollegesListActivity extends AppCompatActivity {
 
                 // create a new college & add it if it's upcoming
                 College col = new College(name, time, location, date);
-                if (col.isUpcoming()) colleges.add(col);
+                // if (col.isUpcoming()) colleges.add(col);
+                colleges.add(col);
             }
         }
+        // Sorting
+        Collections.sort(colleges, new Comparator<College>() {
+            @Override
+            public int compare(College c2, College c1) {
+                return c2.getDate().compareTo(c1.getDate());
+            }
+        });
+
+        runOnUiThread(new Runnable() {
+            public void run() {
+                fillListView();
+                setupListListener();
+            }
+        });
 
         // check that colleges have parsed correctly
         for (College college : colleges) {
             System.out.println(college);
+        }
+    }
+
+    private void setupListListener() {
+        final Context context = this;
+        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                College college = colleges.get(position);
+                Intent detailIntent = new Intent(context, CollegesDetailActivity.class);
+                detailIntent.putExtra("name", college.getName());
+                detailIntent.putExtra("dateString", college.getDateString());
+                detailIntent.putExtra("location", college.getLocation());
+
+                startActivity(detailIntent);
+            }
+        });
+    }
+
+    private void fillListView() {
+        List<Map<String, String>> data = new ArrayList<Map<String, String>>();
+        for (College college : colleges) {
+            Map<String, String> datum = new HashMap<String, String>(2);
+            datum.put("First Line", college.getName());
+            datum.put("Second Line", college.getDateString());
+            data.add(datum);
+        }
+
+        SimpleAdapter adapter = new SimpleAdapter(this, data,
+                android.R.layout.simple_list_item_2,
+                new String[]{"First Line", "Second Line"},
+                new int[]{android.R.id.text1, android.R.id.text2});
+
+        // ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, listItems);
+        if (mListView == null) {
+            System.out.println("null");
+        } else {
+            mListView.setAdapter(adapter);
+
         }
     }
 
