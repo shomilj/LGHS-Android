@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.SimpleAdapter;
 
 
 /**
@@ -107,12 +108,9 @@ public class CountdownActivity extends AppCompatActivity {
         return eventDate;
     }
 
-    public void fillListView()
+    private void fillListView()
     {
-        //Data to display
-        int[] dayCounts = new int[this.eventList.size()];
-        String[] descriptions = new String[this.eventList.size()];
-        String[] dateStrings = new String[this.eventList.size()];
+        List<HashMap<String, String>> data = new ArrayList<HashMap<String, String>>();
 
         //fetch data to display
         for(int i = 0; i < this.eventList.size(); i++)
@@ -121,22 +119,23 @@ public class CountdownActivity extends AppCompatActivity {
             Date now = new Date();
             Date eventDate = event.getEventDate();
             long diff = eventDate.getTime() - now.getTime();
-            dayCounts[i] = (int)TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS);
+            String day = "" + (int)TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS);
 
-            descriptions[i] = this.eventList.get(i).getDescription();
+            String description = this.eventList.get(i).getDescription();
 
-            SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
-            dateStrings[i] = dateFormat.format(this.eventList.get(i).getEventDate());
+            HashMap<String, String> datum = new HashMap<String, String>(2);
+            datum.put("day", day);
+            datum.put("description", description);
+            data.add(datum);
         }
 
+        SimpleAdapter adapter = new SimpleAdapter(this, data, android.R.layout.simple_list_item_2, new String[]{"day", "description"}, new int[]{android.R.id.text1, android.R.id.text2});
 
-        //implement UI. Custom ArrayAdapter?
-       //ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, ?);
         if (mListView == null) {
-            System.out.println("There was a problem accessing the ListView");
-            return;
+            System.out.println("null");
+        } else {
+            mListView.setAdapter(adapter);
+
         }
-        //Assign UIElements to display data.
-        //mListView.setAdapter(adapter);
     }
 }
