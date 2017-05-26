@@ -3,6 +3,8 @@ package com.sjf.lgcats;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.constraint.ConstraintLayout;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
@@ -26,8 +28,9 @@ import android.widget.TextView;
 
 public class LoadingActivity extends AppCompatActivity {
 
-    private TextView todaysDate;
+    private TextView title;
     private TextView mDayTypeLabel;
+    private String dayText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,10 +40,13 @@ public class LoadingActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        title = (TextView) findViewById(R.id.loading_screen_title);
+        mDayTypeLabel = (TextView) findViewById(R.id.loading_screen_day_type_label);
+
         // display whether today is a black day or an orange day
         DayCalendar cal = new DayCalendar(getApplicationContext());
-        mDayTypeLabel = (TextView) findViewById(R.id.loading_screen_day_type_label);
-        mDayTypeLabel.setText(cal.getDescription());
+        dayText = cal.getDescription();
+        mDayTypeLabel.setText(dayText);
 
         // download files in background
         new Thread(new Runnable() {
@@ -49,6 +55,24 @@ public class LoadingActivity extends AppCompatActivity {
                 downloadFiles();
             }
         }).start();
+
+        ConstraintLayout constraintLayout = (ConstraintLayout) findViewById(R.id.loading_activity_constraint_layout);
+        if (dayText.equals(getString(R.string.orange_day))) {
+            constraintLayout.setBackgroundColor(ContextCompat.getColor(LoadingActivity.this, R.color.colorPrimary));
+            title.setTextColor(ContextCompat.getColor(LoadingActivity.this, R.color.black));
+            mDayTypeLabel.setTextColor(ContextCompat.getColor(LoadingActivity.this, R.color.black));
+        }
+        else if (dayText.equals(getString(R.string.black_day))) {
+            constraintLayout.setBackgroundColor(ContextCompat.getColor(LoadingActivity.this, R.color.black));
+            title.setTextColor(ContextCompat.getColor(LoadingActivity.this, R.color.colorPrimary));
+            mDayTypeLabel.setTextColor(ContextCompat.getColor(LoadingActivity.this, R.color.colorPrimary));
+        }
+        else {
+            constraintLayout.setBackgroundColor(ContextCompat.getColor(LoadingActivity.this, R.color.colorAccent));
+            title.setTextColor(ContextCompat.getColor(LoadingActivity.this, R.color.black));
+            mDayTypeLabel.setTextColor(ContextCompat.getColor(LoadingActivity.this, R.color.black));
+        }
+        
     }
 
     public void nextScreen() {
@@ -61,22 +85,6 @@ public class LoadingActivity extends AppCompatActivity {
             Intent intent = new Intent(LoadingActivity.this, MainActivity.class);
             startActivity(intent);
         }
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-
-        }
-
-        return super.onOptionsItemSelected(item);
     }
 
     public void downloadFiles() {

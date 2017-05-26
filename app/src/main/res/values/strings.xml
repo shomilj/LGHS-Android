@@ -155,4 +155,6 @@
     <string name="students">Students</string>
     <string name="departments">Departments</string>
     <string name="parents">Parents</string>
+    <string name="orange_day">It\'s an Orange Day!</string>
+    <string name="black_day">It\'s a Black Day!</string>
 </resources>
