@@ -28,6 +28,7 @@
     <string name="hotlines">Hotlines</string>
     <string name="title_activity_student_id">StudentIDActivity</string>
     <string name="title_activity_clubs_list">ClubsListActivity</string>
+    <string name="title_activity_clubs_detail">ClubsListActivity</string>
     <string name="large_text">
         "Material is the metaphor.\n\n"
 

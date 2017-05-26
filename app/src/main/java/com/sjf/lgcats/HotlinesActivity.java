@@ -147,4 +147,31 @@ public class HotlinesActivity extends AppCompatActivity {
             mListView.setAdapter(adapter);
         }
     }
+
+    public void parseHotline()
+    {
+        hotlines = new ArrayList<>();
+        String file = FileUtil.readFromFile(FileUtil.FILE_HOTLINES, getApplicationContext());
+
+        if (file == null) {
+            System.out.println("Empty file");
+            return;
+        }
+
+        try {
+            String[] rows = file.split("\r");
+            for (String row : rows) {
+                String[] cells = row.split("\t");
+                if (cells.length > 1) {
+                    hotlines.add(new Hotline(cells[0], cells[1]));
+                }
+            }
+        } catch (IndexOutOfBoundsException e) {
+            System.out.println("ERROR HOTLINES");
+            System.out.println(e);
+        }
+        for (Hotline a : hotlines) {
+            System.out.println(a);
+        }
+    }
 }

@@ -123,7 +123,7 @@ public class CollegesListActivity extends AppCompatActivity {
         Collections.sort(colleges, new Comparator<College>() {
             @Override
             public int compare(College c2, College c1) {
-                return c2.getDate().compareTo(c1.getDate());
+                return c2.getDateString().compareTo(c1.getDateString());
             }
         });
     }
@@ -143,6 +143,9 @@ public class CollegesListActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * creates a hashmap with keys and values
+     */
     private void fillListView() {
         List<Map<String, String>> data = new ArrayList<Map<String, String>>();
         for (College college : colleges) {

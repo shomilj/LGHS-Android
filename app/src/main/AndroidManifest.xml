@@ -87,6 +87,15 @@
                 android:value="com.sjf.lgcats.MainActivity" />
         </activity>
         <activity
+            android:name=".ClubsDetailActivity"
+            android:label="@string/title_activity_clubs_detail"
+            android:parentActivityName=".ClubsListActivity"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.sjf.lgcats.ClubsListActivity" />
+        </activity>
+        <activity
             android:name=".WebViewActivity"
             android:label="@string/title_activity_web_view"
             android:noHistory="true"
