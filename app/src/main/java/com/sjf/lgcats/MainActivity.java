@@ -56,7 +56,6 @@ public class MainActivity extends AppCompatActivity
         // display whether it is a black or an orange day
         DayCalendar cal = new DayCalendar(getApplicationContext());
         getSupportActionBar().setTitle(cal.getDescription());
-
     }
 
     @Override

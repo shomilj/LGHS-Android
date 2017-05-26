@@ -25,7 +25,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/StudentIDname"
+                android:id="@+id/student_id_name_textview"
                 android:layout_height="wrap_content"
                 android:layout_width="0dp"
                 android:textAlignment="center"
@@ -47,10 +47,10 @@
                 android:textStyle="bold"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/StudentIDname" />
+                app:layout_constraintTop_toBottomOf="@+id/student_id_name_textview" />
 
             <TextView
-                android:id="@+id/StudentIDnumber"
+                android:id="@+id/student_id_idtextview"
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:textAlignment="center"
@@ -59,10 +59,10 @@
                 android:inputType="number"
                 app:layout_constraintTop_toBottomOf="@+id/StudentIDbarcode"
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toLeftOf="@+id/StudentIDgrade"/>
+                app:layout_constraintRight_toLeftOf="@+id/student_id_grade_textview" />
 
             <TextView
-                android:id="@+id/StudentIDgrade"
+                android:id="@+id/student_id_grade_textview"
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:textAlignment="center"
@@ -70,9 +70,9 @@
                 android:text="@string/your_grade_here"
                 android:inputType="number"
                 app:layout_constraintTop_toBottomOf="@+id/StudentIDbarcode"
-                app:layout_constraintLeft_toRightOf="@+id/StudentIDnumber"
+                app:layout_constraintLeft_toRightOf="@+id/student_id_idtextview"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintBaseline_toBaselineOf="@+id/StudentIDnumber"/>
+                app:layout_constraintBaseline_toBaselineOf="@+id/student_id_idtextview" />
 
         </android.support.constraint.ConstraintLayout>
 

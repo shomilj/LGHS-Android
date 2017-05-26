@@ -18,6 +18,7 @@ import java.util.Date;
  * @since   1.0
  */
 
+
 public class College {
 
     private String name;
