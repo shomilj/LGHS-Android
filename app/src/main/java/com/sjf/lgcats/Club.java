@@ -7,6 +7,11 @@ import java.io.Serializable;
  */
 
 public class Club implements Serializable {
+
+    public static String lv_item_1_key = "Item 1";
+    public static String lv_item_2_key = "Item 2";
+    public static String intent_key = "Club";
+
     private String name;
 
     // Meeting details

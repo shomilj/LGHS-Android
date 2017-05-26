@@ -81,7 +81,6 @@ public class ClubsListActivity extends AppCompatActivity {
 
     public void fetchClubs() {
 
-
         // get the link associated with the club spreadsheet
         String link = LinkUtils.getLink(LinkUtils.HOST_CLUBS, getApplicationContext());
 
@@ -91,12 +90,6 @@ public class ClubsListActivity extends AppCompatActivity {
         parseClubs(file);
         sortClubList();
         updateUI();
-
-
-        // check that clubs have parsed correctly
-        for (Club club : clubs) {
-            System.out.println(club);
-        }
     }
 
     public void parseClubs(String file) {
@@ -123,7 +116,6 @@ public class ClubsListActivity extends AppCompatActivity {
                 String advisor = cells[6];
                 String email = cells[7];
 
-
                 // create a new club & add it
                 Club c = new Club(name, day, time, location, president, vicePresident, advisor, email);
                 clubs.add(c);
@@ -135,7 +127,7 @@ public class ClubsListActivity extends AppCompatActivity {
         Collections.sort(clubs, new Comparator<Club>() {
             @Override
             public int compare(Club c2, Club c1) {
-                return c2.getName().compareTo(c1.getName());
+                return (c2.getName().compareTo(c1.getName()));
             }
         });
     }
@@ -155,8 +147,6 @@ public class ClubsListActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent detailIntent = new Intent(context, ClubsDetailActivity.class);
                 Club club = clubs.get(position);
-                //detailIntent.putExtra("name", club.getName());  //puts the club in extra so we don't have to pass every variable
-                //detailIntent.putExtra("day", club.getDay());
                 detailIntent.putExtra("Club", club);
                 startActivity(detailIntent);
             }
@@ -167,9 +157,9 @@ public class ClubsListActivity extends AppCompatActivity {
         List<Map<String, String>> data = new ArrayList<Map<String, String>>();
         for (Club club : clubs) {
             Map<String, String> datum = new HashMap<String, String>(2);
-            datum.put("First Line", club.getName());
+            datum.put(Club.lv_item_1_key, club.getName());
             String second = "" + club.getDay() + " - " + club.getTime();
-            datum.put("Second Line", second);
+            datum.put(Club.lv_item_2_key, second);
             data.add(datum);
         }
 

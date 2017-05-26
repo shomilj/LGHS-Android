@@ -20,6 +20,8 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_colleges_list" />
+    <include
+        layout="@layout/content_colleges_list"
+        android:layout_width="287dp" />
 
 </android.support.design.widget.CoordinatorLayout>
