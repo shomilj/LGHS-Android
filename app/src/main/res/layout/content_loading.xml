@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.sjf.lgcats.LoadingActivity"
-    tools:showIn="@layout/activity_loading">
+    tools:showIn="@layout/activity_loading"
+    android:id="@+id/loading_activity_constraint_layout">
 
     <TextView
         android:id="@+id/loading_screen_day_type_label"
