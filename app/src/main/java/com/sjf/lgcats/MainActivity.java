@@ -57,12 +57,6 @@ public class MainActivity extends AppCompatActivity
         DayCalendar cal = new DayCalendar(getApplicationContext());
         getSupportActionBar().setTitle(cal.getDescription());
 
-        // change action bar to black
-        //Window window = this.getWindow();
-        //window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-        //window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-        //window.setStatusBarColor(ContextCompat.getColor(this, R.color.black));
-
     }
 
     @Override
@@ -103,20 +97,25 @@ public class MainActivity extends AppCompatActivity
         // Handle calendar_navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
+        if (id == R.id.nav_main) {
             MainFragment mainFragment = MainFragment.newInstance();
             openFragmentInContentMain(mainFragment);
-        } else if (id == R.id.nav_gallery) {
-
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
-        }
+        } else if (id == R.id.nav_resources) {
+            ResourcesFragment resourcesFragment = ResourcesFragment.newInstance();
+            openFragmentInContentMain(resourcesFragment);
+        } /*else if (id == R.id.nav_news) {
+            NewsFragment newsFragment = NewsFragment.newInstance();
+            openFragmentInContentMain(newsFragment);
+        } else if (id == R.id.nav_calculators) {
+            CalculatorsFragment calculatorsFragment = CalculatorsFragment.newInstance();
+            openFragmentInContentMain(calculatorsFragment);
+        } else if (id == R.id.nav_feedback) {
+            FeedbackFragment feedbackFragment = FeedbackFragment.newInstance();
+            openFragmentInContentMain(feedbackFragment);
+        } else if (id == R.id.nav_bugs) {
+            BugsFragment bugsFragment = BugsFragment.newInstance();
+            openFragmentInContentMain(bugsFragment);
+        }*/
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.activity_main_drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
@@ -126,9 +125,7 @@ public class MainActivity extends AppCompatActivity
     public void openFragmentInContentMain (Fragment fragment) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        System.out.println("nooooo");
         fragmentTransaction.replace(R.id.MainActivityFragmentPlaceHolder, fragment);
-        System.out.println("yes");
         fragmentTransaction.commit();
     }
 

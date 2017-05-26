@@ -5,11 +5,10 @@
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.sjf.lgcats.MainFragment"
-    tools:showIn="@layout/app_bar_main"
     android:id="@+id/fragment_main_frame_layout">
 
     <ScrollView
-        android:id="@+id/main_scroll_view"
+        android:id="@+id/main_fragment_scroll_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -21,7 +20,7 @@
         android:background="@color/colorPrimaryDark">
 
         <LinearLayout
-            android:id="@+id/main_linear_layout"
+            android:id="@+id/main_fragment_linear_layout"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
@@ -33,7 +32,7 @@
             android:weightSum="1">
 
             <Button
-                android:id="@+id/main_announcement_button"
+                android:id="@+id/main_fragment_announcement_button"
                 style="@style/Widget.AppCompat.Button.Colored"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -43,7 +42,7 @@
                 android:text="@string/announcements" />
 
             <Button
-                android:id="@+id/main_countdown_button"
+                android:id="@+id/main_fragment_countdown_button"
                 style="@style/Widget.AppCompat.Button.Colored"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -53,7 +52,7 @@
                 android:text="@string/countdown_calendar" />
 
             <Button
-                android:id="@+id/main_canvas_button"
+                android:id="@+id/main_fragment_canvas_button"
                 style="@style/Widget.AppCompat.Button.Colored"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -63,7 +62,7 @@
                 android:text="@string/canvas" />
 
             <Button
-                android:id="@+id/main_calendar_button"
+                android:id="@+id/main_fragment_calendar_button"
                 style="@style/Widget.AppCompat.Button.Colored"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -73,7 +72,7 @@
                 android:text="@string/calendar" />
 
             <Button
-                android:id="@+id/main_studentID_button"
+                android:id="@+id/main_fragment_studentID_button"
                 style="@style/Widget.AppCompat.Button.Colored"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -83,13 +82,13 @@
                 android:text="@string/student_id" />
 
             <TextView
-                android:id="@+id/main_black_border_1"
+                android:id="@+id/main_fragment_black_border_1"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/activity_vertical_margin"
                 android:background="@color/black" />
 
             <Button
-                android:id="@+id/main_clubsList_button"
+                android:id="@+id/main_fragment_clubsList_button"
                 style="@style/Widget.AppCompat.Button.Colored"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -99,7 +98,7 @@
                 android:text="@string/clubs" />
 
             <Button
-                android:id="@+id/main_collegesList_button"
+                android:id="@+id/main_fragment_collegesList_button"
                 style="@style/Widget.AppCompat.Button.Colored"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -109,13 +108,13 @@
                 android:text="@string/colleges" />
 
             <TextView
-                android:id="@+id/main_black_border_2"
+                android:id="@+id/main_fragment_black_border_2"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/activity_vertical_margin"
                 android:background="@color/black" />
 
             <Button
-                android:id="@+id/main_hotlines_button"
+                android:id="@+id/main_fragment_hotlines_button"
                 style="@style/Widget.AppCompat.Button.Colored"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -125,13 +124,13 @@
                 android:text="@string/hotlines" />
 
             <TextView
-                android:id="@+id/main_black_border_3"
+                android:id="@+id/main_fragment_black_border_3"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/activity_vertical_margin"
                 android:background="@color/black" />
 
             <Button
-                android:id="@+id/main_LGHSTwitterFeed_button"
+                android:id="@+id/main_fragment_LGHSTwitterFeed_button"
                 style="@android:style/Widget.Holo.Button"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -142,7 +141,7 @@
                 android:textSize="16sp" />
 
             <TextView
-                android:id="@+id/main_black_border_4"
+                android:id="@+id/main_fragment_black_border_4"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/activity_vertical_margin"
                 android:background="@color/black" />

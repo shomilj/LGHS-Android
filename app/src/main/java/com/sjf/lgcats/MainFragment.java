@@ -17,15 +17,15 @@ import android.widget.Button;
 
 public class MainFragment extends Fragment {
 
-    private Button mainAnnouncementButton;
-    private Button mainCountdownButton;
-    private Button mainCanvasButton;
-    private Button mainCalendarButton;
-    private Button mainStudentIDButton;
-    private Button mainClubsListButton;
-    private Button mainCollegesListButton;
-    private Button mainHotlinesButton;
-    private Button mainLGHSTwitterFeedButton;
+    private Button mainFragmentAnnouncementButton;
+    private Button mainFragmentCountdownButton;
+    private Button mainFragmentCanvasButton;
+    private Button mainFragmentCalendarButton;
+    private Button mainFragmentStudentIDButton;
+    private Button mainFragmentClubsListButton;
+    private Button mainFragmentCollegesListButton;
+    private Button mainFragmentHotlinesButton;
+    private Button mainFragmentLGHSTwitterFeedButton;
 
     public MainFragment() {
         // Required empty public constructor
@@ -53,19 +53,19 @@ public class MainFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_main, container, false);
-        View view2 = getView();
 
         // Inflate the layout for this fragment
-        mainAnnouncementButton = (Button) view.findViewById(R.id.main_announcement_button);
-        mainCountdownButton = (Button) view.findViewById(R.id.main_countdown_button);
-        mainCanvasButton = (Button) view.findViewById(R.id.main_canvas_button);
-        mainCalendarButton = (Button) view.findViewById(R.id.main_calendar_button);
-        mainStudentIDButton = (Button) view.findViewById(R.id.main_studentID_button);
-        mainClubsListButton = (Button) view.findViewById(R.id.main_clubsList_button);
-        mainCollegesListButton = (Button) view.findViewById(R.id.main_collegesList_button);
-        mainHotlinesButton = (Button) view.findViewById(R.id.main_hotlines_button);
-        mainLGHSTwitterFeedButton = (Button) view.findViewById(R.id.main_LGHSTwitterFeed_button);
+        View view = inflater.inflate(R.layout.fragment_main, container, false);
+
+        mainFragmentAnnouncementButton = (Button) view.findViewById(R.id.main_fragment_announcement_button);
+        mainFragmentCountdownButton = (Button) view.findViewById(R.id.main_fragment_countdown_button);
+        mainFragmentCanvasButton = (Button) view.findViewById(R.id.main_fragment_canvas_button);
+        mainFragmentCalendarButton = (Button) view.findViewById(R.id.main_fragment_calendar_button);
+        mainFragmentStudentIDButton = (Button) view.findViewById(R.id.main_fragment_studentID_button);
+        mainFragmentClubsListButton = (Button) view.findViewById(R.id.main_fragment_clubsList_button);
+        mainFragmentCollegesListButton = (Button) view.findViewById(R.id.main_fragment_collegesList_button);
+        mainFragmentHotlinesButton = (Button) view.findViewById(R.id.main_fragment_hotlines_button);
+        mainFragmentLGHSTwitterFeedButton = (Button) view.findViewById(R.id.main_fragment_LGHSTwitterFeed_button);
 
         initiateButtons();
 
@@ -84,24 +84,23 @@ public class MainFragment extends Fragment {
 
     public void initiateButtons () {
 
-        mainAnnouncementButton.setOnClickListener(new View.OnClickListener() {
+        mainFragmentAnnouncementButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                System.out.println("i'll try spinning, that's a good trick");
                 Intent intent = new Intent(getActivity(), AnnouncementsActivity.class);
                 startActivity(intent);
             }
         });
 
-        mainCountdownButton.setOnClickListener(new View.OnClickListener() {
+        mainFragmentCountdownButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // Intent intent = new Intent(MainActivity.this, AnnouncementsActivity.class);
-                // startActivity(intent);
+                Intent intent = new Intent(getActivity(), AnnouncementsActivity.class);
+                startActivity(intent);
             }
         });
 
-        mainCanvasButton.setOnClickListener(new View.OnClickListener() {
+        mainFragmentCanvasButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), WebViewActivity.class);
@@ -111,16 +110,15 @@ public class MainFragment extends Fragment {
             }
         });
 
-        mainCalendarButton.setOnClickListener(new View.OnClickListener() {
+        mainFragmentCalendarButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                System.out.println("hello there general kenobi");
                 Intent intent = new Intent(getActivity(), CalendarActivity.class);
                 startActivity(intent);
             }
         });
 
-        mainStudentIDButton.setOnClickListener(new View.OnClickListener() {
+        mainFragmentStudentIDButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), StudentIDActivity.class);
@@ -128,7 +126,7 @@ public class MainFragment extends Fragment {
             }
         });
 
-        mainClubsListButton.setOnClickListener(new View.OnClickListener() {
+        mainFragmentClubsListButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), ClubsListActivity.class);
@@ -136,7 +134,7 @@ public class MainFragment extends Fragment {
             }
         });
 
-        mainCollegesListButton.setOnClickListener(new View.OnClickListener() {
+        mainFragmentCollegesListButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), CollegesListActivity.class);
@@ -144,7 +142,7 @@ public class MainFragment extends Fragment {
             }
         });
 
-        mainHotlinesButton.setOnClickListener(new View.OnClickListener() {
+        mainFragmentHotlinesButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), HotlinesActivity.class);
@@ -152,7 +150,7 @@ public class MainFragment extends Fragment {
             }
         });
 
-        mainLGHSTwitterFeedButton.setOnClickListener(new View.OnClickListener() {
+        mainFragmentLGHSTwitterFeedButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), WebViewActivity.class);
