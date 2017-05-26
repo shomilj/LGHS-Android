@@ -1,18 +1,17 @@
-<?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.sjf.lgcats.MainActivity"
-    tools:showIn="@layout/activity_main"
-    android:id="@+id/content_main_constraint_layout">
+    tools:context="com.sjf.lgcats.MainFragment"
+    tools:showIn="@layout/app_bar_main"
+    android:id="@+id/fragment_main_frame_layout">
 
     <ScrollView
-        android:id="@+id/main_scroll_view1"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:id="@+id/main_scroll_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -22,7 +21,7 @@
         android:background="@color/colorPrimaryDark">
 
         <LinearLayout
-            android:id="@+id/main_linear_layout1"
+            android:id="@+id/main_linear_layout"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
@@ -33,18 +32,28 @@
             android:background="@color/colorPrimaryDark"
             android:weightSum="1">
 
-            <!--<Button
-                android:id="@+id/main_countdown_button1"
+            <Button
+                android:id="@+id/main_announcement_button"
                 style="@style/Widget.AppCompat.Button.Colored"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginBottom="1dp"
                 android:layout_marginTop="1dp"
                 android:background="@color/colorPrimary"
-                android:text="@string/countdown_calendar" />-->
+                android:text="@string/announcements" />
 
             <Button
-                android:id="@+id/main_canvas_button1"
+                android:id="@+id/main_countdown_button"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="1dp"
+                android:layout_marginTop="1dp"
+                android:background="@color/colorPrimary"
+                android:text="@string/countdown_calendar" />
+
+            <Button
+                android:id="@+id/main_canvas_button"
                 style="@style/Widget.AppCompat.Button.Colored"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -54,7 +63,7 @@
                 android:text="@string/canvas" />
 
             <Button
-                android:id="@+id/main_calendar_button1"
+                android:id="@+id/main_calendar_button"
                 style="@style/Widget.AppCompat.Button.Colored"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -64,7 +73,7 @@
                 android:text="@string/calendar" />
 
             <Button
-                android:id="@+id/main_studentID_button1"
+                android:id="@+id/main_studentID_button"
                 style="@style/Widget.AppCompat.Button.Colored"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -74,13 +83,13 @@
                 android:text="@string/student_id" />
 
             <TextView
-                android:id="@+id/main_black_border_11"
+                android:id="@+id/main_black_border_1"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/activity_vertical_margin"
                 android:background="@color/black" />
 
             <Button
-                android:id="@+id/main_clubsList_button1"
+                android:id="@+id/main_clubsList_button"
                 style="@style/Widget.AppCompat.Button.Colored"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -90,7 +99,7 @@
                 android:text="@string/clubs" />
 
             <Button
-                android:id="@+id/main_collegesList_button1"
+                android:id="@+id/main_collegesList_button"
                 style="@style/Widget.AppCompat.Button.Colored"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -100,13 +109,13 @@
                 android:text="@string/colleges" />
 
             <TextView
-                android:id="@+id/main_black_border_21"
+                android:id="@+id/main_black_border_2"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/activity_vertical_margin"
                 android:background="@color/black" />
 
             <Button
-                android:id="@+id/main_hotlines_button1"
+                android:id="@+id/main_hotlines_button"
                 style="@style/Widget.AppCompat.Button.Colored"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -116,13 +125,13 @@
                 android:text="@string/hotlines" />
 
             <TextView
-                android:id="@+id/main_black_border_31"
+                android:id="@+id/main_black_border_3"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/activity_vertical_margin"
                 android:background="@color/black" />
 
             <Button
-                android:id="@+id/main_LGHSTwitterFeed_button1"
+                android:id="@+id/main_LGHSTwitterFeed_button"
                 style="@android:style/Widget.Holo.Button"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -133,7 +142,7 @@
                 android:textSize="16sp" />
 
             <TextView
-                android:id="@+id/main_black_border_41"
+                android:id="@+id/main_black_border_4"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/activity_vertical_margin"
                 android:background="@color/black" />
@@ -141,4 +150,4 @@
         </LinearLayout>
     </ScrollView>
 
-</android.support.constraint.ConstraintLayout>
+</FrameLayout>

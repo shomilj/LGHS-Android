@@ -134,7 +134,7 @@
         <activity
             android:name=".SelectUserTypeActivity"
             android:label="@string/title_activity_select_user_type"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar"/>
     </application>
 
 </manifest>

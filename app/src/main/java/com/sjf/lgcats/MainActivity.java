@@ -1,7 +1,10 @@
 package com.sjf.lgcats;
 
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -27,16 +30,6 @@ import android.widget.Button;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    // private TextView mainDay
-    private Button mainAnnouncementButton;
-    private Button mainCountdownButton;
-    private Button mainCanvasButton;
-    private Button mainCalendarButton;
-    private Button mainStudentIDButton;
-    private Button mainClubsListButton;
-    private Button mainCollegesListButton;
-    private Button mainHotlinesButton;
-    private Button mainLGHSTwitterFeedButton;
     private DrawerLayout drawer;
     private NavigationView navigationView;
 
@@ -46,17 +39,11 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        mainAnnouncementButton = (Button) findViewById(R.id.main_announcement_button);
-        mainCountdownButton = (Button) findViewById(R.id.main_countdown_button);
-        mainCanvasButton = (Button) findViewById(R.id.main_canvas_button);
-        mainCalendarButton = (Button) findViewById(R.id.main_calendar_button);
-        mainStudentIDButton = (Button) findViewById(R.id.main_studentID_button);
-        mainClubsListButton = (Button) findViewById(R.id.main_clubsList_button);
-        mainCollegesListButton = (Button) findViewById(R.id.main_collegesList_button);
-        mainHotlinesButton = (Button) findViewById(R.id.main_hotlines_button);
-        mainLGHSTwitterFeedButton = (Button) findViewById(R.id.main_LGHSTwitterFeed_button);
-        drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawer = (DrawerLayout) findViewById(R.id.activity_main_drawer_layout);
         navigationView = (NavigationView) findViewById(R.id.nav_view);
+
+        MainFragment mainFragment = MainFragment.newInstance();
+        openFragmentInContentMain(mainFragment);
 
         setSupportActionBar(toolbar);
         navigationView.setNavigationItemSelectedListener(this);
@@ -76,87 +63,11 @@ public class MainActivity extends AppCompatActivity
         //window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         //window.setStatusBarColor(ContextCompat.getColor(this, R.color.black));
 
-        mainAnnouncementButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, AnnouncementsActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        mainCountdownButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // Intent intent = new Intent(MainActivity.this, AnnouncementsActivity.class);
-                // startActivity(intent);
-            }
-        });
-
-        mainCanvasButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, WebViewActivity.class);
-                intent.putExtra("app", 0);
-                intent.putExtra("url", getString(R.string.canvas_grades_link));
-                startActivity(intent);
-            }
-        });
-
-        mainCalendarButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, CalendarActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        mainStudentIDButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, StudentIDActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        mainClubsListButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, ClubsListActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        mainCollegesListButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, CollegesListActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        mainHotlinesButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, HotlinesActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        mainLGHSTwitterFeedButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, WebViewActivity.class);
-                intent.putExtra("app", R.string.twitter);
-                intent.putExtra("url", getString(R.string.twitter_web_link));
-                startActivity(intent);
-            }
-        });
-
     }
 
     @Override
-    public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+    public void onBackPressed () {
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.activity_main_drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
@@ -165,14 +76,14 @@ public class MainActivity extends AppCompatActivity
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
+    public boolean onCreateOptionsMenu (Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
+    public boolean onOptionsItemSelected (MenuItem item) {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
@@ -188,12 +99,13 @@ public class MainActivity extends AppCompatActivity
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
+    public boolean onNavigationItemSelected (MenuItem item) {
         // Handle calendar_navigation view item clicks here.
         int id = item.getItemId();
 
         if (id == R.id.nav_camera) {
-            // Handle the camera action
+            MainFragment mainFragment = MainFragment.newInstance();
+            openFragmentInContentMain(mainFragment);
         } else if (id == R.id.nav_gallery) {
 
         } else if (id == R.id.nav_slideshow) {
@@ -206,8 +118,18 @@ public class MainActivity extends AppCompatActivity
 
         }
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.activity_main_drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+    public void openFragmentInContentMain (Fragment fragment) {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        System.out.println("nooooo");
+        fragmentTransaction.replace(R.id.MainActivityFragmentPlaceHolder, fragment);
+        System.out.println("yes");
+        fragmentTransaction.commit();
+    }
+
 }
