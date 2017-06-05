@@ -38,16 +38,13 @@ public class MainFragment extends Fragment {
      * @return A new instance of fragment MainFragment.
      */
     public static MainFragment newInstance() {
-
         return new MainFragment();
-
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-
     }
 
     @Override
@@ -95,7 +92,7 @@ public class MainFragment extends Fragment {
         mainFragmentCountdownButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), AnnouncementsActivity.class);
+                Intent intent = new Intent(getActivity(), CountdownActivity.class);
                 startActivity(intent);
             }
         });
@@ -105,7 +102,7 @@ public class MainFragment extends Fragment {
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), WebViewActivity.class);
                 intent.putExtra("app", 0);
-                intent.putExtra("url", getString(R.string.canvas_grades_link));
+                intent.putExtra("url", LinkUtils.getLink(LinkUtils.PORTAL_CANVAS, getContext()));
                 startActivity(intent);
             }
         });
@@ -159,6 +156,5 @@ public class MainFragment extends Fragment {
                 startActivity(intent);
             }
         });
-
     }
 }

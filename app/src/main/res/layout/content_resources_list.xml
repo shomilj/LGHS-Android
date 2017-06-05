@@ -5,11 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.sjf.lgcats.AnnouncementsActivity"
-    tools:showIn="@layout/activity_announcements">
+    tools:context="com.sjf.lgcats.ResourcesListActivity"
+    tools:showIn="@layout/activity_resources_list">
 
     <ListView
-        android:id="@+id/announcement_list_view"
+        android:id="@+id/resources_list_activity_listview"
         android:layout_height="495dp"
         android:layout_width="368dp"
         android:layout_marginLeft="8dp"
@@ -22,5 +22,4 @@
         android:layout_marginTop="0dp"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintVertical_bias="0.0"></ListView>
-
 </android.support.constraint.ConstraintLayout>

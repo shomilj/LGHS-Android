@@ -8,17 +8,20 @@
     tools:context="com.sjf.lgcats.AnnouncementDetailActivity"
     tools:showIn="@layout/activity_announcement_detail">
 
-    <ScrollView
-        android:id="@+id/ANNOUNCEMENTS_SCROLLER_ID"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+    <TextView
+        android:id="@+id/announcements_detail_text_view"
+        android:layout_width="354dp"
+        android:layout_height="481dp"
+        android:text="TextView"
+        android:maxLines="1000"
+        android:includeFontPadding="false"
         android:scrollbars="vertical"
-        android:fillViewport="true">
-
-        <TextView
-            android:id="@+id/ANNOUNCEMENT_TEXT_VIEW"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_weight="1.0" />
-    </ScrollView>
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="0dp"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent" />
 </android.support.constraint.ConstraintLayout>

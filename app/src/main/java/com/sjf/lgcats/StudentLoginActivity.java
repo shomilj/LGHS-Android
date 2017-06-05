@@ -8,6 +8,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -42,6 +43,9 @@ public class StudentLoginActivity extends AppCompatActivity {
 
     private void assignVariables() {
         mIdEditText = (EditText) findViewById(R.id.sso_id_field);
+        if (mIdEditText.requestFocus()) {
+            getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
+        }
         mLastNameEditText = (EditText) findViewById(R.id.sso_lastname_field);
         mSigninButton = (Button) findViewById(R.id.sso_signin_button);
     }
@@ -58,15 +62,9 @@ public class StudentLoginActivity extends AppCompatActivity {
     }
 
     private void loginSuccess(String id) {
-        // TODO: move on to student view
-        // TODO: save user type as studentContext
         SharedPreferences.Editor editor = getSharedPreferences(getString(R.string.shared_prefs), MODE_PRIVATE).edit();
-
-        // TODO: make these final variables in student clas
-        editor.putString("StudentID", id);
-        editor.putString("UserType", "Student");
-        editor.commit();
-
+        UserUtils.setUserType(UserUtils.KEY_STUDENT, editor);
+        UserUtils.setUsername(id, editor);
         Intent intent = new Intent(StudentLoginActivity.this, MainActivity.class);
         startActivity(intent);
     }

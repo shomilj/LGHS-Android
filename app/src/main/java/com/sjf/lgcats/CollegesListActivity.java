@@ -1,10 +1,12 @@
 package com.sjf.lgcats;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -104,8 +106,8 @@ public class CollegesListActivity extends AppCompatActivity {
 
                 // create a new college & add it if it's upcoming
                 College col = new College(name, time, location, date);
-                // if (col.isUpcoming()) colleges.add(col);
-                colleges.add(col);
+                if (col.isUpcoming()) colleges.add(col);
+                // colleges.add(col);
             }
         }
     }
@@ -115,6 +117,18 @@ public class CollegesListActivity extends AppCompatActivity {
             public void run() {
                 fillListView();
                 setupListListener();
+                if (colleges.size() == 0) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(CollegesListActivity.this);
+                    builder.setMessage("At this time, no colleges have scheduled visits to LGHS.")
+                            .setCancelable(false)
+                            .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    finish();
+                                }
+                            });
+                    AlertDialog alert = builder.create();
+                    alert.show();
+                }
             }
         });
     }

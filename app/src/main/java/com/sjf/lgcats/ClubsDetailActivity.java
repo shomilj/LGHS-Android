@@ -20,6 +20,7 @@ public class ClubsDetailActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        System.out.println("Clubs detail view was created");
         setupView();
         assignVariables();
         fetchExtras();
@@ -36,6 +37,9 @@ public class ClubsDetailActivity extends AppCompatActivity {
 
     private void setupView() {
         setContentView(R.layout.activity_clubs_detail);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setTitle("Clubs @ LGHS");
     }
 
@@ -94,4 +98,3 @@ public class ClubsDetailActivity extends AppCompatActivity {
         }
     }
 }
-

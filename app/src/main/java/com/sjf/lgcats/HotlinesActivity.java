@@ -57,8 +57,6 @@ public class HotlinesActivity extends AppCompatActivity {
         setupView();
         assignVariables();
         startDownload();
-
-
     }
 
     private void startDownload() {
@@ -80,6 +78,7 @@ public class HotlinesActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        setTitle("Hotlines");
     }
 
     public void parseHotlines()

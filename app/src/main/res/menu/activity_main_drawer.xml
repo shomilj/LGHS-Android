@@ -4,33 +4,12 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_main"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="Main" />
+            android:icon="@drawable/ic_menu_send"
+            android:title="Today" />
         <item
             android:id="@+id/nav_resources"
             android:icon="@drawable/ic_menu_gallery"
             android:title="Resources" />
-        <item
-            android:id="@+id/nav_news"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="El Gato News" />
-        <item
-            android:id="@+id/nav_calculators"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="Calculators" />
     </group>
-
-    <item android:title="Development Suggestions">
-        <menu>
-            <item
-                android:id="@+id/nav_feedback"
-                android:icon="@drawable/ic_menu_share"
-                android:title="Feedback" />
-            <item
-                android:id="@+id/nav_bugs"
-                android:icon="@drawable/ic_menu_send"
-                android:title="Report Bugs" />
-        </menu>
-    </item>
 
 </menu>

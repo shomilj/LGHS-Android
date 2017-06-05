@@ -39,6 +39,7 @@ public class ClubsListActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        System.out.println("ClubsListActivity was created");
         setupView();
         assignVariables();
         startDownload();
@@ -52,7 +53,7 @@ public class ClubsListActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        setTitle("Clubs @ LGHS");
+        setTitle("Clubs");
     }
 
     /**
@@ -80,13 +81,12 @@ public class ClubsListActivity extends AppCompatActivity {
 
 
     public void fetchClubs() {
-
         // get the link associated with the club spreadsheet
         String link = LinkUtils.getLink(LinkUtils.HOST_CLUBS, getApplicationContext());
-
+        System.out.println(link);
         // download the contents of the text file at the link
         String file = StringUtil.getUrlContents(link);
-
+        System.out.println(file);
         parseClubs(file);
         sortClubList();
         updateUI();
@@ -121,6 +121,7 @@ public class ClubsListActivity extends AppCompatActivity {
                 clubs.add(c);
             }
         }
+        System.out.println(clubs);
     }
 
     private void sortClubList() {
@@ -165,7 +166,7 @@ public class ClubsListActivity extends AppCompatActivity {
 
         SimpleAdapter adapter = new SimpleAdapter(this, data,
                 android.R.layout.simple_list_item_2,
-                new String[]{"First Line", "Second Line"},
+                new String[]{Club.lv_item_1_key, Club.lv_item_2_key},
                 new int[]{android.R.id.text1, android.R.id.text2});
 
         if (mListView == null) {

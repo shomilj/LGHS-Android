@@ -58,6 +58,8 @@ public class College {
         String today = fmt.format(new Date());
         String visit = fmt.format(date);
 
+        System.out.println(today);
+        System.out.println(visit);
         // NOTE: THIS SHOULD BE <= 0. FOR TESTING PURPOSES (To make sure there's dummy data) change it to >= 0.
         return today.compareTo(visit) <= 0;
     }

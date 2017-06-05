@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.sjf.lgcats.ClubsDetailActivity">
+    tools:context="com.sjf.lgcats.ResourcesStackActivity">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -20,6 +20,6 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_clubs_detail" />
+    <include layout="@layout/content_resources_stack" />
 
 </android.support.design.widget.CoordinatorLayout>

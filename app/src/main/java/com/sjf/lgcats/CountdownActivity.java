@@ -132,7 +132,12 @@ public class CountdownActivity extends AppCompatActivity {
             if (daysToEvent > 0) {
                 String description = event.getDescription();
                 String date = event.getDateString();
-                String day = "" + daysToEvent + " days until " + description;
+                String day;
+                if (daysToEvent == 1) {
+                    day = "1 day until " + description;
+                } else {
+                    day = "" + daysToEvent + " days until " + description;
+                }
                 HashMap<String, String> datum = new HashMap<String, String>();
                 datum.put("day", day);
                 datum.put("date", date);

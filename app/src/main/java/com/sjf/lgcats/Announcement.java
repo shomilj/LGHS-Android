@@ -1,8 +1,6 @@
-package com.sjf.lgcats;
 
-/**
- * Created by QDL on 5/16/17.
- */
+
+package com.sjf.lgcats;
 
 public class Announcement {
 

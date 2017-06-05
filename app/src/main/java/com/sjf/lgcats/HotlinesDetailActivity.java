@@ -25,9 +25,9 @@ public class HotlinesDetailActivity extends AppCompatActivity {
 
     private void setTextView() {
         String content = this.getIntent().getExtras().getString("content");
-        mTextView = (TextView) findViewById(R.id.HOTLINES_TEXT_VIEW);
+        mTextView = (TextView) findViewById(R.id.hotlines_text_view);
         mTextView.setText(content);
-        mTextView.setTextSize(14);
+        mTextView.setTextSize(20);
     }
 
     private void setupView() {

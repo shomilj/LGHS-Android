@@ -32,12 +32,28 @@ public class CalendarActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_calendar);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle(getString(R.string.calendar));
+        setupView();
+        assignVariables();
+        setListeners();
+        configureTextViews();
+    }
 
+    private void configureTextViews() {
+        calendarBellScheduleBlock1.setPadding(60, 0, 0, 0);
+        calendarBellScheduleTutorial.setPadding(60, 0, 0, 0);
+        calendarBellScheduleBlock2.setPadding(60, 0, 0, 0);
+        calendarBellScheduleLunch.setPadding(60, 0, 0, 0);
+        calendarBellScheduleBlock3.setPadding(60, 0, 0, 0);
+        calendarBellScheduleBlock4.setPadding(60, 0, 0, 0);
+        calendarBellScheduleBlock1time.setPadding(60, 0, 0, 0);
+        calendarBellScheduleTutorialtime.setPadding(60, 0, 0, 0);
+        calendarBellScheduleBlock2time.setPadding(60, 0, 0, 0);
+        calendarBellScheduleLunchtime.setPadding(60, 0, 0, 0);
+        calendarBellScheduleBlock3time.setPadding(60, 0, 0, 0);
+        calendarBellScheduleBlock4time.setPadding(60, 0, 0, 0);
+    }
+
+    private void assignVariables() {
         calendarCalendarButton = (Button) findViewById(R.id.calendar_calendar_button);
         calendarBellScheduleHeader = (Button) findViewById(R.id.calendar_bell_schedule_header);
         calendarBellScheduleBlock1 = (TextView) findViewById(R.id.calendar_bell_schedule_block_1);
@@ -52,20 +68,9 @@ public class CalendarActivity extends AppCompatActivity {
         calendarBellScheduleLunchtime = (TextView) findViewById(R.id.calendar_bell_schedule_lunch_time);
         calendarBellScheduleBlock3time = (TextView) findViewById(R.id.calendar_bell_schedule_block_3_time);
         calendarBellScheduleBlock4time = (TextView) findViewById(R.id.calendar_bell_schedule_block_4_time);
+    }
 
-        calendarBellScheduleBlock1.setPadding(60, 0, 0, 0);
-        calendarBellScheduleTutorial.setPadding(60, 0, 0, 0);
-        calendarBellScheduleBlock2.setPadding(60, 0, 0, 0);
-        calendarBellScheduleLunch.setPadding(60, 0, 0, 0);
-        calendarBellScheduleBlock3.setPadding(60, 0, 0, 0);
-        calendarBellScheduleBlock4.setPadding(60, 0, 0, 0);
-        calendarBellScheduleBlock1time.setPadding(60, 0, 0, 0);
-        calendarBellScheduleTutorialtime.setPadding(60, 0, 0, 0);
-        calendarBellScheduleBlock2time.setPadding(60, 0, 0, 0);
-        calendarBellScheduleLunchtime.setPadding(60, 0, 0, 0);
-        calendarBellScheduleBlock3time.setPadding(60, 0, 0, 0);
-        calendarBellScheduleBlock4time.setPadding(60, 0, 0, 0);
-
+    private void setListeners() {
         calendarCalendarButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -84,6 +89,14 @@ public class CalendarActivity extends AppCompatActivity {
         });
     }
 
+    private void setupView() {
+        setContentView(R.layout.activity_calendar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle(getString(R.string.calendar));
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -97,11 +110,6 @@ public class CalendarActivity extends AppCompatActivity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
 
         return super.onOptionsItemSelected(item);
     }

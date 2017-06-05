@@ -3,159 +3,25 @@ xmlns:tools="http://schemas.android.com/tools"
 xmlns:app="http://schemas.android.com/apk/res-auto"
 android:layout_width="match_parent"
 android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
 app:layout_behavior="@string/appbar_scrolling_view_behavior"
 tools:context="com.sjf.lgcats.ResourcesFragment"
 android:id="@+id/fragment_resources_frame_layout">
 
-    <ScrollView
-    android:id="@+id/resources_fragment_scroll_view"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintLeft_toLeftOf="parent"
-    app:layout_constraintRight_toRightOf="parent"
-    app:layout_constraintTop_toTopOf="parent"
-    app:layout_constraintVertical_bias="0.0"
-    app:layout_constraintHorizontal_bias="0.0"
-    android:background="@color/colorPrimaryDark">
-
-    <LinearLayout
-        android:id="@+id/resources_fragment_linear_layout"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <ListView
+        android:id="@+id/resources_list_view"
+        android:layout_height="495dp"
+        android:layout_width="368dp"
+        android:layout_marginLeft="8dp"
         app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="8dp"
+        android:layout_marginRight="8dp"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:background="@color/colorPrimaryDark"
-        android:weightSum="1">
-
-        <TextView
-            android:id="@+id/resources_fragment_quick_links_header"
-            style="@style/TextAppearance.AppCompat.Title"
-            android:gravity="center"
-            android:textAppearance="@style/TextAppearance.AppCompat.Title"
-            android:textColor="@android:color/white"
-            android:layout_width="match_parent"
-            android:layout_height="@android:dimen/app_icon_size"
-            android:background="@color/colorPrimaryDark"
-            android:text="@string/quick_links" />
-
-        <Button
-            android:id="@+id/resources_fragment_portals"
-            style="@style/Widget.AppCompat.Button.Colored"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="1dp"
-            android:layout_marginTop="1dp"
-            android:background="@color/colorPrimary"
-            android:text="@string/announcements" />
-
-        <Button
-            android:id="@+id/resources_fragment_athletics_and_activities"
-            style="@style/Widget.AppCompat.Button.Colored"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="1dp"
-            android:layout_marginTop="1dp"
-            android:background="@color/colorPrimary"
-            android:text="@string/announcements" />
-
-        <TextView
-            android:id="@+id/resources_fragment_students_header"
-            style="@style/TextAppearance.AppCompat.Title"
-            android:layout_width="match_parent"
-            android:layout_height="@android:dimen/app_icon_size"
-            android:background="@color/colorPrimaryDark"
-            android:gravity="center"
-            android:text="@string/students"
-            android:textAppearance="@style/TextAppearance.AppCompat.Title"
-            android:textColor="@android:color/white" />
-
-        <Button
-            android:id="@+id/resources_fragment_courses_and_curricula"
-            style="@style/Widget.AppCompat.Button.Colored"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="1dp"
-            android:layout_marginTop="1dp"
-            android:background="@color/colorPrimary"
-            android:text="@string/announcements" />
-
-        <Button
-            android:id="@+id/resources_fragment_school_policies"
-            style="@style/Widget.AppCompat.Button.Colored"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="1dp"
-            android:layout_marginTop="1dp"
-            android:background="@color/colorPrimary"
-            android:text="@string/announcements" />
-
-        <TextView
-            android:id="@+id/resources_fragment_departments_header"
-            style="@style/TextAppearance.AppCompat.Title"
-            android:layout_width="match_parent"
-            android:layout_height="@android:dimen/app_icon_size"
-            android:background="@color/colorPrimaryDark"
-            android:gravity="center"
-            android:text="@string/departments"
-            android:textAppearance="@style/TextAppearance.AppCompat.Title"
-            android:textColor="@android:color/white" />
-
-        <Button
-            android:id="@+id/resources_fragment_staff"
-            style="@style/Widget.AppCompat.Button.Colored"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="1dp"
-            android:layout_marginTop="1dp"
-            android:background="@color/colorPrimary"
-            android:text="@string/announcements" />
-
-        <Button
-            android:id="@+id/resources_fragment_guidance_information"
-            style="@style/Widget.AppCompat.Button.Colored"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="1dp"
-            android:layout_marginTop="1dp"
-            android:background="@color/colorPrimary"
-            android:text="@string/announcements" />
-
-        <Button
-            android:id="@+id/resources_fragment_library"
-            style="@style/Widget.AppCompat.Button.Colored"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="1dp"
-            android:layout_marginTop="1dp"
-            android:background="@color/colorPrimary"
-            android:text="@string/announcements" />
-
-        <TextView
-            android:id="@+id/resources_fragment_parents_header"
-            style="@style/TextAppearance.AppCompat.Title"
-            android:layout_width="match_parent"
-            android:layout_height="@android:dimen/app_icon_size"
-            android:background="@color/colorPrimaryDark"
-            android:gravity="center"
-            android:text="@string/parents"
-            android:textAppearance="@style/TextAppearance.AppCompat.Title"
-            android:textColor="@android:color/white" />
-
-        <Button
-            android:id="@+id/resources_fragment_community_links"
-            style="@style/Widget.AppCompat.Button.Colored"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="1dp"
-            android:layout_marginTop="1dp"
-            android:background="@color/colorPrimary"
-            android:text="@string/announcements" />
-
-        </LinearLayout>
-    </ScrollView>
+        android:layout_marginTop="8dp"
+        android:paddingBottom="-20dp"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintVertical_bias="0.0"></ListView>
 
 </FrameLayout>

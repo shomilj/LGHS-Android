@@ -55,14 +55,18 @@ public class SelectUserTypeActivity extends AppCompatActivity {
     }
 
     private void goToStaff() {
-        // TODO: Go to staff login
+        SharedPreferences.Editor editor = getSharedPreferences(getString(R.string.shared_prefs), MODE_PRIVATE).edit();
+        UserUtils.setUserType(UserUtils.KEY_TEACHER, editor);
+        goToHomeScreen();
     }
 
     private void goToParent() {
-        // TODO: Save user type as a parent
         SharedPreferences.Editor editor = getSharedPreferences(getString(R.string.shared_prefs), MODE_PRIVATE).edit();
-        editor.putString("UserType", "Parent");
-        editor.commit();
+        UserUtils.setUserType(UserUtils.KEY_PARENT, editor);
+        goToHomeScreen();
+    }
+
+    private void goToHomeScreen() {
         Intent intent = new Intent(SelectUserTypeActivity.this, MainActivity.class);
         startActivity(intent);
     }

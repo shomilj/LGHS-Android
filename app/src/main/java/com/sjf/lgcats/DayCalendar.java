@@ -1,6 +1,7 @@
 package com.sjf.lgcats;
 
 import android.content.Context;
+import android.graphics.Color;
 
 import java.util.ArrayList;
 
@@ -66,12 +67,40 @@ public class DayCalendar {
         return null;
     }
 
+    public int getTextColorID() {
+        DayType current = getCurrent();
+        if (current != null && current.isBlackDay()) return R.color.colorPrimary;
+        return R.color.black;
+    }
+
+    public int getBackgroundColorID() {
+        DayType current = getCurrent();
+        if (current != null && current.isBlackDay()) return R.color.black;
+        return R.color.colorPrimary;
+    }
+
+    public DayType getCurrent() {
+        if (getToday() != null) return getToday();
+        if (getTomorrow() != null) return getTomorrow();
+        return null;
+    }
+
     public String getDescription() {
         DayType today = getToday();
         if (today != null) return today.getTodayDescription();
         DayType tomorrow = getTomorrow();
         if (tomorrow != null) return tomorrow.getTomorrowDescription();
-        return "";
+        return null;
+    }
+
+    // if today (or tomorrow, if today isn't a school day) is a black day, then return true.
+    public boolean isNextSchoolDayBlack() {
+        if (isSchoolDay()) {
+            if (getToday().isBlackDay()) return true;
+        } else {
+            if (getTomorrow().isBlackDay()) return true;
+        }
+        return false;
     }
 
     public boolean isSchoolDay() {

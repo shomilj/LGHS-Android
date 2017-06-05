@@ -1,8 +1,12 @@
 package com.sjf.lgcats;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.constraint.ConstraintLayout;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -10,7 +14,10 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
+
+import static com.sjf.lgcats.R.attr.title;
 
 /**
  * Gives the app time to load essential information.
@@ -28,51 +35,73 @@ import android.widget.TextView;
 
 public class LoadingActivity extends AppCompatActivity {
 
-    private TextView title;
+    private TextView mTitleLabel;
     private TextView mDayTypeLabel;
-    private String dayText;
+
+    private ProgressBar mProgressBar;
+    private int mProgressStatus = 0;
+    private Handler mHandler = new Handler();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_loading);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        setupView();
+        assignVariables();
+        setupDayType();
 
-        title = (TextView) findViewById(R.id.loading_screen_title);
-        mDayTypeLabel = (TextView) findViewById(R.id.loading_screen_day_type_label);
+        if (GlobalUtils.isConnected(this)) {
+            startDownload();
+        } else {
+            showNetworkError();
+        }
+    }
 
-        // display whether today is a black day or an orange day
-        DayCalendar cal = new DayCalendar(getApplicationContext());
-        dayText = cal.getDescription();
-        mDayTypeLabel.setText(dayText);
-
-        // download files in background
+    private void startDownload() {
         new Thread(new Runnable() {
             @Override
             public void run() {
                 downloadFiles();
             }
         }).start();
+    }
 
+    private void showNetworkError() {
+        AlertDialog alertDialog = new AlertDialog.Builder(this).create();
+        alertDialog.setTitle("Alert");
+        alertDialog.setMessage("LG CATS will have limited access to school resources without network. " +
+                "Please connect to WiFi or cellular data for full functionality.");
+        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                        nextScreen();
+                    }
+                });
+        alertDialog.show();
+    }
+
+    private void setupDayType() {
+        DayCalendar cal = new DayCalendar(this);
+        String description = cal.getDescription();
+        if (description == null) description = "";
+        mDayTypeLabel.setText(description);
+        mDayTypeLabel.setTextColor(cal.getTextColorID());
+        mTitleLabel.setTextColor(cal.getTextColorID());
         ConstraintLayout constraintLayout = (ConstraintLayout) findViewById(R.id.loading_activity_constraint_layout);
-        if (dayText.equals(getString(R.string.orange_day))) {
-            constraintLayout.setBackgroundColor(ContextCompat.getColor(LoadingActivity.this, R.color.colorPrimary));
-            title.setTextColor(ContextCompat.getColor(LoadingActivity.this, R.color.black));
-            mDayTypeLabel.setTextColor(ContextCompat.getColor(LoadingActivity.this, R.color.black));
-        }
-        else if (dayText.equals(getString(R.string.black_day))) {
-            constraintLayout.setBackgroundColor(ContextCompat.getColor(LoadingActivity.this, R.color.black));
-            title.setTextColor(ContextCompat.getColor(LoadingActivity.this, R.color.colorPrimary));
-            mDayTypeLabel.setTextColor(ContextCompat.getColor(LoadingActivity.this, R.color.colorPrimary));
-        }
-        else {
-            constraintLayout.setBackgroundColor(ContextCompat.getColor(LoadingActivity.this, R.color.colorAccent));
-            title.setTextColor(ContextCompat.getColor(LoadingActivity.this, R.color.black));
-            mDayTypeLabel.setTextColor(ContextCompat.getColor(LoadingActivity.this, R.color.black));
-        }
-        
+        constraintLayout.setBackgroundColor(cal.getBackgroundColorID());
+    }
+
+    private void assignVariables() {
+        mTitleLabel = (TextView) findViewById(R.id.loading_screen_title);
+        mDayTypeLabel = (TextView) findViewById(R.id.loading_screen_day_type_label);
+        mProgressBar = (ProgressBar) findViewById(R.id.initial_loading_spinner);
+    }
+
+    private void setupView() {
+        setContentView(R.layout.activity_loading);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
     }
 
     public void nextScreen() {
@@ -89,12 +118,25 @@ public class LoadingActivity extends AppCompatActivity {
 
     public void downloadFiles() {
         FileUtil.writeToFile(FileUtil.FILE_LINKS, StringUtil.getUrlContents(LinkUtils.LINK_LINKS), getApplicationContext());
+        // Update the progress bar
+        updateProgress();
         FileUtil.writeToFile(FileUtil.FILE_HOTLINES, StringUtil.getUrlContents(LinkUtils.LINK_HOTLINES), getApplicationContext());
+        updateProgress();
         FileUtil.writeToFile(FileUtil.FILE_LOGINS, StringUtil.getUrlContents(LinkUtils.LINK_LOGINS), getApplicationContext());
+        updateProgress();
         FileUtil.writeToFile(FileUtil.FILE_CALENDAR, StringUtil.getUrlContents(LinkUtils.LINK_CALENDAR), getApplicationContext());
+        updateProgress();
         FileUtil.writeToFile(FileUtil.FILE_COUNTDOWN, StringUtil.getUrlContents(LinkUtils.LINK_COUNTDOWN), getApplicationContext());
-        System.out.println("FINISHED DOWNLOADING FILES");
+        updateProgress();
         nextScreen();
+    }
+
+    private void updateProgress() {
+        mHandler.post(new Runnable() {
+            public void run() {
+                mProgressBar.incrementProgressBy(20);
+            }
+        });
     }
 
 }

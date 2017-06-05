@@ -1,5 +1,6 @@
 package com.sjf.lgcats;
 
+import android.content.SharedPreferences;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.content.Intent;
@@ -15,6 +16,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 /**
  * The ultimate nexus of the LG CATS app. Provides access to other activities.
@@ -33,6 +36,7 @@ public class MainActivity extends AppCompatActivity
     private DrawerLayout drawer;
     private NavigationView navigationView;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,6 +45,20 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         drawer = (DrawerLayout) findViewById(R.id.activity_main_drawer_layout);
         navigationView = (NavigationView) findViewById(R.id.nav_view);
+        View headerView = navigationView.getHeaderView(0);
+        TextView nameTextView = (TextView) headerView.findViewById(R.id.main_nav_student_name_text_view);
+        TextView idTextView = (TextView) headerView.findViewById(R.id.main_nav_student_id_text_view);
+        ImageView imageView = (ImageView) headerView.findViewById(R.id.main_nav_image_view);
+
+        SharedPreferences prefs = getSharedPreferences(getString(R.string.shared_prefs), MODE_PRIVATE);
+        if (UserUtils.isStudent(prefs) && UserUtils.getUsername(prefs) != null) {
+            String id = UserUtils.getUsername(prefs);
+            StudentList sList = new StudentList(this);
+            Student student = sList.getStudent(id);
+            String name = student.getFull();
+            nameTextView.setText(name);
+            idTextView.setText(id);
+        }
 
         MainFragment mainFragment = MainFragment.newInstance();
         openFragmentInContentMain(mainFragment);
@@ -83,8 +101,11 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        if (id == R.id.action_logout) {
+            SharedPreferences.Editor prefs = getSharedPreferences(getString(R.string.shared_prefs), MODE_PRIVATE).edit();
+            UserUtils.logout(prefs);
+            Intent intent = new Intent(this, SelectUserTypeActivity.class);
+            startActivity(intent);
         }
 
         return super.onOptionsItemSelected(item);
