@@ -1,3 +1,11 @@
 <component name="CopyrightManager">
-  <settings default="" />
+  <settings default="LG CATS">
+    <module2copyright>
+      <element module="Project Files" copyright="LG CATS" />
+    </module2copyright>
+    <LanguageOptions name="JAVA">
+      <option name="fileTypeOverride" value="3" />
+      <option name="block" value="false" />
+    </LanguageOptions>
+  </settings>
 </component>

@@ -1,12 +1,19 @@
+//
+// AnnouncementDetailActivity.java
+// LG CATS
+//
+// Developers: Shomil Jain, Cassandra Melax, Quintin Leary, and Harry Wang
+// Copyright © 2017 Los Gatos High School. All rights reserved.
+//
+// AnnouncementDetailActivity - this screen holds a text view that displays the content of the announcement only.
+//
+
 package com.sjf.lgcats;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.method.ScrollingMovementMethod;
-import android.view.View;
 import android.widget.TextView;
 
 public class AnnouncementDetailActivity extends AppCompatActivity {
