@@ -1,21 +1,25 @@
+//
+// ResourcesListActivity.java
+// LG CATS
+//
+// Developers: Shomil Jain, Cassandra Melax, Quintin Leary, and Harry Wang
+// Copyright © 2017 Los Gatos High School. All rights reserved.
+//
+// ResourcesListActivity - holds generic list of resource links
+//
+
 package com.sjf.lgcats;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
 
 public class ResourcesListActivity extends AppCompatActivity {
 

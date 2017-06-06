@@ -1,3 +1,13 @@
+//
+// MainActivity.java
+// LG CATS
+//
+// Developers: Shomil Jain, Cassandra Melax, Quintin Leary, and Harry Wang
+// Copyright © 2017 Los Gatos High School. All rights reserved.
+//
+// MainActivity - home page of the app. Holds the "today" view
+//
+
 package com.sjf.lgcats;
 
 import android.content.SharedPreferences;
@@ -15,20 +25,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-/**
- * The ultimate nexus of the LG CATS app. Provides access to other activities.
- *
- * @author  Shomil Jain
- * @author  Quintin Leary
- * @author  Cassandra Melax
- * @author  Harry Wang
- * @version 1.0
- * @since   1.0
- */
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -36,15 +34,61 @@ public class MainActivity extends AppCompatActivity
     private DrawerLayout drawer;
     private NavigationView navigationView;
 
-
+    // pre: none
+    // post: sets up the view
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // link XML file to java file
         setContentView(R.layout.activity_main);
 
+        assignVariables();
+
+        // setup toolbar
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        // set navigation view listener
+        navigationView.setNavigationItemSelectedListener(this);
+
+        openFragment();
+
+        // set up action bar drawer toggle button
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.setDrawerListener(toggle);
+        toggle.syncState();
+
+        // other various setup methods
+        setupNavHeader();
+        setDayType();
+    }
+
+    // pre: none
+    // post: opens MainFragment - a subset of this class
+    private void openFragment() {
+        MainFragment mainFragment = MainFragment.newInstance();
+        openFragmentInContentMain(mainFragment);
+    }
+
+    // pre: none
+    // post: initializes private variables
+    private void assignVariables() {
         drawer = (DrawerLayout) findViewById(R.id.activity_main_drawer_layout);
         navigationView = (NavigationView) findViewById(R.id.nav_view);
+    }
+
+    // pre: none
+    // post: sets the day type in the header
+    private void setDayType() {
+        DayCalendar cal = new DayCalendar(getApplicationContext());
+        getSupportActionBar().setTitle(cal.getDescription());
+    }
+
+    // pre: none
+    // post: sets up the navigation bar header to show name/id for student
+    private void setupNavHeader() {
         View headerView = navigationView.getHeaderView(0);
         TextView nameTextView = (TextView) headerView.findViewById(R.id.main_nav_student_name_text_view);
         TextView idTextView = (TextView) headerView.findViewById(R.id.main_nav_student_id_text_view);
@@ -59,23 +103,10 @@ public class MainActivity extends AppCompatActivity
             nameTextView.setText(name);
             idTextView.setText(id);
         }
-
-        MainFragment mainFragment = MainFragment.newInstance();
-        openFragmentInContentMain(mainFragment);
-
-        setSupportActionBar(toolbar);
-        navigationView.setNavigationItemSelectedListener(this);
-
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.setDrawerListener(toggle);
-        toggle.syncState();
-
-        // display whether it is a black or an orange day
-        DayCalendar cal = new DayCalendar(getApplicationContext());
-        getSupportActionBar().setTitle(cal.getDescription());
     }
 
+    // pre: none
+    // post: closes drawer if back button pressed
     @Override
     public void onBackPressed () {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.activity_main_drawer_layout);
@@ -86,6 +117,8 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
+    // pre: none
+    // post: configures the menu for logout button
     @Override
     public boolean onCreateOptionsMenu (Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -93,6 +126,8 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
+    // pre: none
+    // post: called when menu item is selected
     @Override
     public boolean onOptionsItemSelected (MenuItem item) {
         // Handle action bar item clicks here. The action bar will
@@ -100,7 +135,7 @@ public class MainActivity extends AppCompatActivity
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
+        // logs out if logout button pressed
         if (id == R.id.action_logout) {
             SharedPreferences.Editor prefs = getSharedPreferences(getString(R.string.shared_prefs), MODE_PRIVATE).edit();
             UserUtils.logout(prefs);
@@ -111,6 +146,8 @@ public class MainActivity extends AppCompatActivity
         return super.onOptionsItemSelected(item);
     }
 
+    // pre: none
+    // post: opens the fragments for Main/Resource files
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected (MenuItem item) {
@@ -123,25 +160,15 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_resources) {
             ResourcesFragment resourcesFragment = ResourcesFragment.newInstance();
             openFragmentInContentMain(resourcesFragment);
-        } /*else if (id == R.id.nav_news) {
-            NewsFragment newsFragment = NewsFragment.newInstance();
-            openFragmentInContentMain(newsFragment);
-        } else if (id == R.id.nav_calculators) {
-            CalculatorsFragment calculatorsFragment = CalculatorsFragment.newInstance();
-            openFragmentInContentMain(calculatorsFragment);
-        } else if (id == R.id.nav_feedback) {
-            FeedbackFragment feedbackFragment = FeedbackFragment.newInstance();
-            openFragmentInContentMain(feedbackFragment);
-        } else if (id == R.id.nav_bugs) {
-            BugsFragment bugsFragment = BugsFragment.newInstance();
-            openFragmentInContentMain(bugsFragment);
-        }*/
+        }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.activity_main_drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
 
+    // pre: none
+    // post: opens the fragment in the main content screen
     public void openFragmentInContentMain (Fragment fragment) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();

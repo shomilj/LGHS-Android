@@ -1,18 +1,23 @@
+//
+// ResourcesAdapter.java
+// LG CATS
+//
+// Developers: Shomil Jain, Cassandra Melax, Quintin Leary, and Harry Wang
+// Copyright © 2017 Los Gatos High School. All rights reserved.
+//
+// ResourcesAdapter - adapter for resource table view
+//
+
 package com.sjf.lgcats;
 
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-
-/**
- * Created by shomil on 5/31/17.
- */
 
 public class ResourcesAdapter extends BaseAdapter {
     private ArrayList<Object> cellArray;

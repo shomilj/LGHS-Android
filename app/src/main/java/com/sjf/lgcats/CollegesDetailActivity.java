@@ -1,11 +1,19 @@
+//
+// CollegesDetailActivity.java
+// LG CATS
+//
+// Developers: Shomil Jain, Cassandra Melax, Quintin Leary, and Harry Wang
+// Copyright © 2017 Los Gatos High School. All rights reserved.
+//
+// CollegesDetailActivity - displays detailed info about each college
+//
+
 package com.sjf.lgcats;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -16,9 +24,11 @@ public class CollegesDetailActivity extends AppCompatActivity {
     private String name;
     private String dateString;
     private String location;
-
     private ListView mListView;
 
+    // called when the view is created
+    // pre: none
+    // post: configures the view
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,21 +38,29 @@ public class CollegesDetailActivity extends AppCompatActivity {
         fillListView();
     }
 
+    // pre: none
+    // post: fetches information from previous screen
     private void fetchExtras() {
         name = this.getIntent().getExtras().getString("name");
         dateString = this.getIntent().getExtras().getString("dateString");
         location = this.getIntent().getExtras().getString("location");
     }
 
+    // pre: none
+    // post: initializes the private variables
     private void assignVariables() {
         mListView = (ListView) findViewById(R.id.college_detail_list_view);
     }
 
+    // pre: none
+    // post: sets up the view
     private void setupView() {
         setContentView(R.layout.activity_colleges_detail);
         setTitle("Colleges @ LGHS");
     }
 
+    // pre: none
+    // post: fills the listview with the info
     private void fillListView() {
         List<Map<String, String>> data = new ArrayList<Map<String, String>>();
 
@@ -66,10 +84,7 @@ public class CollegesDetailActivity extends AppCompatActivity {
                 new String[]{"First Item", "Second Item"},
                 new int[]{android.R.id.text1, android.R.id.text2});
 
-        // ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, listItems);
-        if (mListView == null) {
-            System.out.println("null");
-        } else {
+        if (mListView != null) {
             mListView.setAdapter(adapter);
         }
     }

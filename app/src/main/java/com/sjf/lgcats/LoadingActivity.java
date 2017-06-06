@@ -1,48 +1,37 @@
+//
+// LoadingActivity.java
+// LG CATS
+//
+// Developers: Shomil Jain, Cassandra Melax, Quintin Leary, and Harry Wang
+// Copyright © 2017 Los Gatos High School. All rights reserved.
+//
+// LoadingActivity - loading screen
+//
+
 package com.sjf.lgcats;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.constraint.ConstraintLayout;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-
-import static com.sjf.lgcats.R.attr.title;
-
-/**
- * Gives the app time to load essential information.
- * Informs the user of the date and day color.
- * Downloads initial data.
- * 
- *
- * @author  Shomil Jain
- * @author  Quintin Leary
- * @author  Cassandra Melax
- * @author  Harry Wang
- * @version 1.0
- * @since   1.0
- */
 
 public class LoadingActivity extends AppCompatActivity {
 
     private TextView mTitleLabel;
     private TextView mDayTypeLabel;
-
     private ProgressBar mProgressBar;
     private int mProgressStatus = 0;
     private Handler mHandler = new Handler();
 
-
+    // pre: none
+    // post: sets up the screen
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,6 +39,7 @@ public class LoadingActivity extends AppCompatActivity {
         assignVariables();
         setupDayType();
 
+        // starts the download if network is connected
         if (GlobalUtils.isConnected(this)) {
             startDownload();
         } else {
@@ -57,6 +47,8 @@ public class LoadingActivity extends AppCompatActivity {
         }
     }
 
+    // pre: none
+    // post: starts download in background thread
     private void startDownload() {
         new Thread(new Runnable() {
             @Override
@@ -66,6 +58,8 @@ public class LoadingActivity extends AppCompatActivity {
         }).start();
     }
 
+    // pre: none
+    // post: shows an error if network isn't connected
     private void showNetworkError() {
         AlertDialog alertDialog = new AlertDialog.Builder(this).create();
         alertDialog.setTitle("Alert");
@@ -81,6 +75,8 @@ public class LoadingActivity extends AppCompatActivity {
         alertDialog.show();
     }
 
+    // pre: none
+    // post: sets up the day type indicator
     private void setupDayType() {
         DayCalendar cal = new DayCalendar(this);
         String description = cal.getDescription();
@@ -92,18 +88,25 @@ public class LoadingActivity extends AppCompatActivity {
         constraintLayout.setBackgroundColor(cal.getBackgroundColorID());
     }
 
+    // pre: none
+    // post: initializes private variables
     private void assignVariables() {
         mTitleLabel = (TextView) findViewById(R.id.loading_screen_title);
         mDayTypeLabel = (TextView) findViewById(R.id.loading_screen_day_type_label);
         mProgressBar = (ProgressBar) findViewById(R.id.initial_loading_spinner);
     }
 
+    // pre: none
+    // post: sets up view
     private void setupView() {
         setContentView(R.layout.activity_loading);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
     }
 
+    // pre: none
+    // post; moves onto the next appropriate screen
+    // if users are not logged in then goes to login screen
     public void nextScreen() {
         SharedPreferences prefs = getSharedPreferences(getString(R.string.shared_prefs), MODE_PRIVATE);
         String userType = prefs.getString("UserType", null);
@@ -116,9 +119,10 @@ public class LoadingActivity extends AppCompatActivity {
         }
     }
 
+    // pre: none
+    // post: downloads files & uploads progress bar
     public void downloadFiles() {
         FileUtil.writeToFile(FileUtil.FILE_LINKS, StringUtil.getUrlContents(LinkUtils.LINK_LINKS), getApplicationContext());
-        // Update the progress bar
         updateProgress();
         FileUtil.writeToFile(FileUtil.FILE_HOTLINES, StringUtil.getUrlContents(LinkUtils.LINK_HOTLINES), getApplicationContext());
         updateProgress();
@@ -131,6 +135,8 @@ public class LoadingActivity extends AppCompatActivity {
         nextScreen();
     }
 
+    // pre: none
+    // post: adds 20% to progress bar
     private void updateProgress() {
         mHandler.post(new Runnable() {
             public void run() {

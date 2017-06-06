@@ -1,20 +1,19 @@
+//
+// WebViewActivity.java
+// LG CATS
+//
+// Developers: Shomil Jain, Cassandra Melax, Quintin Leary, and Harry Wang
+// Copyright © 2017 Los Gatos High School. All rights reserved.
+//
+// WebViewActivity - opens links to the web
+//
+
 package com.sjf.lgcats;
 
 import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-
-/**
- * Opens links to the web
- *
- * @author  Shomil Jain
- * @author  Quintin Leary
- * @author  Cassandra Melax
- * @author  Harry Wang
- * @version 1.0
- * @since   1.0
- */
 
 public class WebViewActivity extends AppCompatActivity {
 

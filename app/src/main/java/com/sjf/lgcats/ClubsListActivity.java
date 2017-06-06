@@ -1,18 +1,24 @@
+//
+// ClubsListActivity.java
+// LG CATS
+//
+// Developers: Shomil Jain, Cassandra Melax, Quintin Leary, and Harry Wang
+// Copyright © 2017 Los Gatos High School. All rights reserved.
+//
+// ClubsListActivity - holds a list of clubs
+//
+
 package com.sjf.lgcats;
 
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
-
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -20,34 +26,24 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * Contains a list of Club objects
- *
- * @author  Shomil Jain
- * @author  Quintin Leary
- * @author  Cassandra Melax
- * @author  Harry Wang
- * @version 1.0
- * @since   1.0
- */
-
 public class ClubsListActivity extends AppCompatActivity {
 
-    private ArrayList<Club> clubs;
+    private ArrayList<Club> mClubs;
     private ListView mListView;
 
+    // called when the view is created
+    // pre: none
+    // post: configures the view
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        System.out.println("ClubsListActivity was created");
         setupView();
         assignVariables();
         startDownload();
     }
 
-    /**
-     * Sets up the screen with a layout and a name
-     */
+    // pre: none
+    // post: sets up the view
     private void setupView() {
         setContentView(R.layout.activity_clubs_list);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -56,20 +52,16 @@ public class ClubsListActivity extends AppCompatActivity {
         setTitle("Clubs");
     }
 
-    /**
-     * makes a list view and turns clubs and makes clubs and arrayList
-     */
+    // pre: none
+    // post: initializes the private variables
     private void assignVariables() {
         mListView = (ListView) findViewById(R.id.club_list_view);
-        clubs = new ArrayList<>();
+        mClubs = new ArrayList<>();
     }
 
-    /**
-     * download clubs in background
-     * must be in background thread to work
-     */
+    // pre: none
+    // post: starts downloading the clubs in the background
     private void startDownload() {
-        //
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -79,19 +71,22 @@ public class ClubsListActivity extends AppCompatActivity {
         }).start();
     }
 
-
+    // pre: none
+    // post: fetches the club data from the server
     public void fetchClubs() {
         // get the link associated with the club spreadsheet
         String link = LinkUtils.getLink(LinkUtils.HOST_CLUBS, getApplicationContext());
-        System.out.println(link);
+
         // download the contents of the text file at the link
         String file = StringUtil.getUrlContents(link);
-        System.out.println(file);
+
         parseClubs(file);
         sortClubList();
         updateUI();
     }
 
+    // pre: none
+    // post: parses club information from the tsv file
     public void parseClubs(String file) {
         // split the spreadsheet into rows
         String[] rows = file.split("\r");
@@ -118,20 +113,24 @@ public class ClubsListActivity extends AppCompatActivity {
 
                 // create a new club & add it
                 Club c = new Club(name, day, time, location, president, vicePresident, advisor, email);
-                clubs.add(c);
+                mClubs.add(c);
             }
         }
-        System.out.println(clubs);
     }
 
+    // pre: none
+    // post: sorts the club list
     private void sortClubList() {
-        Collections.sort(clubs, new Comparator<Club>() {
+        Collections.sort(mClubs, new Comparator<Club>() {
             @Override
             public int compare(Club c2, Club c1) {
                 return (c2.getName().compareTo(c1.getName()));
             }
         });
     }
+
+    // pre: none
+    // post: updates the UI in the main thread
     private void updateUI() {
         runOnUiThread(new Runnable() {
             public void run() {
@@ -141,22 +140,33 @@ public class ClubsListActivity extends AppCompatActivity {
         });
     }
 
+    // pre: none
+    // post: sets up the listener for listview taps
     private void setupListListener() {
         final Context context = this;
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent detailIntent = new Intent(context, ClubsDetailActivity.class);
-                Club club = clubs.get(position);
-                detailIntent.putExtra("Club", club);
-                startActivity(detailIntent);
+                tappedClub(position, context);
             }
         });
     }
 
+    // pre: none
+    // post: passes club data to next screen & transitions to club detail screen
+    private void tappedClub(int position, Context context) {
+        Intent detailIntent = new Intent(context, ClubsDetailActivity.class);
+        Club club = mClubs.get(position);
+        detailIntent.putExtra(Club.intent_key, club);
+        startActivity(detailIntent);
+    }
+
+    // pre: none
+    // post: fills the list view with clubs
     private void fillListView() {
         List<Map<String, String>> data = new ArrayList<Map<String, String>>();
-        for (Club club : clubs) {
+        for (Club club : mClubs) {
+            // hashmap holds club name & day/time string
             Map<String, String> datum = new HashMap<String, String>(2);
             datum.put(Club.lv_item_1_key, club.getName());
             String second = "" + club.getDay() + " - " + club.getTime();
@@ -164,14 +174,13 @@ public class ClubsListActivity extends AppCompatActivity {
             data.add(datum);
         }
 
+        // connects hashmap to list view
         SimpleAdapter adapter = new SimpleAdapter(this, data,
                 android.R.layout.simple_list_item_2,
                 new String[]{Club.lv_item_1_key, Club.lv_item_2_key},
                 new int[]{android.R.id.text1, android.R.id.text2});
 
-        if (mListView == null) {
-            System.out.println("null");
-        } else {
+        if (mListView != null) {
             mListView.setAdapter(adapter);
         }
     }

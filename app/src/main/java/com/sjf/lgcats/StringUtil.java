@@ -1,7 +1,14 @@
-package com.sjf.lgcats;
+//
+// StringUtil.java
+// LG CATS
+//
+// Developers: Shomil Jain, Cassandra Melax, Quintin Leary, and Harry Wang
+// Copyright © 2017 Los Gatos High School. All rights reserved.
+//
+// StringUtil - string utility files
+//
 
-import android.content.res.Resources;
-import android.widget.TextView;
+package com.sjf.lgcats;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -9,22 +16,11 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
-
-/**
- *
- * Provides a compilation of string helper methods
- *
- * @author  Shomil Jain
- * @author  Quintin Leary
- * @author  Cassandra Melax
- * @author  Harry Wang
- * @version 1.0
- * @since   1.0
- */
 
 public class StringUtil {
 
+    // pre: none
+    // post: gets contents from url text file
     public static String getUrlContents(String theUrl) {
         StringBuilder content = new StringBuilder();
         try {
@@ -41,15 +37,4 @@ public class StringUtil {
         }
         return content.toString();
     }
-
-
-    public static ArrayList<ArrayList<String>> parseTSV (String s) {
-        ArrayList<ArrayList<String>> answer = new ArrayList<>();
-        String[] lines = s.split("\r");
-        for (String line : lines) {
-            answer.add((ArrayList<String>) Arrays.asList(line.split("\t")));
-        }
-        return answer;
-    }
-
 }

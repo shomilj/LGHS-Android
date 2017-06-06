@@ -1,18 +1,25 @@
+//
+// DayCalendar.java
+// LG CATS
+//
+// Developers: Shomil Jain, Cassandra Melax, Quintin Leary, and Harry Wang
+// Copyright © 2017 Los Gatos High School. All rights reserved.
+//
+// DayCalendar - holds a black/orange day calendar
+//
+
 package com.sjf.lgcats;
 
 import android.content.Context;
-import android.graphics.Color;
-
 import java.util.ArrayList;
-
-/**
- * Created by shomil on 5/20/17.
- */
 
 public class DayCalendar {
 
     private ArrayList<DayType> types;
 
+    // pre: none
+    // post: initializes DayCalendar
+    // context is passed to read from shared preferences
     public DayCalendar(Context context) {
         types = new ArrayList<>();
 
@@ -24,6 +31,8 @@ public class DayCalendar {
         parseFile(file);
     }
 
+    // pre: none
+    // post: parses the file from the string into the day calendar
     private void parseFile(String file) {
         try {
             String[] rows = file.split("\r");
@@ -51,6 +60,8 @@ public class DayCalendar {
         }
     }
 
+    // pre: none
+    // post: returns today's day type
     public DayType getToday() {
         for (DayType type : types) {
             if (type.checkToday())
@@ -59,6 +70,9 @@ public class DayCalendar {
         return null;
     }
 
+
+    // pre: none
+    // post: returns tomorrow's day type
     public DayType getTomorrow() {
         for (DayType type : types) {
             if (type.checkTomorrow())
@@ -67,24 +81,32 @@ public class DayCalendar {
         return null;
     }
 
+    // pre: none
+    // post: returns the text color ID for the day type
     public int getTextColorID() {
         DayType current = getCurrent();
         if (current != null && current.isBlackDay()) return R.color.colorPrimary;
         return R.color.black;
     }
 
+    // pre: none
+    // post: returns the background color ID for the day type
     public int getBackgroundColorID() {
         DayType current = getCurrent();
         if (current != null && current.isBlackDay()) return R.color.black;
         return R.color.colorPrimary;
     }
 
+    // pre: none
+    // post: returns either today's or tomorrow's day type, or null if neither exists
     public DayType getCurrent() {
         if (getToday() != null) return getToday();
         if (getTomorrow() != null) return getTomorrow();
         return null;
     }
 
+    // pre: null
+    // post: returns description
     public String getDescription() {
         DayType today = getToday();
         if (today != null) return today.getTodayDescription();
@@ -93,7 +115,8 @@ public class DayCalendar {
         return null;
     }
 
-    // if today (or tomorrow, if today isn't a school day) is a black day, then return true.
+    // pre: none
+    // post: if today (or tomorrow, if today isn't a school day) is a black day, then return true.
     public boolean isNextSchoolDayBlack() {
         if (isSchoolDay()) {
             if (getToday().isBlackDay()) return true;
@@ -103,6 +126,8 @@ public class DayCalendar {
         return false;
     }
 
+    // pre: none
+    // post: returns true if today is a school day
     public boolean isSchoolDay() {
         return (getToday() != null);
     }

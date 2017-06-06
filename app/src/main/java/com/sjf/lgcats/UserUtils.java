@@ -1,11 +1,16 @@
+//
+// UserUtils.java
+// LG CATS
+//
+// Developers: Shomil Jain, Cassandra Melax, Quintin Leary, and Harry Wang
+// Copyright © 2017 Los Gatos High School. All rights reserved.
+//
+// UserUtils - user util methods
+//
+
 package com.sjf.lgcats;
 
 import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
-
-/**
- * Created by shomil on 6/4/17.
- */
 
 public class UserUtils {
 

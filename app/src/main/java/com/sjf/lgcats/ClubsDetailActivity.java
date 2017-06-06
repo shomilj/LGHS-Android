@@ -1,3 +1,13 @@
+//
+// ClubsDetailActivity.java
+// LG CATS
+//
+// Developers: Shomil Jain, Cassandra Melax, Quintin Leary, and Harry Wang
+// Copyright © 2017 Los Gatos High School. All rights reserved.
+//
+// ClubsDetailActivity - displays list of club information
+//
+
 package com.sjf.lgcats;
 
 import android.support.v7.app.AppCompatActivity;
@@ -5,7 +15,6 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -14,27 +23,34 @@ import java.util.Map;
 public class ClubsDetailActivity extends AppCompatActivity {
 
     private Club club;
-
     private ListView mListView;
 
+    // called when the view is created
+    // pre: none
+    // post: configures the view
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        System.out.println("Clubs detail view was created");
         setupView();
         assignVariables();
         fetchExtras();
         fillListView();
     }
 
+    // pre: none
+    // post: fetches the content passed from the previous screen
     private void fetchExtras() {
         club = (Club) (getIntent().getSerializableExtra("Club"));
     }
 
+    // pre: none
+    // post: initializes variables
     private void assignVariables() {
         mListView = (ListView) findViewById(R.id.club_detail_list_view);
     }
 
+    // pre: none
+    // post: sets up the view
     private void setupView() {
         setContentView(R.layout.activity_clubs_detail);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -43,7 +59,10 @@ public class ClubsDetailActivity extends AppCompatActivity {
         setTitle("Clubs @ LGHS");
     }
 
+    // pre: private variables have been initialized
+    // post: fills the list view
     private void fillListView() {
+        // this hash map holds the club data in a format parsable by the listview
         List<Map<String, String>> data = new ArrayList<Map<String, String>>();
 
         Map<String, String> m1 = new HashMap<>();
@@ -86,14 +105,15 @@ public class ClubsDetailActivity extends AppCompatActivity {
         m8.put(Club.lv_item_2_key, club.getEmail());
         data.add(m8);
 
+
+        // assign the hashmap to the list view
         SimpleAdapter adapter = new SimpleAdapter(this, data,
                 android.R.layout.simple_list_item_2,
                 new String[]{Club.lv_item_1_key, Club.lv_item_2_key},
                 new int[]{android.R.id.text1, android.R.id.text2});
 
-        if (mListView == null) {
-            System.out.println("null");
-        } else {
+        // if the listview has been initialized, then display that info
+        if (mListView != null) {
             mListView.setAdapter(adapter);
         }
     }

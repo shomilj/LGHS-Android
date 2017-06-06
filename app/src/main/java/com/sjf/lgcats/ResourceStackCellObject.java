@@ -1,12 +1,17 @@
+//
+// ResourceStackCellObject.java
+// LG CATS
+//
+// Developers: Shomil Jain, Cassandra Melax, Quintin Leary, and Harry Wang
+// Copyright © 2017 Los Gatos High School. All rights reserved.
+//
+// ResourceStackCellObject - holds a stack cell object
+//
+
 package com.sjf.lgcats;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.HashMap;
-
-/**
- * Created by shomil on 6/1/17.
- */
 
 public class ResourceStackCellObject implements Serializable {
 

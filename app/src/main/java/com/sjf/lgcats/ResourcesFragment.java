@@ -1,26 +1,27 @@
+//
+// ResourcesFragment.java
+// LG CATS
+//
+// Developers: Shomil Jain, Cassandra Melax, Quintin Leary, and Harry Wang
+// Copyright © 2017 Los Gatos High School. All rights reserved.
+//
+// ResourcesFragment - fragment for the resources home screen
+//
+
 package com.sjf.lgcats;
 
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.SystemClock;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.ListView;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 
-
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link ResourcesFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class ResourcesFragment extends Fragment {
 
     private ArrayList<Object> items;

@@ -1,3 +1,13 @@
+//
+// MainFragment.java
+// LG CATS
+//
+// Developers: Shomil Jain, Cassandra Melax, Quintin Leary, and Harry Wang
+// Copyright © 2017 Los Gatos High School. All rights reserved.
+//
+// MainFragment - holds the content (XML button links) of the MainActivity class
+//
+
 package com.sjf.lgcats;
 
 import android.content.Context;
@@ -9,14 +19,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link MainFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
-
 public class MainFragment extends Fragment {
 
+    // buttons for each link on the homepage
     private Button mainFragmentAnnouncementButton;
     private Button mainFragmentCountdownButton;
     private Button mainFragmentCanvasButton;
@@ -27,26 +32,28 @@ public class MainFragment extends Fragment {
     private Button mainFragmentHotlinesButton;
     private Button mainFragmentLGHSTwitterFeedButton;
 
+    // Required empty public constructor
+    // pre: none
+    // post: none
     public MainFragment() {
-        // Required empty public constructor
+
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @return A new instance of fragment MainFragment.
-     */
+    // pre: none
+    // post: returns a new instance of MainFragment
     public static MainFragment newInstance() {
         return new MainFragment();
     }
 
+    // pre: none
+    // post: empty onCreate method, calls super method
     @Override
     public void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
     }
 
+    // pre: none
+    // post: called when view is created, initializes buttons
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -54,6 +61,7 @@ public class MainFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_main, container, false);
 
+        // link buttons
         mainFragmentAnnouncementButton = (Button) view.findViewById(R.id.main_fragment_announcement_button);
         mainFragmentCountdownButton = (Button) view.findViewById(R.id.main_fragment_countdown_button);
         mainFragmentCanvasButton = (Button) view.findViewById(R.id.main_fragment_canvas_button);
@@ -64,21 +72,28 @@ public class MainFragment extends Fragment {
         mainFragmentHotlinesButton = (Button) view.findViewById(R.id.main_fragment_hotlines_button);
         mainFragmentLGHSTwitterFeedButton = (Button) view.findViewById(R.id.main_fragment_LGHSTwitterFeed_button);
 
+        // setup button listeners
         initiateButtons();
 
         return view;
     }
 
+    // pre: none
+    // post: default fragment method
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
     }
 
+    // pre: none
+    // post: default fragment method
     @Override
     public void onDetach() {
         super.onDetach();
     }
 
+    // pre: buttons are not null
+    // post: sets a listener to each button, button presses lead to new screens
     public void initiateButtons () {
 
         mainFragmentAnnouncementButton.setOnClickListener(new View.OnClickListener() {

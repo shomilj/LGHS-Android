@@ -1,23 +1,25 @@
+//
+// LinkUtils.java
+// LG CATS
+//
+// Developers: Shomil Jain, Cassandra Melax, Quintin Leary, and Harry Wang
+// Copyright © 2017 Los Gatos High School. All rights reserved.
+//
+// LinkUtils - holds keys to each link & getLink method
+//
+/*
+Each key is a reference to a cell in a Google Sheet which holds keys and URLs associated with keys.
+This is to allow remote modification of links without having to update the application through the play store.
+ */
+
 package com.sjf.lgcats;
 
 import android.content.Context;
-
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
-
-/**
- * Created by shomil on 5/19/17.
- */
 
 public class LinkUtils {
 
+    // these links are hardcoded, since they are downloaded before the links file itself has been downloaded
     public static final String LINK_LINKS = "https://docs.google.com/spreadsheets/d/1SLgWueqyOlvqEvW5ZVi4-nrUzpJAYlikSDlnssoXKGc/export?format=tsv";
     public static final String LINK_HOTLINES = "https://docs.google.com/spreadsheets/d/1cGpoo0sXmSu4vz4d3D6TtmTaaKdkbejvG9LWWrpBKxo/export?format=tsv";
     public static final String LINK_COUNTDOWN = "https://docs.google.com/spreadsheets/d/1oU_gAjgVvUzYs3IJ0-iByAPM4WRodCPUZnCt3XNozK0/export?format=tsv";

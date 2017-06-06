@@ -1,21 +1,26 @@
+//
+// CollegesListActivity.java
+// LG CATS
+//
+// Developers: Shomil Jain, Cassandra Melax, Quintin Leary, and Harry Wang
+// Copyright © 2017 Los Gatos High School. All rights reserved.
+//
+// CollegesListActivity - displays a list of colleges visiting lghs
+//
+
 package com.sjf.lgcats;
 
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
-
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -23,22 +28,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * Contains a list of College objects
- *
- * @author  Shomil Jain
- * @author  Quintin Leary
- * @author  Cassandra Melax
- * @author  Harry Wang
- * @version 1.0
- * @since   1.0
- */
-
 public class CollegesListActivity extends AppCompatActivity {
 
     private ArrayList<College> colleges;
     private ListView mListView;
 
+    // called when the view is created
+    // pre: none
+    // post: configures the view
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,23 +44,26 @@ public class CollegesListActivity extends AppCompatActivity {
         startDownload();
     }
 
+    // pre: none
+    // post: starts download in background
     private void startDownload() {
-        // download colleges in background
-        // must be in background thread to work
         new Thread(new Runnable() {
             @Override
             public void run() {
-                // read/parse college list
                 fetchColleges();
             }
         }).start();
     }
 
+    // pre: none
+    // post: initializes the private variables
     private void assignVariables() {
         mListView = (ListView) findViewById(R.id.college_list_view);
         colleges = new ArrayList<>();
     }
 
+    // pre: none
+    // post: sets up the view
     private void setupView() {
         setContentView(R.layout.activity_colleges_list);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -72,6 +72,8 @@ public class CollegesListActivity extends AppCompatActivity {
         setTitle("Colleges @ LGHS");
     }
 
+    // pre: none
+    // post: fetches colleges from server
     public void fetchColleges() {
         // get the link associated with the college spreadsheet
         String link = LinkUtils.getLink(LinkUtils.HOST_COLLEGES, getApplicationContext());
@@ -84,6 +86,8 @@ public class CollegesListActivity extends AppCompatActivity {
         updateUI();
     }
 
+    // pre: none
+    // post: parses college from text file
     private void parseColleges(String file) {
         // split the spreadsheet into rows
         String[] rows = file.split("\r");
@@ -106,33 +110,43 @@ public class CollegesListActivity extends AppCompatActivity {
 
                 // create a new college & add it if it's upcoming
                 College col = new College(name, time, location, date);
-                if (col.isUpcoming()) colleges.add(col);
-                // colleges.add(col);
+                if (col.isUpcoming())
+                    colleges.add(col);
             }
         }
     }
 
+    // pre: none
+    // post: updates UI
     private void updateUI() {
         runOnUiThread(new Runnable() {
             public void run() {
                 fillListView();
                 setupListListener();
-                if (colleges.size() == 0) {
-                    AlertDialog.Builder builder = new AlertDialog.Builder(CollegesListActivity.this);
-                    builder.setMessage("At this time, no colleges have scheduled visits to LGHS.")
-                            .setCancelable(false)
-                            .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog, int id) {
-                                    finish();
-                                }
-                            });
-                    AlertDialog alert = builder.create();
-                    alert.show();
-                }
+                showEmptyCollegeAlertIfNecessary();
             }
         });
     }
 
+    // pre: none
+    // post: if college list is empty then shows alert and goes back to previous screen
+    private void showEmptyCollegeAlertIfNecessary() {
+        if (colleges.size() == 0) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(CollegesListActivity.this);
+            builder.setMessage("At this time, no colleges have scheduled visits to LGHS.")
+                    .setCancelable(false)
+                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            finish();
+                        }
+                    });
+            AlertDialog alert = builder.create();
+            alert.show();
+        }
+    }
+
+    // pre: none
+    // post: sorts the college list by date
     private void sortCollegeList() {
         Collections.sort(colleges, new Comparator<College>() {
             @Override
@@ -142,26 +156,36 @@ public class CollegesListActivity extends AppCompatActivity {
         });
     }
 
+    // pre: none
+    // post: assigns listener to listview
     private void setupListListener() {
         final Context context = this;
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent detailIntent = new Intent(context, CollegesDetailActivity.class);
-                College college = colleges.get(position);
-                detailIntent.putExtra("name", college.getName());
-                detailIntent.putExtra("dateString", college.getDateString());
-                detailIntent.putExtra("location", college.getLocation());
-                startActivity(detailIntent);
+                tappedCollege(position, context);
             }
         });
     }
 
-    /**
-     * creates a hashmap with keys and values
-     */
+    // pre: none
+    // post: passes data and transitions to college detail screen
+    private void tappedCollege(int position, Context context) {
+        Intent detailIntent = new Intent(context, CollegesDetailActivity.class);
+        College college = colleges.get(position);
+        detailIntent.putExtra("name", college.getName());
+        detailIntent.putExtra("dateString", college.getDateString());
+        detailIntent.putExtra("location", college.getLocation());
+        startActivity(detailIntent);
+    }
+
+    // pre: none
+    // post: fills the list view w college data
     private void fillListView() {
+        // arraylist of hashmaps holds the college data to be displayed
         List<Map<String, String>> data = new ArrayList<Map<String, String>>();
+
+        // add an item for each college
         for (College college : colleges) {
             Map<String, String> datum = new HashMap<String, String>(2);
             datum.put("First Line", college.getName());
@@ -169,14 +193,13 @@ public class CollegesListActivity extends AppCompatActivity {
             data.add(datum);
         }
 
+        // link hashmap to listview
         SimpleAdapter adapter = new SimpleAdapter(this, data,
                 android.R.layout.simple_list_item_2,
                 new String[]{"First Line", "Second Line"},
                 new int[]{android.R.id.text1, android.R.id.text2});
 
-        if (mListView == null) {
-            System.out.println("null");
-        } else {
+        if (mListView != null) {
             mListView.setAdapter(adapter);
         }
     }
