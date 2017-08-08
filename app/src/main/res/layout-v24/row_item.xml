@@ -14,7 +14,8 @@
         android:background="@color/colorPrimary"
         android:text="test"
         android:textAlignment="center"
+        android:gravity="center"
         android:textAppearance="@android:style/TextAppearance.Material.Widget.Button.Colored"
-        android:textSize="23sp" />
+        android:textSize="14dp" />
 
 </LinearLayout>

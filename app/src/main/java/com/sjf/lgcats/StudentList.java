@@ -39,10 +39,10 @@ public class StudentList {
             String[] rows = file.split("\r");
             for (String row : rows) {
                 String[] cells = row.split("\t");
-                if (cells.length > 3) {
-                    // here's a row of 4 cells
+                if (cells.length > 4) {
+                    // here's a row of 5 cells
                     // create a new student & add to list
-                    list.add(new Student(cells[2], cells[1], cells[3], cells[0]));
+                    list.add(new Student(cells[2], cells[1], cells[3], cells[0], cells[4]));
                 }
             }
         } catch (IndexOutOfBoundsException e) {
@@ -64,10 +64,11 @@ public class StudentList {
 
     // pre: none
     // post: returns true if the lastname and the id match (student login verification)
-    public boolean checkLogin(String last, String id) {
+    public boolean checkLogin(String email) {
         for (Student student : list) {
-            if (student.getLast().equalsIgnoreCase(last) && student.getId().equalsIgnoreCase(id))
+            if (student.getEmail().toLowerCase().equals(email)) {
                 return true;
+            }
         }
         return false;
     }
@@ -86,4 +87,12 @@ public class StudentList {
         return null;
     }
 
+    public Student getStudentFromEmail(String email) {
+        for (Student student : list) {
+            if (student.getEmail().toLowerCase().equals(email)) {
+                return student;
+            }
+        }
+        return null;
+    }
 }

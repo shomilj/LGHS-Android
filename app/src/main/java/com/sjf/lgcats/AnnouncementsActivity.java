@@ -144,7 +144,6 @@ public class AnnouncementsActivity extends AppCompatActivity {
         });
     }
 
-
     // pre: none
     // post: fills the list view with list items
     private void fillListView() {
