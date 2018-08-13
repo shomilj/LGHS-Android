@@ -1,35 +1,35 @@
 {
   "project_info": {
-    "project_number": "169180857646",
-    "firebase_url": "https://project-6694277097819247379.firebaseio.com",
-    "project_id": "project-6694277097819247379",
-    "storage_bucket": "project-6694277097819247379.appspot.com"
+    "project_number": "443347583933",
+    "firebase_url": "https://los-gatos-high-school.firebaseio.com",
+    "project_id": "los-gatos-high-school",
+    "storage_bucket": "los-gatos-high-school.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:169180857646:android:f1b58a794335a435",
+        "mobilesdk_app_id": "1:443347583933:android:43159605e11e24ba",
         "android_client_info": {
-          "package_name": "com.sjf.lgcats"
+          "package_name": "com.avinalabs.losgatoshighschool"
         }
       },
       "oauth_client": [
         {
-          "client_id": "169180857646-lmpidgpstulir98kq07lcsrlbmvro4kq.apps.googleusercontent.com",
+          "client_id": "443347583933-a66cel66rdj5jrfg9e6m0f86fh7a4k7g.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.sjf.lgcats",
-            "certificate_hash": "0cc7444d23d876005209dc15c06e1e4e112e576e"
+            "package_name": "com.avinalabs.losgatoshighschool",
+            "certificate_hash": "38ad6d21523eff4ba6e308a9be6a478631d8cd76"
           }
         },
         {
-          "client_id": "169180857646-0o09nre7r01qjvrac4jeljt3l2k81k0e.apps.googleusercontent.com",
+          "client_id": "443347583933-jl8au18miiva6i6c9ubflrpr6kqdujpr.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCPV4Yokhuw11cErocR3c8jHLbRBxmPJrE"
+          "current_key": "AIzaSyCMr9RoEQPQDqDo0I9YeS31ascP9QaGeA4"
         }
       ],
       "services": {
@@ -40,15 +40,14 @@
           "status": 2,
           "other_platform_oauth_client": [
             {
-              "client_id": "169180857646-0o09nre7r01qjvrac4jeljt3l2k81k0e.apps.googleusercontent.com",
+              "client_id": "443347583933-jl8au18miiva6i6c9ubflrpr6kqdujpr.apps.googleusercontent.com",
               "client_type": 3
             },
             {
-              "client_id": "169180857646-f04btaj2m35naua6tm52jked812iniuk.apps.googleusercontent.com",
+              "client_id": "443347583933-93kngkh4bud3ai159n50jgvvt69gv1a1.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "com.SJF.Gr8Calc",
-                "app_store_id": "1004047426"
+                "bundle_id": "com.avinalabs.los-gatos-high-school"
               }
             }
           ]

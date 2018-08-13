@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.sjf.lgcats.StudentLoginActivity">
+    tools:context="com.avinalabs.losgatoshighschool.StudentLoginActivity">
 
     <EditText
         android:id="@+id/sso_id_field"

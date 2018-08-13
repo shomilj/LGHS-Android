@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.sjf.lgcats">
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.avinalabs.losgatoshighschool">
 
 
     <!-- To download schedule -->
@@ -24,10 +25,15 @@
             android:label="@string/app_name"
             android:noHistory="true"
             android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                tools:replace="android:value"
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.avinalabs.losgatoshighschool.MainActivity" />
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
         <activity
             android:name=".CollegesListActivity"
@@ -36,7 +42,7 @@
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.sjf.lgcats.MainActivity" />
+                android:value="com.avinalabs.losgatoshighschool.MainActivity" />
         </activity>
         <activity
             android:name=".HotlinesActivity"
@@ -45,7 +51,7 @@
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.sjf.lgcats.MainActivity" />
+                android:value="com.avinalabs.losgatoshighschool.MainActivity" />
         </activity>
         <activity
             android:name=".AnnouncementsActivity"
@@ -54,7 +60,7 @@
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.sjf.lgcats.MainActivity" />
+                android:value="com.avinalabs.losgatoshighschool.MainActivity" />
         </activity>
         <activity
             android:name=".ClubsListActivity"
@@ -63,18 +69,26 @@
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.sjf.lgcats.MainActivity" />
+                android:value="com.avinalabs.losgatoshighschool.MainActivity" />
         </activity>
         <activity
             android:name=".WebViewActivity"
             android:label="@string/title_activity_web_view"
             android:noHistory="true"
             android:theme="@style/AppTheme.NoActionBar" />
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value="com.avinalabs.losgatoshighschool.ClubsListActivity" />
         <activity
             android:name=".MainActivity"
             android:label="@string/title_activity_main"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".HotlinesDetailActivity" />
+
+        <activity android:name=".HotlinesDetailActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.avinalabs.losgatoshighschool.ClubsListActivity" />
+        </activity>
         <activity
             android:name=".CalendarActivity"
             android:label="@string/title_activity_calendar"
@@ -82,7 +96,7 @@
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.sjf.lgcats.MainActivity" />
+                android:value="com.avinalabs.losgatoshighschool.MainActivity" />
         </activity>
         <activity
             android:name=".AnnouncementDetailActivity"
@@ -91,7 +105,7 @@
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.sjf.lgcats.AnnouncementsActivity" />
+                android:value="com.avinalabs.losgatoshighschool.AnnouncementsActivity" />
         </activity>
         <activity
             android:name=".CollegesDetailActivity"
@@ -99,7 +113,7 @@
             android:parentActivityName=".CollegesDetailActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.sjf.lgcats.CollegesDetailActivity" />
+                android:value="com.avinalabs.losgatoshighschool.CollegesDetailActivity" />
         </activity>
         <activity
             android:name=".SelectUserTypeActivity"
@@ -111,16 +125,24 @@
             android:parentActivityName=".MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.sjf.lgcats.MainActivity" />
+                android:value="com.avinalabs.losgatoshighschool.MainActivity" />
         </activity>
         <activity
             android:name=".ResourcesListActivity"
             android:label="@string/title_activity_resources_list"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.avinalabs.losgatoshighschool.MainActivity" />
+        </activity>
         <activity
             android:name=".ResourcesStackActivity"
             android:label="@string/title_activity_resources_stack"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.avinalabs.losgatoshighschool.MainActivity" />
+        </activity>
         <activity
             android:name=".ClubsDetailActivity"
             android:label="@string/title_activity_clubs_detail"
@@ -128,13 +150,16 @@
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.sjf.lgcats.ClubsListActivity" />
+                android:value="com.avinalabs.losgatoshighschool.ClubsListActivity" />
         </activity>
         <activity
             android:name=".StudentIDActivity"
             android:label="@string/title_activity_student_id"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
-
+            android:theme="@style/AppTheme.NoActionBar">
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value="com.avinalabs.losgatoshighschool.MainActivity" />
+        </activity>
     </application>
 
 </manifest>

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.sjf.lgcats.ResourcesListActivity"
+    tools:context="com.avinalabs.losgatoshighschool.ResourcesListActivity"
     tools:showIn="@layout/activity_resources_list">
 
     <ListView

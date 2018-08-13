@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.sjf.lgcats.AnnouncementDetailActivity"
+    tools:context="com.sjf.losgatoshighschool.AnnouncementDetailActivity"
     tools:showIn="@layout/activity_announcement_detail">
 
     <TextView

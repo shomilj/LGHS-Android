@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.sjf.lgcats.MainFragment"
+    tools:context="com.avinalabs.losgatoshighschool.MainFragment"
     android:id="@+id/fragment_main_frame_layout">
 
     <ScrollView
@@ -41,7 +41,7 @@
                 android:background="@color/colorPrimary"
                 android:text="@string/announcements" />
 
-            <Button
+            <!--Button
                 android:id="@+id/main_fragment_countdown_button"
                 style="@style/Widget.AppCompat.Button.Colored"
                 android:layout_width="match_parent"
@@ -49,7 +49,7 @@
                 android:layout_marginBottom="1dp"
                 android:layout_marginTop="1dp"
                 android:background="@color/colorPrimary"
-                android:text="@string/countdown_calendar" />
+                android:text="@string/countdown_calendar" /-->
 
             <Button
                 android:id="@+id/main_fragment_canvas_button"
@@ -105,13 +105,8 @@
                 android:layout_marginBottom="2dp"
                 android:layout_marginTop="1dp"
                 android:background="@color/colorPrimary"
-                android:text="@string/colleges" />
-
-            <TextView
-                android:id="@+id/main_fragment_black_border_2"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/activity_vertical_margin"
-                android:background="@color/black" />
+                android:text="@string/colleges"
+                android:visibility="gone" />
 
             <Button
                 android:id="@+id/main_fragment_hotlines_button"
